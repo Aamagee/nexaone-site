@@ -386,6 +386,88 @@
   }
   .examples-link:hover { text-decoration: underline; }
 
+  /* ---------- Case card flip (View examples -> gallery on the back) ---------- */
+  .case-flip { perspective: 1800px; }
+  .flip-inner {
+    position: relative;
+    display: grid;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+  .case-flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-front, .flip-back {
+    grid-area: 1 / 1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+  }
+  .case-flip:not(.is-flipped) .flip-back { pointer-events: none; }
+  .case-flip.is-flipped .flip-front { pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .flip-inner { transition: none; }
+  }
+
+  .flip-trigger {
+    display: inline-block;
+    margin-top: 14px;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-strong);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  .flip-trigger:hover { text-decoration: underline; }
+
+  .flip-back-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .flip-back-head .case-org { font-weight: 800; font-size: 1.05rem; }
+  .flip-trigger-back { white-space: nowrap; margin-top: 0; }
+
+  .flip-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .flip-gallery img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--surface-alt);
+  }
+  .flip-gallery-note {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 18px;
+    color: var(--ink-faint);
+    font-size: 0.9rem;
+    border: 1px dashed var(--line);
+    border-radius: 8px;
+  }
+  .flip-back .examples-link { margin-top: 16px; align-self: flex-start; }
+
+  @media (max-width: 480px) {
+    .flip-gallery img { height: 100px; }
+  }
+
   /* ---------- Skills ---------- */
   .skills-grid {
     display: grid;
@@ -736,7 +818,9 @@
       <span class="count">Updated on an ongoing basis</span>
     </div>
 
-    <div class="case">
+    <div class="case case-flip">
+      <div class="flip-inner">
+      <div class="flip-front">
       <div class="case-head">
         <div class="case-org-wrap">
           <span class="case-org">Bonnie Joseph Academy</span>
@@ -760,13 +844,32 @@
             <div class="metric-num">$1.04<small>Cost / Result</small></div>
           </div>
         </div>
-        <div class="pending">Landing pages and campaign creative go here as I add them.</div>
+        <div class="pending">Landing page examples go here as I add them.</div>
               <div class="tags"><span class="tag">Meta Ads</span><span class="tag">Google Ads</span><span class="tag">Social Media</span><span class="tag">Newsletter</span><span class="tag">Analytics (GA4)</span><span class="tag">Email Marketing</span><span class="tag">Event Planning</span><span class="tag">Landing Pages</span></div>
-      <a class="examples-link" href="examples.html#job-bonnie-joseph">View examples of this work &rarr;</a>
+      <button type="button" class="examples-link flip-trigger" aria-expanded="false">View examples of this work &rarr;</button>
+      </div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-back-head">
+          <span class="case-org">Bonnie Joseph Academy</span>
+          <button type="button" class="flip-trigger flip-trigger-back" aria-expanded="true">&larr; Back</button>
+        </div>
+        <div class="flip-gallery">
+          <img src="BJA Facebook Examples/1bja.jpg" alt="BJA branded post: Facials = Happy Skin" loading="lazy">
+          <img src="BJA Facebook Examples/4bja.jpg" alt="Model poolside holding a BJA branded notebook" loading="lazy">
+          <img src="BJA More Ad Creatives/9-certified-in-months-flame.jpg" alt="Bold graphic BJA ad: certified in months, don't wait for success" loading="lazy">
+          <img src="BJA Old Ads/1-get-certified.jpg" alt="Get certified in the beauty industry — neon-lit editorial ad" loading="lazy">
+          <img src="Website Screenshots/bonnie-joseph-academy-site.jpg" alt="Bonnie Joseph Academy official website" loading="lazy">
+          <img src="TikTok Thumbnails/bja-1-full.jpg" alt="TikTok video: cosmetology student hair styling demo" style="object-position: 38% 42%;" loading="lazy">
+        </div>
+        <a class="examples-link" href="examples.html#cat-ad-creatives">See full gallery &rarr;</a>
+      </div>
       </div>
     </div>
 
-    <div class="case">
+    <div class="case case-flip">
+      <div class="flip-inner">
+      <div class="flip-front">
       <div class="case-head">
         <div class="case-org-wrap">
           <span class="case-org">Venue Communications Inc.</span>
@@ -781,13 +884,29 @@
           <li>Configure and test the Meta Marketing API integration &mdash; campaign, ad set, and ad object creation.</li>
           <li>Shape the roadmap using direct customer feedback and my own marketing background.</li>
         </ul>
-        <div class="pending">Product screenshots and a walkthrough of the Meta API integration are coming.</div>
               <div class="tags"><span class="tag">Meta</span><span class="tag">PHP</span><span class="tag">API Integration</span><span class="tag">Product Strategy</span><span class="tag">QA &amp; Debugging</span></div>
-      <a class="examples-link" href="examples.html#job-venue-communications">View examples of this work &rarr;</a>
+      <button type="button" class="examples-link flip-trigger" aria-expanded="false">View examples of this work &rarr;</button>
+      </div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-back-head">
+          <span class="case-org">Venue Communications Inc.</span>
+          <button type="button" class="flip-trigger flip-trigger-back" aria-expanded="true">&larr; Back</button>
+        </div>
+        <div class="flip-gallery">
+          <img src="VMM Screenshots/01-dashboard-home.jpg" alt="Venue Media Manager dashboard home screen" loading="lazy">
+          <img src="VMM Screenshots/02-advertising-connect-flow.jpg" alt="Advertising campaign setup flow" loading="lazy">
+          <img src="VMM Screenshots/03-social-media-connect-flow.jpg" alt="Social media scheduling flow" loading="lazy">
+          <img src="VMM Screenshots/04-settings-connected-accounts.jpg" alt="Settings page showing connected Meta accounts" loading="lazy">
+        </div>
+        <a class="examples-link" href="examples.html#cat-apps">See full gallery &rarr;</a>
+      </div>
       </div>
     </div>
 
-    <div class="case">
+    <div class="case case-flip">
+      <div class="flip-inner">
+      <div class="flip-front">
       <div class="case-head">
         <div class="case-org-wrap">
           <span class="case-org">NexaOne LLC</span>
@@ -803,14 +922,30 @@
           <li>Build AI-assisted chatbots and document readers trained on client-specific information.</li>
           <li>Set up automated workflows that capture UTM data for lead-source tracking.</li>
         </ul>
-        <div class="pending">Live client site links and before/after examples going here next.</div>
               <div class="tags"><span class="tag">Web Design</span><span class="tag">Social Media</span><span class="tag">AI Chatbots</span><span class="tag">UTM &amp; Attribution</span><span class="tag">Client Strategy</span></div>
-      <a class="examples-link" href="examples.html#job-nexaone">View examples of this work &rarr;</a>
+      <button type="button" class="examples-link flip-trigger" aria-expanded="false">View examples of this work &rarr;</button>
       <a class="examples-link" href="/" style="display:block;">Looking for marketing help for your business? See NexaOne &rarr;</a>
+      </div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-back-head">
+          <span class="case-org">NexaOne LLC</span>
+          <button type="button" class="flip-trigger flip-trigger-back" aria-expanded="true">&larr; Back</button>
+        </div>
+        <div class="flip-gallery">
+          <img src="NexaOne Client Work/1-cullum-travel-deals.jpg" alt="Cullum Travel Deals Friendsgiving trip giveaway ad" loading="lazy">
+          <img src="NexaOne Client Work/2-riachxation-yoga-flyer.jpg" alt="Riach-xation yoga event flyer for Xander Riach" loading="lazy">
+          <img src="NexaOne Client Work/3-riachxation-site-screenshot.jpg" alt="Yoga with Xandra website I built for Riach-xation" loading="lazy">
+          <img src="NexaOne Client Work/4-gradys-gastro-pub-flyer.jpg" alt="Grady's Gastro Pub print flyer" loading="lazy">
+        </div>
+        <a class="examples-link" href="examples.html#job-nexaone">See full gallery &rarr;</a>
+      </div>
       </div>
     </div>
 
-    <div class="case">
+    <div class="case case-flip">
+      <div class="flip-inner">
+      <div class="flip-front">
       <div class="case-head">
         <div class="case-org-wrap">
           <span class="case-org">Keratin Barber &amp; Cosmetology College</span>
@@ -825,11 +960,28 @@
           <li>Compiled and organized accreditation exhibits and institutional records; converted student contracts into fillable forms with e-signature collection.</li>
         </ul>
               <div class="tags"><span class="tag">Website Build</span><span class="tag">Compliance Docs</span><span class="tag">Process Design</span></div>
-      <a class="examples-link" href="examples.html#job-keratin">View examples of this work &rarr;</a>
+      <button type="button" class="examples-link flip-trigger" aria-expanded="false">View examples of this work &rarr;</button>
+      </div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-back-head">
+          <span class="case-org">Keratin Barber &amp; Cosmetology College</span>
+          <button type="button" class="flip-trigger flip-trigger-back" aria-expanded="true">&larr; Back</button>
+        </div>
+        <div class="flip-gallery">
+          <img src="Keratin Ads/1-its-possible-teaser.jpg" alt="'It's possible' teaser post for Keratin Barber College" loading="lazy">
+          <img src="Keratin Ads/2-sale-reveal.jpg" alt="30% off tuition sale reveal ad for Keratin Barber College" loading="lazy">
+          <img src="Keratin Ads/3-site-screenshot.jpg" alt="Keratin Barber &amp; Cosmetology College website" loading="lazy">
+          <img src="Enrollment Portal/3-kbcc-campus-page.jpg" alt="Keratin Barber College branded enrollment page with apply, programs, info, and website links" loading="lazy">
+        </div>
+        <a class="examples-link" href="examples.html#cat-ad-creatives">See full gallery &rarr;</a>
+      </div>
       </div>
     </div>
 
-    <div class="case">
+    <div class="case case-flip">
+      <div class="flip-inner">
+      <div class="flip-front">
       <div class="case-head">
         <div class="case-org-wrap">
           <span class="case-org">Troon Golf</span>
@@ -844,7 +996,16 @@
           <li>Created promotional signage for seasonal offerings and introduced ideas that improved promotions and customer experience.</li>
         </ul>
               <div class="tags"><span class="tag">Team Training</span><span class="tag">Operations</span><span class="tag">Promotions</span></div>
-      <a class="examples-link" href="examples.html#job-troon-golf">View examples of this work &rarr;</a>
+      <button type="button" class="examples-link flip-trigger" aria-expanded="false">View examples of this work &rarr;</button>
+      </div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-back-head">
+          <span class="case-org">Troon Golf</span>
+          <button type="button" class="flip-trigger flip-trigger-back" aria-expanded="true">&larr; Back</button>
+        </div>
+        <div class="flip-gallery-note">Promotional signage examples going here next.</div>
+      </div>
       </div>
     </div>
   </section>
@@ -1341,5 +1502,18 @@
     }, { threshold: 0.4 });
     document.querySelectorAll('.metric-box').forEach(function (el) { mio.observe(el); });
   }
+
+  // Case card flip: "View examples" flips the card to show a curated
+  // gallery on the back; "Back" flips it to the front again.
+  document.querySelectorAll('.flip-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.case-flip');
+      if (!card) return;
+      var flipped = card.classList.toggle('is-flipped');
+      card.querySelectorAll('.flip-trigger').forEach(function (b) {
+        b.setAttribute('aria-expanded', String(flipped));
+      });
+    });
+  });
 })();
 </script>
