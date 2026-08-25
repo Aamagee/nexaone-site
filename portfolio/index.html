@@ -386,29 +386,33 @@
   }
   .examples-link:hover { text-decoration: underline; }
 
-  /* ---------- Case card flip (View examples -> gallery on the back) ---------- */
-  .case-flip { perspective: 1800px; }
+  /* ---------- Case card flip (View examples -> gallery on the back) ----------
+     A crossfade+scale swap rather than a true CSS 3D flip: real 3D transforms
+     combined with backface-visibility triggered a Chrome compositor bug where
+     a card could render fully blank after scrolling out of and back into
+     view. This reads the same to a user (click -> card changes to show the
+     gallery) without that risk. */
   .flip-inner {
     position: relative;
     display: grid;
-    transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
   }
-  .case-flip.is-flipped .flip-inner { transform: rotateY(180deg); }
   .flip-front, .flip-back {
     grid-area: 1 / 1;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
+  .flip-front { opacity: 1; transform: scale(1); }
   .flip-back {
-    transform: rotateY(180deg);
+    opacity: 0;
+    transform: scale(0.98);
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
   .case-flip:not(.is-flipped) .flip-back { pointer-events: none; }
-  .case-flip.is-flipped .flip-front { pointer-events: none; }
+  .case-flip.is-flipped .flip-front { opacity: 0; transform: scale(0.98); pointer-events: none; }
+  .case-flip.is-flipped .flip-back { opacity: 1; transform: scale(1); }
   @media (prefers-reduced-motion: reduce) {
-    .flip-inner { transition: none; }
+    .flip-front, .flip-back { transition: none; }
   }
 
   .flip-trigger {
@@ -439,14 +443,16 @@
 
   .flip-gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
   }
   .flip-gallery img {
     width: 100%;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 8px;
+    height: 82px;
+    object-fit: contain;
+    object-position: center;
+    padding: 4px;
+    border-radius: 6px;
     border: 1px solid var(--line);
     background: var(--surface-alt);
   }
@@ -465,7 +471,8 @@
   .flip-back .examples-link { margin-top: 16px; align-self: flex-start; }
 
   @media (max-width: 480px) {
-    .flip-gallery img { height: 100px; }
+    .flip-gallery { grid-template-columns: repeat(2, 1fr); }
+    .flip-gallery img { height: 76px; }
   }
 
   /* ---------- Skills ---------- */
@@ -819,6 +826,7 @@
     </div>
 
     <div class="case case-flip">
+      <div class="flip-viewport">
       <div class="flip-inner">
       <div class="flip-front">
       <div class="case-head">
@@ -860,14 +868,16 @@
           <img src="BJA More Ad Creatives/9-certified-in-months-flame.jpg" alt="Bold graphic BJA ad: certified in months, don't wait for success" loading="lazy">
           <img src="BJA Old Ads/1-get-certified.jpg" alt="Get certified in the beauty industry — neon-lit editorial ad" loading="lazy">
           <img src="Website Screenshots/bonnie-joseph-academy-site.jpg" alt="Bonnie Joseph Academy official website" loading="lazy">
-          <img src="TikTok Thumbnails/bja-1-full.jpg" alt="TikTok video: cosmetology student hair styling demo" style="object-position: 38% 42%;" loading="lazy">
+          <img src="TikTok Thumbnails/bja-1-full.jpg" alt="TikTok video: cosmetology student hair styling demo" loading="lazy">
         </div>
         <a class="examples-link" href="examples.html#cat-ad-creatives">See full gallery &rarr;</a>
+      </div>
       </div>
       </div>
     </div>
 
     <div class="case case-flip">
+      <div class="flip-viewport">
       <div class="flip-inner">
       <div class="flip-front">
       <div class="case-head">
@@ -902,9 +912,11 @@
         <a class="examples-link" href="examples.html#cat-apps">See full gallery &rarr;</a>
       </div>
       </div>
+      </div>
     </div>
 
     <div class="case case-flip">
+      <div class="flip-viewport">
       <div class="flip-inner">
       <div class="flip-front">
       <div class="case-head">
@@ -941,9 +953,11 @@
         <a class="examples-link" href="examples.html#job-nexaone">See full gallery &rarr;</a>
       </div>
       </div>
+      </div>
     </div>
 
     <div class="case case-flip">
+      <div class="flip-viewport">
       <div class="flip-inner">
       <div class="flip-front">
       <div class="case-head">
@@ -977,9 +991,11 @@
         <a class="examples-link" href="examples.html#cat-ad-creatives">See full gallery &rarr;</a>
       </div>
       </div>
+      </div>
     </div>
 
     <div class="case case-flip">
+      <div class="flip-viewport">
       <div class="flip-inner">
       <div class="flip-front">
       <div class="case-head">
@@ -1005,6 +1021,7 @@
           <button type="button" class="flip-trigger flip-trigger-back" aria-expanded="true">&larr; Back</button>
         </div>
         <div class="flip-gallery-note">Promotional signage examples going here next.</div>
+      </div>
       </div>
       </div>
     </div>
@@ -1275,7 +1292,10 @@
 
   // Job boxes start visually stacked like a deck of cards, then separate
   // out into their normal positions as the section is scrolled through.
-  var caseEls = document.querySelectorAll('.case');
+  // (skips .case-flip cards: their own 3D flip transform conflicts with
+  // this effect's continuously-updated transform during scroll, which can
+  // cause Chrome to render the card blank mid-scroll)
+  var caseEls = document.querySelectorAll('.case:not(.case-flip)');
   if (caseEls.length && !reduceMotion) {
     (function () {
       var cards = Array.prototype.slice.call(caseEls);
