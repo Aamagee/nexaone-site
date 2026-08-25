@@ -448,13 +448,14 @@
   }
   .flip-gallery img {
     width: 100%;
-    height: 82px;
-    object-fit: contain;
-    object-position: center;
-    padding: 4px;
-    border-radius: 6px;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
     border: 1px solid var(--line);
-    background: var(--surface-alt);
+    box-shadow: 0 10px 24px rgba(15, 26, 46, 0.14);
+    background: var(--surface);
   }
   .flip-gallery-note {
     flex: 1;
@@ -472,7 +473,7 @@
 
   @media (max-width: 480px) {
     .flip-gallery { grid-template-columns: repeat(2, 1fr); }
-    .flip-gallery img { height: 76px; }
+    .flip-gallery img { height: 92px; }
   }
 
   /* ---------- Skills ---------- */
@@ -868,7 +869,7 @@
           <img src="BJA More Ad Creatives/9-certified-in-months-flame.jpg" alt="Bold graphic BJA ad: certified in months, don't wait for success" loading="lazy">
           <img src="BJA Old Ads/1-get-certified.jpg" alt="Get certified in the beauty industry — neon-lit editorial ad" loading="lazy">
           <img src="Website Screenshots/bonnie-joseph-academy-site.jpg" alt="Bonnie Joseph Academy official website" loading="lazy">
-          <img src="TikTok Thumbnails/bja-1-full.jpg" alt="TikTok video: cosmetology student hair styling demo" loading="lazy">
+          <img src="TikTok Thumbnails/bja-1-full.jpg" alt="TikTok video: cosmetology student hair styling demo" style="object-position: 38% 42%;" loading="lazy">
         </div>
         <a class="examples-link" href="examples.html#cat-ad-creatives">See full gallery &rarr;</a>
       </div>
