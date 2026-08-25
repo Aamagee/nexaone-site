@@ -441,22 +441,64 @@
   .flip-back-head .case-org { font-weight: 800; font-size: 1.05rem; }
   .flip-trigger-back { white-space: nowrap; margin-top: 0; }
 
-  .flip-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+  /* Card fan: same spread-on-hover/focus component as examples.html's
+     .card-fan, sized down to fit the back of a work-experience card. A
+     set of overlapping images that fan apart on hover or focus. */
+  .flip-fan {
+    position: relative;
+    height: 200px;
+    margin: 6px auto 10px;
+    max-width: 420px;
+    display: flex;
+    justify-content: center;
   }
-  .flip-gallery img {
-    width: 100%;
-    height: 110px;
-    object-fit: cover;
-    display: block;
+  .flip-fan .fan-card {
+    position: absolute;
+    top: 0;
+    width: 130px;
+    height: 190px;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--line);
     box-shadow: 0 10px 24px rgba(15, 26, 46, 0.14);
     background: var(--surface);
+    transition: transform 0.35s cubic-bezier(.2, .8, .2, 1), box-shadow 0.35s ease, z-index 0s;
+    cursor: pointer;
+    display: block;
   }
+  .flip-fan .fan-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .flip-fan:hover .fan-card, .flip-fan:focus-within .fan-card { box-shadow: 0 16px 30px rgba(15, 26, 46, 0.22); }
+
+  /* two-card set */
+  .flip-fan .fan-card:nth-child(1) { transform: translateX(-20px) rotate(-8deg); z-index: 1; }
+  .flip-fan .fan-card:nth-child(2) { transform: translateX(0) rotate(0deg); z-index: 2; }
+  .flip-fan:hover .fan-card:nth-child(1), .flip-fan:focus-within .fan-card:nth-child(1) { transform: translateX(-95px) rotate(-4deg) translateY(-6px); }
+  .flip-fan:hover .fan-card:nth-child(2), .flip-fan:focus-within .fan-card:nth-child(2) { transform: translateX(0) rotate(0deg) translateY(-10px); z-index: 3; }
+
+  /* four-card portrait set */
+  .flip-fan.quad .fan-card:nth-child(1) { transform: translateX(-60px) rotate(-12deg); z-index: 1; }
+  .flip-fan.quad .fan-card:nth-child(2) { transform: translateX(-20px) rotate(-4deg); z-index: 2; }
+  .flip-fan.quad .fan-card:nth-child(3) { transform: translateX(20px) rotate(4deg); z-index: 2; }
+  .flip-fan.quad .fan-card:nth-child(4) { transform: translateX(60px) rotate(12deg); z-index: 1; }
+  .flip-fan.quad:hover .fan-card:nth-child(1), .flip-fan.quad:focus-within .fan-card:nth-child(1) { transform: translateX(-175px) rotate(-6deg) translateY(-6px); z-index: 2; }
+  .flip-fan.quad:hover .fan-card:nth-child(2), .flip-fan.quad:focus-within .fan-card:nth-child(2) { transform: translateX(-58px) rotate(-2deg) translateY(-10px); z-index: 3; }
+  .flip-fan.quad:hover .fan-card:nth-child(3), .flip-fan.quad:focus-within .fan-card:nth-child(3) { transform: translateX(58px) rotate(2deg) translateY(-10px); z-index: 3; }
+  .flip-fan.quad:hover .fan-card:nth-child(4), .flip-fan.quad:focus-within .fan-card:nth-child(4) { transform: translateX(175px) rotate(6deg) translateY(-6px); z-index: 2; }
+
+  /* four-card landscape set */
+  .flip-fan.wide { height: 130px; }
+  .flip-fan.wide .fan-card { width: 150px; height: 100px; }
+  .flip-fan.wide .fan-card:nth-child(1) { transform: translateX(-48px) rotate(-9deg); z-index: 1; }
+  .flip-fan.wide .fan-card:nth-child(2) { transform: translateX(-16px) rotate(-3deg); z-index: 2; }
+  .flip-fan.wide .fan-card:nth-child(3) { transform: translateX(16px) rotate(3deg); z-index: 2; }
+  .flip-fan.wide .fan-card:nth-child(4) { transform: translateX(48px) rotate(9deg); z-index: 1; }
+  .flip-fan.wide:hover .fan-card:nth-child(1), .flip-fan.wide:focus-within .fan-card:nth-child(1) { transform: translateX(-130px) rotate(-6deg) translateY(-6px); z-index: 2; }
+  .flip-fan.wide:hover .fan-card:nth-child(2), .flip-fan.wide:focus-within .fan-card:nth-child(2) { transform: translateX(-44px) rotate(-2deg) translateY(-10px); z-index: 3; }
+  .flip-fan.wide:hover .fan-card:nth-child(3), .flip-fan.wide:focus-within .fan-card:nth-child(3) { transform: translateX(44px) rotate(2deg) translateY(-10px); z-index: 3; }
+  .flip-fan.wide:hover .fan-card:nth-child(4), .flip-fan.wide:focus-within .fan-card:nth-child(4) { transform: translateX(130px) rotate(6deg) translateY(-6px); z-index: 2; }
+
+  .flip-fan-hint { text-align: center; font-size: 0.72rem; font-weight: 600; color: var(--ink-faint); margin: 0 0 10px; }
+
   .flip-gallery-note {
     flex: 1;
     display: flex;
@@ -863,13 +905,12 @@
           <span class="case-org">Bonnie Joseph Academy</span>
           <button type="button" class="flip-trigger flip-trigger-back" aria-expanded="true">&larr; Back</button>
         </div>
-        <div class="flip-gallery">
-          <img src="BJA Facebook Examples/1bja.jpg" alt="BJA branded post: Facials = Happy Skin" loading="lazy">
-          <img src="BJA Facebook Examples/4bja.jpg" alt="Model poolside holding a BJA branded notebook" loading="lazy">
-          <img src="BJA More Ad Creatives/9-certified-in-months-flame.jpg" alt="Bold graphic BJA ad: certified in months, don't wait for success" loading="lazy">
-          <img src="BJA Old Ads/1-get-certified.jpg" alt="Get certified in the beauty industry — neon-lit editorial ad" loading="lazy">
-          <img src="Website Screenshots/bonnie-joseph-academy-site.jpg" alt="Bonnie Joseph Academy official website" loading="lazy">
-          <img src="TikTok Thumbnails/bja-1-full.jpg" alt="TikTok video: cosmetology student hair styling demo" style="object-position: 38% 42%;" loading="lazy">
+        <p class="flip-fan-hint">Hover to fan out the set</p>
+        <div class="flip-fan quad" tabindex="0" aria-label="Bonnie Joseph Academy ad creative set, hover or focus to spread out">
+          <div class="fan-card"><img src="BJA More Ad Creatives/7-special-offer-discount.jpg" alt="Y2K-style BJA ad: discounted tuition special offer for high school students" loading="lazy"></div>
+          <div class="fan-card"><img src="BJA More Ad Creatives/8-beauty-certified-editorial.jpg" alt="Editorial-style BJA ad: beauty certified in months" loading="lazy"></div>
+          <div class="fan-card"><img src="BJA More Ad Creatives/9-certified-in-months-flame.jpg" alt="Bold graphic BJA ad: certified in months, don't wait for success" loading="lazy"></div>
+          <div class="fan-card"><img src="BJA More Ad Creatives/10-no-catch-beauty-for-less.jpg" alt="BJA ad: no catch, beauty for less" loading="lazy"></div>
         </div>
         <a class="examples-link" href="examples.html#cat-ad-creatives">See full gallery &rarr;</a>
       </div>
@@ -904,11 +945,12 @@
           <span class="case-org">Venue Communications Inc.</span>
           <button type="button" class="flip-trigger flip-trigger-back" aria-expanded="true">&larr; Back</button>
         </div>
-        <div class="flip-gallery">
-          <img src="VMM Screenshots/01-dashboard-home.jpg" alt="Venue Media Manager dashboard home screen" loading="lazy">
-          <img src="VMM Screenshots/02-advertising-connect-flow.jpg" alt="Advertising campaign setup flow" loading="lazy">
-          <img src="VMM Screenshots/03-social-media-connect-flow.jpg" alt="Social media scheduling flow" loading="lazy">
-          <img src="VMM Screenshots/04-settings-connected-accounts.jpg" alt="Settings page showing connected Meta accounts" loading="lazy">
+        <p class="flip-fan-hint">Hover to fan out the set</p>
+        <div class="flip-fan wide" tabindex="0" aria-label="Venue Media Manager screenshot set, hover or focus to spread out">
+          <div class="fan-card"><img src="VMM Screenshots/01-dashboard-home.jpg" alt="Venue Media Manager dashboard home screen" loading="lazy"></div>
+          <div class="fan-card"><img src="VMM Screenshots/02-advertising-connect-flow.jpg" alt="Advertising campaign setup flow" loading="lazy"></div>
+          <div class="fan-card"><img src="VMM Screenshots/03-social-media-connect-flow.jpg" alt="Social media scheduling flow" loading="lazy"></div>
+          <div class="fan-card"><img src="VMM Screenshots/04-settings-connected-accounts.jpg" alt="Settings page showing connected Meta accounts" loading="lazy"></div>
         </div>
         <a class="examples-link" href="examples.html#cat-apps">See full gallery &rarr;</a>
       </div>
@@ -945,11 +987,10 @@
           <span class="case-org">NexaOne LLC</span>
           <button type="button" class="flip-trigger flip-trigger-back" aria-expanded="true">&larr; Back</button>
         </div>
-        <div class="flip-gallery">
-          <img src="NexaOne Client Work/1-cullum-travel-deals.jpg" alt="Cullum Travel Deals Friendsgiving trip giveaway ad" loading="lazy">
-          <img src="NexaOne Client Work/2-riachxation-yoga-flyer.jpg" alt="Riach-xation yoga event flyer for Xander Riach" loading="lazy">
-          <img src="NexaOne Client Work/3-riachxation-site-screenshot.jpg" alt="Yoga with Xandra website I built for Riach-xation" loading="lazy">
-          <img src="NexaOne Client Work/4-gradys-gastro-pub-flyer.jpg" alt="Grady's Gastro Pub print flyer" loading="lazy">
+        <p class="flip-fan-hint">Hover to fan out the set</p>
+        <div class="flip-fan" tabindex="0" aria-label="NexaOne client ad creative, hover or focus to spread out">
+          <div class="fan-card"><img src="NexaOne Client Work/1-cullum-travel-deals.jpg" alt="Cullum Travel Deals Friendsgiving trip giveaway ad" loading="lazy"></div>
+          <div class="fan-card"><img src="NexaOne Client Work/2-riachxation-yoga-flyer.jpg" alt="Riach-xation yoga event flyer for Xander Riach" loading="lazy"></div>
         </div>
         <a class="examples-link" href="examples.html#job-nexaone">See full gallery &rarr;</a>
       </div>
@@ -983,11 +1024,10 @@
           <span class="case-org">Keratin Barber &amp; Cosmetology College</span>
           <button type="button" class="flip-trigger flip-trigger-back" aria-expanded="true">&larr; Back</button>
         </div>
-        <div class="flip-gallery">
-          <img src="Keratin Ads/1-its-possible-teaser.jpg" alt="'It's possible' teaser post for Keratin Barber College" loading="lazy">
-          <img src="Keratin Ads/2-sale-reveal.jpg" alt="30% off tuition sale reveal ad for Keratin Barber College" loading="lazy">
-          <img src="Keratin Ads/3-site-screenshot.jpg" alt="Keratin Barber &amp; Cosmetology College website" loading="lazy">
-          <img src="Enrollment Portal/3-kbcc-campus-page.jpg" alt="Keratin Barber College branded enrollment page with apply, programs, info, and website links" loading="lazy">
+        <p class="flip-fan-hint">Hover to fan out the set</p>
+        <div class="flip-fan" tabindex="0" aria-label="Keratin Barber College sale campaign set, hover or focus to spread out">
+          <div class="fan-card"><img src="Keratin Ads/2-sale-reveal.jpg" alt="30% off tuition sale reveal ad for Keratin Barber College" loading="lazy"></div>
+          <div class="fan-card"><img src="Keratin Ads/1-its-possible-teaser.jpg" alt="'It's possible' teaser post for Keratin Barber College" loading="lazy"></div>
         </div>
         <a class="examples-link" href="examples.html#cat-ad-creatives">See full gallery &rarr;</a>
       </div>
