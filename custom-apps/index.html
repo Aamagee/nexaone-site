@@ -53,5 +53,19 @@
   </div>
 </footer>
 
+<script>
+  // mailto: does nothing when no email app is set up, so also copy the address and say so on the button
+  document.querySelectorAll('a[href^="mailto:"].btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var email = btn.getAttribute('href').replace('mailto:', '');
+      var label = btn.textContent;
+      function show() {
+        btn.textContent = 'Email copied: ' + email;
+        setTimeout(function () { btn.textContent = label; }, 4000);
+      }
+      if (navigator.clipboard) navigator.clipboard.writeText(email).then(show, show); else show();
+    });
+  });
+</script>
 </body>
 </html>
