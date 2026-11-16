@@ -91,6 +91,34 @@
   .sb-table td span { display: block; color: var(--ink-soft); font-size: .85rem; margin-top: 2px; }
   .sb-table tfoot td { padding-top: 14px; font-weight: 800; font-size: 1.1rem; border: 0; }
   .addons-head { margin-top: 0; }
+  .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: start; margin-top: 10px; }
+  .opts .static-box { margin-bottom: 0; }
+  .static-box.full { border-color: var(--accent-2); }
+  .static-box.full .sb-badge { background: linear-gradient(135deg, #0891b2, #06b6d4); }
+  .opt-kicker { text-transform: uppercase; letter-spacing: .14em; font-size: .72rem; font-weight: 800; color: var(--accent); margin: 0 0 6px !important; }
+  .sb-table tr.incl td { background: var(--paper); }
+  .sb-table tr.incl td:first-child { padding-left: 12px; border-radius: 10px 0 0 10px; }
+  .sb-table tr.incl td:last-child { padding-right: 12px; border-radius: 0 10px 10px 0; }
+  .sb-table tfoot tr.sum td { font-size: .92rem; font-weight: 600; color: var(--ink-faint); padding-bottom: 0; }
+  .sb-table tfoot tr.sum td:last-child { text-decoration: line-through; }
+  .sb-table tfoot em { font-style: normal; font-size: .75rem; font-weight: 800; color: var(--green); background: #dcfce7; padding: 2px 8px; border-radius: 999px; margin-left: 6px; }
+  @media (max-width: 960px) { .opts { grid-template-columns: 1fr; gap: 34px; } }
+  .addons-block { margin-top: 70px; }
+  .addon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .addon-card { position: relative; display: flex; flex-direction: column; background: var(--surface); border: 1.5px solid var(--line-soft); border-radius: 18px; padding: 24px; transition: transform .2s, box-shadow .2s, border-color .2s; }
+  .addon-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--accent); }
+  .addon-card h3 { font-size: 1.12rem; margin: 0 0 .35em; }
+  .addon-card p { color: var(--ink-soft); font-size: .92rem; line-height: 1.5; margin: 0 0 18px; }
+  .ac-icon { width: 46px; height: 46px; border-radius: 13px; background: var(--grad); display: grid; place-items: center; margin-bottom: 14px; }
+  .ac-icon svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .addon-card.ai { background: linear-gradient(160deg, #fff 55%, #eef2ff); }
+  .addon-card.ai .ac-icon { background: linear-gradient(135deg, #7c3aed, #2f5ce0 55%, #06b6d4); }
+  .ac-tag { position: absolute; top: 18px; right: 18px; font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; background: linear-gradient(135deg, #ede9fe, #cffafe); color: #5b21b6; }
+  .ac-price { margin-top: auto; display: flex; align-items: baseline; gap: 8px; padding-top: 14px; border-top: 1px solid var(--line-soft); }
+  .ac-price b { font-size: 1.6rem; font-weight: 800; letter-spacing: -.02em; }
+  .ac-price span { color: var(--ink-faint); font-weight: 700; font-size: .85rem; }
+  @media (max-width: 960px) { .addon-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 620px) { .addon-grid { grid-template-columns: 1fr; } }
   .cart-list li.fixed { background: rgba(6, 182, 212, .14); }
   .cart-list li.fixed em { font-style: normal; font-size: .75rem; font-weight: 800; color: var(--accent-2); text-transform: uppercase; letter-spacing: .08em; }
   .cat { margin-bottom: 30px; }
@@ -232,9 +260,8 @@
     <a class="brand" href="/">NexaOne</a>
     <nav aria-label="Proposal sections">
       <a href="#preview">Preview</a>
-      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
     </nav>
-    <a class="cart-pill" href="#cart">Your picks <b data-count>0</b></a>
   </div>
 </div>
 
@@ -261,341 +288,126 @@
   </div>
 </section>
 
-<!-- ===== Services + cart (no totals) ===== -->
-<section class="shop" id="services">
+<!-- ===== Pricing: two options ===== -->
+<section class="shop" id="pricing">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Your website</p>
-      <h2>The Static Site</h2>
-      <p class="sub">The site in the preview above, ready to launch today. Every piece of work is listed with its own price.</p>
+      <p class="eyebrow">Pricing</p>
+      <h2>Two ways to launch</h2>
+      <p class="sub">Every piece of work is listed with its own price, so you know exactly what you're paying for.</p>
     </div>
 
-    <div class="shop-grid">
-      <div>
-        <article class="static-box" data-static-box></article>
+    <div class="opts">
+      <!-- Static Site -->
+      <article class="static-box">
+        <span class="sb-badge">Ready to launch today</span>
+        <div class="sb-head">
+          <div><p class="opt-kicker">Option 1</p><h3>Static Site</h3><p>The site in the preview above. You text me changes and I make them.</p></div>
+          <div class="sb-price"><b>$500</b><small>start-up</small></div>
+        </div>
+        <table class="sb-table">
+          <thead><tr><th>What I'm doing</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td><b>Custom design &amp; branding</b><span>Layout, fonts and colors built from your logo and printed menu</span></td><td>$125</td></tr>
+            <tr><td><b>Home page build</b><span>Opening section, fan favorites, specials, brunch, photos, parties and visit</span></td><td>$100</td></tr>
+            <tr><td><b>Full menu page</b><span>Every item and price, sorted by category, with menu search</span></td><td>$75</td></tr>
+            <tr><td><b>Live hours &amp; specials</b><span>"Open now" status, today's special, countdowns and the hours dial</span></td><td>$50</td></tr>
+            <tr><td><b>Photo editing &amp; gallery</b><span>Your photos sized and sharpened, plus a tap-to-zoom photo viewer</span></td><td>$40</td></tr>
+            <tr><td><b>Mobile-first design</b><span>Built for phones first, with a one-tap Menu, Directions and Message bar</span></td><td>$40</td></tr>
+            <tr><td><b>Google search setup</b><span>Name, address, hours and menu set up so Google can read them</span></td><td>$25</td></tr>
+            <tr><td><b>Domain, hosting &amp; HTTPS setup</b><span>Connect your domain, set up hosting and the secure padlock</span></td><td>$25</td></tr>
+            <tr><td><b>Testing &amp; launch</b><span>Checked on phones, tablets and computers, then launched</span></td><td>$20</td></tr>
+          </tbody>
+          <tfoot><tr><td>Static Site start-up</td><td>$500</td></tr></tfoot>
+        </table>
+      </article>
 
-        <div class="head addons-head">
-          <p class="eyebrow">Add-ons</p>
-          <h2>Add what you want</h2>
-          <p class="sub">Tap <b>Add</b> on anything you'd like on top of the Static Site. Your picks collect in the cart.</p>
+      <!-- Full Site -->
+      <article class="static-box full">
+        <span class="sb-badge">Most complete</span>
+        <div class="sb-head">
+          <div><p class="opt-kicker">Option 2</p><h3>Full Site</h3><p>Everything in the Static Site, plus tools to update it yourself, take orders and bookings, and grow your regulars.</p></div>
+          <div class="sb-price"><b>$1,000</b><small>start-up</small></div>
         </div>
-        <div data-catalog></div>
-      </div>
+        <table class="sb-table">
+          <thead><tr><th>What I'm doing</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr class="incl"><td><b>Everything in the Static Site</b><span>All 9 items in Option 1</span></td><td>$500</td></tr>
+            <tr><td><b>Owner dashboard</b><span>Change menu items, prices, specials and hours yourself, no code</span></td><td>$150</td></tr>
+            <tr><td><b>Online ordering</b><span>"Order Online" connected to your ordering system (Toast, Square or DoorDash)</span></td><td>$80</td></tr>
+            <tr><td><b>Party &amp; event booking form</b><span>Guests send date, headcount and details straight to your email</span></td><td>$65</td></tr>
+            <tr><td><b>Events calendar</b><span>Game days, watch parties, DJ nights and holiday events</span></td><td>$50</td></tr>
+            <tr><td><b>Extra pages</b><span>About the owner, private events and gift cards</span></td><td>$50</td></tr>
+            <tr><td><b>Google reviews section</b><span>Your best Google reviews shown on the site</span></td><td>$40</td></tr>
+            <tr><td><b>Email &amp; text sign-up</b><span>Collect guests' contacts for specials and promos</span></td><td>$40</td></tr>
+            <tr><td><b>Visitor analytics</b><span>See visits and taps on Directions, Menu or Order</span></td><td>$25</td></tr>
+          </tbody>
+          <tfoot><tr><td>Full Site start-up</td><td>$1,000</td></tr></tfoot>
+        </table>
+      </article>
+    </div>
 
-      <aside class="cart" id="cart" aria-live="polite">
-        <div class="cart-head">
-          <h3>Your picks <span class="cart-count" data-count>0</span></h3>
-          <button type="button" class="cart-clear" data-clear hidden>Clear all</button>
-        </div>
-        <p class="cart-empty" data-empty>Nothing picked yet. Tap <b>Add</b> on any service.</p>
-        <ul class="cart-list" data-cart-list></ul>
-        <div class="cart-actions">
-          <button type="button" class="btn primary" data-configure>Configure price →</button>
-          <a class="btn ghost" data-send href="#">Email my picks</a>
-        </div>
-        <p class="cart-note">No commitment until you sign.</p>
-      </aside>
+    <!-- ===== Add-ons ===== -->
+    <div class="head addons-block">
+      <p class="eyebrow">Add-ons</p>
+      <h2>Add what you need</h2>
+      <p class="sub">Add any of these to either option.</p>
+    </div>
+    <div class="addon-grid">
+      <article class="addon-card">
+        <div class="ac-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+        <h3>Extra pages</h3>
+        <p>Add any page you want, like an events page, an about-the-owner page or a private parties page.</p>
+        <div class="ac-price"><b>$100</b><span>per page</span></div>
+      </article>
+      <article class="addon-card">
+        <div class="ac-icon"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>Customer direction</h3>
+        <p>One-tap buttons that send guests straight to you: call, email and directions in Google Maps.</p>
+        <div class="ac-price"><b>$50</b><span>one-time</span></div>
+      </article>
+      <article class="addon-card">
+        <div class="ac-icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
+        <h3>Monthly updates</h3>
+        <p>Menu, price, special, hours and photo changes whenever you need them. Just text me.</p>
+        <div class="ac-price"><b>$50</b><span>per month</span></div>
+      </article>
+      <article class="addon-card">
+        <div class="ac-icon"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 22a10 10 0 1 1 10-10c0 2.8-2.2 4-4 4h-2a2 2 0 0 0-1.5 3.3A1.6 1.6 0 0 1 12 22Z"/></svg></div>
+        <h3>Ad creation</h3>
+        <p>Custom ads made in your brand for Instagram, Facebook, flyers and the TVs in the bar. 3 ads a month.</p>
+        <div class="ac-price"><b>$100</b><span>per month</span></div>
+      </article>
+      <article class="addon-card ai">
+        <span class="ac-tag">Newest AI</span>
+        <div class="ac-icon"><svg viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M7 7 5.5 5.5M18.5 18.5 17 17M7 17l-1.5 1.5M18.5 5.5 17 7"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>AI chatbot</h3>
+        <p>A chat assistant built on the newest AI that answers guests 24/7: hours, menu, specials and party questions.</p>
+        <div class="ac-price"><b>$200</b><span>setup + $30/mo</span></div>
+      </article>
+      <article class="addon-card">
+        <div class="ac-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div>
+        <h3>SEO optimization</h3>
+        <p>Show up when people search "bars in Midvale" or "brunch near me," with a simple monthly report.</p>
+        <div class="ac-price"><b>$150</b><span>per month</span></div>
+      </article>
     </div>
   </div>
 </section>
-
-<!-- ===== Configured price + agreement (shown after "Configure price") ===== -->
-<section class="quote-sec" id="quote" hidden>
-  <div class="wrap">
-    <div class="q-tools no-print">
-      <b>Configured price</b>
-      <label>Discount <span class="disc-in"><input type="number" min="0" max="100" step="1" inputmode="numeric" placeholder="0" data-discount><span>%</span></span></label>
-      <label><input type="checkbox" data-discount-monthly> Apply to monthly too</label>
-      <span class="spacer"></span>
-      <button type="button" data-edit>← Edit picks</button>
-    </div>
-
-    <article class="doc" data-doc>
-      <header class="d-head">
-        <div><div class="d-brand">NexaOne</div><div class="d-from">NexaOne LLC · Ava Magee<br>nexaone.org · aamagee113@gmail.com</div></div>
-        <div class="d-title">
-          <h2>Service Agreement</h2>
-          <div class="d-meta"><span>No.</span><b data-no></b></div>
-          <div class="d-meta"><span>Date</span><b data-date></b></div>
-        </div>
-      </header>
-      <section class="d-parties">
-        <div><small>Client</small><b>Gradys</b><span>736 W Blue Vista Ln #200<br>Midvale, UT 84047</span></div>
-        <div><small>Provider</small><b>NexaOne LLC</b><span>Ava Magee<br>nexaone.org</span></div>
-      </section>
-
-      <table class="d-table">
-        <thead><tr><th>Service</th><th>One-time</th><th>Monthly</th></tr></thead>
-        <tbody data-lines></tbody>
-        <tfoot data-totals></tfoot>
-      </table>
-      <div class="d-due"><b>Due before work begins (one-time total)</b><span data-due></span></div>
-
-      <section class="d-terms">
-        <small>Authorization &amp; agreement</small>
-        <p>By signing below, I confirm that I am authorized to sign on behalf of Gradys, that I have reviewed the services and charges listed above, and that I agree to pay them as follows: <b>the one-time total is due in full before work begins.</b> Monthly services are billed each month starting the month after launch and may be cancelled at any time with written notice (no refunds for partial months).</p>
-        <p>Any change to the services or charges must be agreed to in writing. The website and its content become the property of Gradys once the one-time total is paid in full. I agree that my electronic signature below has the same legal effect as a handwritten signature.</p>
-
-        <label class="agree no-print"><input type="checkbox" data-agree> I have reviewed and agree to the services and charges above.</label>
-
-        <div class="sign-grid">
-          <div>
-            <span class="sig-label">Client signature</span>
-            <div class="sig-box" data-sig-box>
-              <canvas data-sig></canvas>
-              <span class="sig-x">✕</span><span class="sig-line"></span>
-              <span class="sig-hint no-print">Sign here with your finger or mouse</span>
-            </div>
-            <div class="sig-meta no-print"><span>Signed electronically</span><button type="button" data-sig-clear>Clear signature</button></div>
-          </div>
-          <div class="field">
-            <span class="sig-label">Printed name &amp; title</span>
-            <input type="text" placeholder="e.g. Jordan Smith, Owner" autocomplete="name" data-name>
-            <span class="sig-label" style="margin-top:14px">Date</span>
-            <input type="text" readonly data-sign-date>
-          </div>
-        </div>
-        <div class="signed-stamp" data-stamp hidden>✓ Signed</div>
-
-        <div class="provider">
-          <div><span class="sig-label">Provider</span><span class="sig-script">Ava Magee</span><br>Ava Magee, NexaOne LLC</div>
-          <div style="text-align:right"><span class="sig-label">Questions</span>aamagee113@gmail.com</div>
-        </div>
-      </section>
-
-      <div class="q-actions no-print">
-        <button type="button" class="btn solid disabled" data-save>⤓ Save signed copy (PDF)</button>
-        <button type="button" class="btn outline disabled" data-email-signed>✉ Email signed copy</button>
-      </div>
-      <p class="q-note no-print" data-hint>Check the box, add your name, and sign to finish.</p>
-      <p class="d-foot">Thank you for choosing NexaOne · nexaone.org</p>
-    </article>
-  </div>
-</section>
-
-<a class="mobile-cart" href="#cart"><span><span data-count>0</span> picked</span><b>View picks →</b></a>
 
 <footer class="site">
   <div class="wrap"><p>Prepared for Gradys by <a href="/">NexaOne LLC</a> · founded by technical marketer Ava Magee</p></div>
 </footer>
 
 <script>
-(() => {
-  const $ = (s, el = document) => el.querySelector(s);
-  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-  const EMAIL = 'aamagee113@gmail.com';
-  const money = n => '$' + (Math.round(n * 100) / 100).toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
-  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-
-  /* ---------- Live previews: scale iframes into the device frames ---------- */
-  const fit = () => $$('[data-scale-box]').forEach(box => {
-    const f = $('iframe', box), s = box.clientWidth / +box.dataset.scaleBox;
-    f.style.transform = `scale(${s})`; f.style.height = (box.clientHeight / s) + 'px';
-  });
-  addEventListener('resize', fit); fit();
-
-  /* ---------- Every service, each with its own price ---------- */
-  // The Static Site is always included: shown as one box with its own total.
-  const STATIC = { name: 'Static Site', total: 1000, items: [
-      { id: 'design',  name: 'Custom design & branding',      desc: 'Layout, fonts and colors built from your logo and printed menu', once: 250 },
-      { id: 'home',    name: 'Home page build',               desc: 'Opening section, fan favorites, specials, brunch, photos, parties and visit', once: 200 },
-      { id: 'menu',    name: 'Full menu page',                desc: 'Every item and price, sorted by category, with menu search', once: 150 },
-      { id: 'live',    name: 'Live hours & specials',         desc: '"Open now" status, today\'s special, countdowns and the hours dial', once: 100 },
-      { id: 'photos',  name: 'Photo editing & gallery',       desc: 'Your photos sized and sharpened, plus a tap-to-zoom photo viewer', once: 75 },
-      { id: 'mobile',  name: 'Mobile-first design',           desc: 'Built for phones first, with a one-tap Menu, Directions and Message bar', once: 75 },
-      { id: 'google',  name: 'Google search setup',           desc: 'Name, address, hours and menu set up so Google can read them', once: 50 },
-      { id: 'domain',  name: 'Domain, hosting & HTTPS setup', desc: 'Connect your domain, set up hosting and the secure padlock', once: 50 },
-      { id: 'launch',  name: 'Testing & launch',              desc: 'Checked on phones, tablets and computers, then launched', once: 50 }
-  ]};
-  // Add-ons: picked individually, no running total
-  const CATALOG = [
-    { cat: 'Website upgrades', note: 'Run more of it yourself', items: [
-      { id: 'dash',    name: 'Owner dashboard',               desc: 'Change menu items, prices, specials and hours yourself, no code', once: 600 },
-      { id: 'order',   name: 'Online ordering',               desc: '"Order Online" connected to your ordering system (Toast, Square or DoorDash)', once: 300 },
-      { id: 'booking', name: 'Party & event booking form',    desc: 'Guests send date, headcount and details straight to your email', once: 250 },
-      { id: 'events',  name: 'Events calendar',               desc: 'Game days, watch parties, DJ nights and holiday events', once: 200 },
-      { id: 'pages',   name: 'Extra pages',                   desc: 'About the owner, private events and gift cards', once: 200 },
-      { id: 'reviews', name: 'Google reviews section',        desc: 'Your best Google reviews shown on the site', once: 150 },
-      { id: 'signup',  name: 'Email & text sign-up',          desc: 'Collect guests\' contacts for specials and promos', once: 150 },
-      { id: 'visits',  name: 'Visitor analytics',             desc: 'See visits and taps on Directions, Menu or Order', once: 100 }
-    ]},
-    { cat: 'Monthly services', note: 'Cancel anytime', items: [
-      { id: 'maint',   name: 'Monthly site maintenance',      desc: 'Hosting, security, menu, special and photo updates (just text me)', mo: 50 },
-      { id: 'ai',      name: 'AI host for your website',      desc: 'A chat assistant on the newest AI models that answers guests 24/7', once: 400, mo: 75, tag: 'Latest AI' },
-      { id: 'gfx3',    name: 'Basic monthly graphic design',  desc: '3 custom creatives a month for Instagram, Facebook or in-bar promos', mo: 100 },
-      { id: 'adgfx',   name: 'Monthly ad graphic design',     desc: '8 custom graphics a month for Instagram, Facebook, flyers and bar TVs', mo: 250 },
-      { id: 'seo',     name: 'SEO optimization',              desc: 'Google Business Profile and local search, with a monthly report', mo: 150 },
-      { id: 'stats',   name: 'Site analytics & report',       desc: 'Visitors, where they came from, and a plain-English monthly report', mo: 50 }
-    ]}
-  ];
-  const ALL = CATALOG.flatMap(c => c.items.map(i => ({ ...i, cat: c.cat })));
-  const byId = Object.fromEntries(ALL.map(i => [i.id, i]));
-
-  // Static Site box (always included, with its total)
-  $('[data-static-box]').innerHTML = `
-    <span class="sb-badge">Included</span>
-    <div class="sb-head">
-      <div><h3>Static Site</h3><p>The site in the preview above, ready to launch today. You text me changes and I make them.</p></div>
-      <div class="sb-price"><b>${money(STATIC.total)}</b><small>one-time build</small></div>
-    </div>
-    <table class="sb-table">
-      <thead><tr><th>What I'm doing</th><th>Price</th></tr></thead>
-      <tbody>${STATIC.items.map(i => `<tr><td><b>${esc(i.name)}</b><span>${esc(i.desc)}</span></td><td>${money(i.once)}</td></tr>`).join('')}</tbody>
-      <tfoot><tr><td>Static Site total</td><td>${money(STATIC.total)}</td></tr></tfoot>
-    </table>`;
-
-  $('[data-catalog]').innerHTML = CATALOG.map(c => `
-    <div class="cat">
-      <div class="cat-title"><h3>${esc(c.cat)}</h3><small>${esc(c.note)}</small></div>
-      <div class="items">${c.items.map(i => `
-        <div class="svc" data-id="${i.id}">
-          <div><h4>${esc(i.name)}${i.tag ? `<span class="tag">${esc(i.tag)}</span>` : ''}</h4><p>${esc(i.desc)}</p></div>
-          <div class="price">${i.once ? money(i.once) : ''}${i.mo ? `<small>${i.once ? '+ ' : ''}${money(i.mo)}/mo</small>` : ''}</div>
-          <button type="button" class="add" data-toggle="${i.id}" aria-pressed="false">Add</button>
-        </div>`).join('')}</div>
-    </div>`).join('');
-
-  /* ---------- Cart (no totals) ---------- */
-  let cart = [];
-  try { cart = JSON.parse(localStorage.getItem('gradysCart') || '[]').filter(id => byId[id]); } catch (e) {}
-  const save = () => { try { localStorage.setItem('gradysCart', JSON.stringify(cart)); } catch (e) {} };
-  const picked = () => ALL.filter(i => cart.includes(i.id));
-  const quote = $('#quote');
-
-  function render() {
-    $$('.svc').forEach(el => {
-      const on = cart.includes(el.dataset.id);
-      el.classList.toggle('in', on);
-      const b = $('.add', el); b.textContent = on ? '✓ Added' : 'Add'; b.setAttribute('aria-pressed', on);
+  // Live previews: scale the iframes into the device frames
+  (() => {
+    const fit = () => document.querySelectorAll('[data-scale-box]').forEach(box => {
+      const f = box.querySelector('iframe'), s = box.clientWidth / +box.dataset.scaleBox;
+      f.style.transform = 'scale(' + s + ')'; f.style.height = (box.clientHeight / s) + 'px';
     });
-    $$('[data-count]').forEach(el => (el.textContent = cart.length));
-    $('[data-empty]').hidden = true;
-    $('[data-clear]').hidden = cart.length === 0;
-    $('[data-cart-list]').innerHTML =
-      `<li class="fixed"><span>Static Site</span><em>Included</em></li>` +
-      picked().map(i => `<li><span>${esc(i.name)}</span><button type="button" data-remove="${i.id}" aria-label="Remove ${esc(i.name)}">×</button></li>`).join('');
-    const send = $('[data-send]');
-    send.href = `mailto:${EMAIL}?subject=${encodeURIComponent('Gradys website - my picks')}&body=${encodeURIComponent(picksText())}`;
-    if (!quote.hidden) buildQuote();
-    save();
-  }
-  function picksText() {
-    const groups = CATALOG.map(c => {
-      const rows = picked().filter(i => i.cat === c.cat);
-      return rows.length ? `${c.cat}:\n${rows.map(i => `- ${i.name}`).join('\n')}` : '';
-    }).filter(Boolean);
-    return `Hi Ava,\n\nHere's what we'd like for the Gradys website:\n\nStatic Site (included)\n\n${groups.length ? 'Add-ons:\n\n' + groups.join('\n\n') : 'No add-ons for now.'}\n\nThanks!\n- Gradys`;
-  }
-  const toggle = id => { cart = cart.includes(id) ? cart.filter(x => x !== id) : [...cart, id]; resetSignature(); render(); };
-
-  document.addEventListener('click', e => {
-    const t = e.target.closest('[data-toggle]'); if (t) return toggle(t.dataset.toggle);
-    const r = e.target.closest('[data-remove]'); if (r) return toggle(r.dataset.remove);
-  });
-  $('[data-clear]').addEventListener('click', () => { cart = []; resetSignature(); render(); });
-
-  /* ---------- Configure price: totals, discount, agreement ---------- */
-  const now = new Date(), pad = n => String(n).padStart(2, '0');
-  const fmtDate = d => d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-  const docNo = `GR-${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}`;
-  const discIn = $('[data-discount]'), discMo = $('[data-discount-monthly]');
-
-  function totals() {
-    const items = picked();
-    const once = STATIC.total + items.reduce((s, i) => s + (i.once || 0), 0), mo = items.reduce((s, i) => s + (i.mo || 0), 0);
-    const pct = Math.min(100, Math.max(0, parseFloat(discIn.value) || 0));
-    const onceOff = once * pct / 100, moOff = discMo.checked ? mo * pct / 100 : 0;
-    return { items, once, mo, pct, onceOff, moOff, finalOnce: once - onceOff, finalMo: mo - moOff };
-  }
-  function buildQuote() {
-    const t = totals();
-    $('[data-no]').textContent = docNo;
-    $('[data-date]').textContent = fmtDate(now);
-    $('[data-sign-date]').value = fmtDate(now);
-    const rows = [`<tr class="d-cat"><td colspan="3">Static Site</td></tr>`];
-    STATIC.items.forEach(i => rows.push(`<tr><td><b>${esc(i.name)}</b><small>${esc(i.desc)}</small></td><td>${money(i.once)}</td><td>—</td></tr>`));
-    if (t.items.length) rows.push(`<tr class="d-cat"><td colspan="3">Add-ons</td></tr>`);
-    CATALOG.forEach(c => {
-      const list = t.items.filter(i => i.cat === c.cat);
-      if (!list.length) return;
-      list.forEach(i => rows.push(`<tr><td><b>${esc(i.name)}</b><small>${esc(i.desc)}</small></td><td>${i.once ? money(i.once) : '—'}</td><td>${i.mo ? money(i.mo) + '/mo' : '—'}</td></tr>`));
-    });
-    $('[data-lines]').innerHTML = rows.join('');
-    $('[data-totals]').innerHTML =
-      (t.pct ? `<tr class="d-sub"><td>Subtotal</td><td>${money(t.once)}</td><td>${money(t.mo)}/mo</td></tr>
-                <tr class="d-disc"><td>${t.pct}% discount${discMo.checked ? ' (incl. monthly)' : ''}</td><td>−${money(t.onceOff)}</td><td>${t.moOff ? '−' + money(t.moOff) + '/mo' : '—'}</td></tr>` : '') +
-      `<tr class="d-grand"><td>Total</td><td>${money(t.finalOnce)}</td><td>${money(t.finalMo)}/mo</td></tr>`;
-    $('[data-due]').textContent = money(t.finalOnce);
-    return t;
-  }
-  $('[data-configure]').addEventListener('click', () => {
-    if (!cart.length) return;
-    buildQuote(); quote.hidden = false; resize();
-    quote.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-  $('[data-edit]').addEventListener('click', () => $('#services').scrollIntoView({ behavior: 'smooth' }));
-  [discIn, discMo].forEach(el => el.addEventListener('input', () => { resetSignature(); buildQuote(); }));
-  discMo.addEventListener('change', () => { resetSignature(); buildQuote(); });
-
-  /* ---------- Signature pad ---------- */
-  const box = $('[data-sig-box]'), canvas = $('[data-sig]'), ctx = canvas.getContext('2d');
-  let drawing = false, hasInk = false, last = null;
-  function resize() {
-    const r = canvas.getBoundingClientRect(); if (!r.width) return;
-    const data = hasInk ? canvas.toDataURL() : null, dpr = window.devicePixelRatio || 1;
-    canvas.width = r.width * dpr; canvas.height = r.height * dpr; ctx.scale(dpr, dpr);
-    ctx.lineWidth = 2.4; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#0f1a2e';
-    if (data) { const img = new Image(); img.onload = () => ctx.drawImage(img, 0, 0, r.width, r.height); img.src = data; }
-  }
-  addEventListener('resize', resize);
-  const pos = e => { const r = canvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
-  canvas.addEventListener('pointerdown', e => { drawing = true; last = pos(e); canvas.setPointerCapture(e.pointerId); ctx.beginPath(); ctx.arc(last.x, last.y, 1.1, 0, Math.PI * 2); ctx.fillStyle = '#0f1a2e'; ctx.fill(); mark(); });
-  canvas.addEventListener('pointermove', e => {
-    if (!drawing) return; const p = pos(e);
-    ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p;
-  });
-  ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => canvas.addEventListener(ev, () => { drawing = false; }));
-  function mark() { hasInk = true; box.classList.add('signed'); check(); }
-  function clearSig() { const r = canvas.getBoundingClientRect(); ctx.clearRect(0, 0, r.width, r.height); hasInk = false; box.classList.remove('signed'); check(); }
-  function resetSignature() { if (hasInk) clearSig(); }   // any change to picks or price clears the signature
-  $('[data-sig-clear]').addEventListener('click', clearSig);
-
-  const agree = $('[data-agree]'), nameIn = $('[data-name]');
-  function ready() { return hasInk && agree.checked && nameIn.value.trim().length > 1 && cart.length > 0; }
-  function check() {
-    const ok = ready();
-    ['[data-save]', '[data-email-signed]'].forEach(s => $(s).classList.toggle('disabled', !ok));
-    $('[data-stamp]').hidden = !ok;
-    $('[data-hint]').textContent = ok ? `Signed by ${nameIn.value.trim()} on ${fmtDate(now)}. Save a copy for both of you.` : 'Check the box, add your name, and sign to finish.';
-  }
-  agree.addEventListener('change', check); nameIn.addEventListener('input', check);
-
-  /* ---------- Save / email the signed agreement ---------- */
-  $('[data-save]').addEventListener('click', () => {
-    if (!ready()) return;
-    const host = document.createElement('div'); host.className = 'print-host';
-    const copy = $('[data-doc]').cloneNode(true);
-    const img = new Image(); img.src = canvas.toDataURL('image/png'); img.alt = 'Client signature';
-    $('canvas', copy).replaceWith(img);                                   // canvases don't copy their drawing
-    $('[data-name]', copy).setAttribute('value', nameIn.value.trim());
-    $('[data-sign-date]', copy).setAttribute('value', fmtDate(now));
-    host.append(copy); document.body.append(host);
-    const title = document.title; document.title = `Gradys Service Agreement ${docNo} (signed)`;
-    setTimeout(() => { window.print(); host.remove(); document.title = title; }, 80);
-  });
-  $('[data-email-signed]').addEventListener('click', () => {
-    if (!ready()) return;
-    const t = buildQuote(), L = [`NexaOne LLC · SERVICE AGREEMENT ${docNo}`, `Date: ${fmtDate(now)}`, 'Client: Gradys, 736 W Blue Vista Ln #200, Midvale, UT 84047', ''];
-    t.items.forEach(i => L.push(`• ${i.name}: ${[i.once ? money(i.once) : '', i.mo ? money(i.mo) + '/mo' : ''].filter(Boolean).join(' + ')}`));
-    if (t.pct) L.push(`• ${t.pct}% discount: -${money(t.onceOff)}${t.moOff ? ` and -${money(t.moOff)}/mo` : ''}`);
-    L.push('', `TOTAL: ${money(t.finalOnce)} one-time · ${money(t.finalMo)}/mo`, `Due before work begins: ${money(t.finalOnce)}`, '');
-    L.push(`Signed electronically by ${nameIn.value.trim()} on ${fmtDate(now)}, agreeing to the services, charges and terms above.`);
-    L.push('(Signed PDF copy attached.)', '', 'Ava Magee · NexaOne LLC · nexaone.org');
-    location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(`Signed: Gradys website agreement ${docNo}`)}&body=${encodeURIComponent(L.join('\n'))}`;
-  });
-
-  render(); check();
-})();
+    addEventListener('resize', fit); fit();
+  })();
 </script>
 </body>
 </html>
