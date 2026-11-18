@@ -935,3 +935,29 @@ input[type="range"]::-moz-range-thumb {
 .has-glow .choice-alt { background-color: var(--dark); }
 .has-glow footer { position: relative; z-index: 1; }
 .brand-sub { font-weight: 400; letter-spacing: -0.02em; opacity: .75; }
+
+/* Walkthrough visuals: pieces float, panel tilts + layers shift with the mouse */
+@property --fy { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@keyframes bob { 0%, 100% { --fy: 0px; } 50% { --fy: calc(var(--amp, 8px) * -1); } }
+.tour-visual { transform: perspective(1100px) rotateX(calc(var(--vy, 0) * -5deg)) rotateY(calc(var(--vx, 0) * 6deg)); }
+.float {
+  translate: calc(var(--vx, 0) * var(--depth, 16) * 1px) calc(var(--vy, 0) * var(--depth, 16) * 1px + var(--fy));
+  animation: bob var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+}
+.browser.float { --depth: 14; --dur: 7s; --amp: 6px; }
+.chip-a.float { --depth: 34; --dur: 5.2s; --delay: -1s; --amp: 9px; }
+.chip-b.float { --depth: 40; --dur: 6s; --delay: -3s; --amp: 10px; }
+.ad-card.float { --depth: 28; --dur: 6.4s; --amp: 9px; }
+.graph.float { --depth: 14; --dur: 7.4s; --delay: -2.5s; --amp: 7px; }
+.chat.float { --depth: 18; --dur: 6.8s; --amp: 7px; }
+.tiles div.float { --depth: 34; --dur: 5.4s; --amp: 9px; }
+.tiles div.float + div.float { --depth: 42; --delay: -2s; }
+.ed-term.float { --depth: 12; --dur: 7s; --amp: 5px; }
+.ed-code.float { --depth: 22; --dur: 6.2s; --delay: -2s; --amp: 6px; }
+.ed-files.float { --depth: 30; --dur: 5.6s; --delay: -4s; --amp: 7px; }
+.ad-card, .chip, .tiles div, .ed-pane { cursor: default; }
+.tour-visual .ad-card:hover, .tour-visual .tiles div:hover, .tour-visual .chip:hover { scale: 1.04; transition: scale .3s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .float { animation: none; translate: none; }
+  .tour-visual { transform: none; }
+}

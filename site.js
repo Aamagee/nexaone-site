@@ -121,6 +121,28 @@
     setOn(steps[0].id);
   }
 
+  /* ---------- Walkthrough visuals: tilt toward the cursor, layers shift by depth ---------- */
+  if (!still && window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+    $$('.tour-visual').forEach(function (v) {
+      var tx = 0, ty = 0, cx = 0, cy = 0, running = false;
+      var step = function () {
+        cx += (tx - cx) * 0.1; cy += (ty - cy) * 0.1;
+        v.style.setProperty('--vx', cx.toFixed(4));
+        v.style.setProperty('--vy', cy.toFixed(4));
+        if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) requestAnimationFrame(step);
+        else running = false;
+      };
+      var kick = function () { if (!running) { running = true; requestAnimationFrame(step); } };
+      v.addEventListener('pointermove', function (e) {
+        var r = v.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width - 0.5;
+        ty = (e.clientY - r.top) / r.height - 0.5;
+        kick();
+      });
+      v.addEventListener('pointerleave', function () { tx = 0; ty = 0; kick(); });
+    });
+  }
+
   /* ---------- Statement: words light up as it scrolls through the screen ---------- */
   var statement = $('[data-words]');
   if (statement) {
