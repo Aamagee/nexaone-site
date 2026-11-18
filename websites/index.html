@@ -15,6 +15,8 @@
 <script src="/preview.js"></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
@@ -27,14 +29,19 @@
     </svg>
       <span class="brand-name">nexa</span>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="/#services">Services</a></li>
       <li><a href="/#how">How it works</a></li>
-      <li><a href="/#plans">Plans</a></li>
-      <li><a class="btn sun small" href="/#contact">Get a quote</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li class="nav-cta"><a class="btn sun small" href="/#contact">Get a quote</a></li>
     </ul>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<main id="main">
 
 <header class="hero sub">
   <div class="hero-sun" aria-hidden="true"></div>
@@ -55,12 +62,12 @@
     <div class="reveal">
       <p class="intro">Whether you need a simple site that tells people who you are and how to reach you, or something with booking, contact forms, or online payments built in, I design it around your business, not a generic template that looks like everyone else's.</p>
       <div class="in-plans">
-        <p>Included in</p>
-        <div class="chips"><a class="chip" href="/#plans">Launch</a><a class="chip" href="/#plans">Momentum</a><a class="chip" href="/#plans">Full Stack</a></div>
+        <p>Pricing</p>
+        <div class="price-line"><strong>$500</strong> Static or <strong>$1,000</strong> Full-Service build, + $100 per page, + $30/mo maintenance</div>
       </div>
       <div class="cta-row">
         <a class="btn sun" href="/#contact">Get a quote</a>
-        <a class="btn line" href="/#plans">Compare plans</a>
+        <a class="btn line" href="/#pricing">See pricing</a>
       </div>
     </div>
     <div class="included reveal">
@@ -81,13 +88,14 @@
       <p class="eyebrow">More from Nexa</p>
     </div>
     <div class="others">
-      <a class="other reveal" href="/marketing/">Marketing &amp; Advertising <span>&rarr;</span></a>
-      <a class="other reveal" href="/social-media/">Social Media <span>&rarr;</span></a>
-      <a class="other reveal" href="/custom-apps/">Custom Built Apps <span>&rarr;</span></a>
+      <a class="other reveal" href="/marketing/">Marketing <span>&rarr;</span></a>
+      <a class="other reveal" href="/custom-systems/">Custom Systems <span>&rarr;</span></a>
     </div>
   </div>
 </section>
 
+</main>
+<button class="to-top" type="button" aria-label="Back to top">&uarr;</button>
 <footer>
   <div class="wrap">
     <div class="footer-top">
@@ -108,15 +116,14 @@
           <h4>Services</h4>
           <ul>
             <li><a href="/websites/">Websites</a></li>
-            <li><a href="/marketing/">Marketing &amp; Ads</a></li>
-            <li><a href="/social-media/">Social Media</a></li>
-            <li><a href="/custom-apps/">Custom Apps</a></li>
+            <li><a href="/marketing/">Marketing</a></li>
+            <li><a href="/custom-systems/">Custom Systems</a></li>
           </ul>
         </div>
         <div>
           <h4>Nexa</h4>
           <ul>
-            <li><a href="/#plans">Plans &amp; pricing</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
             <li><a href="/#contact">Get a quote</a></li>
             <li><a href="/portfolio/">About Ava</a></li>
           </ul>

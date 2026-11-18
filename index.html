@@ -15,6 +15,8 @@
 <script src="/preview.js"></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
@@ -27,14 +29,19 @@
     </svg>
       <span class="brand-name">nexa</span>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="/#services">Services</a></li>
       <li><a href="/#how">How it works</a></li>
-      <li><a href="/#plans">Plans</a></li>
-      <li><a class="btn sun small" href="/#contact">Get a quote</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li class="nav-cta"><a class="btn sun small" href="/#contact">Get a quote</a></li>
     </ul>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<main id="main">
 
 <header class="hero">
   <div class="hero-sun" aria-hidden="true"></div>
@@ -44,7 +51,7 @@
     <p class="lede">Nexa builds everything your business needs online: your website, your ads, your social media, even your own AI chatbot. All built in-house, explained in plain terms, and priced for small businesses.</p>
     <div class="hero-actions">
       <a class="btn sun" href="#contact">Get a quote</a>
-      <a class="btn glass" href="#plans">See plans &amp; pricing</a>
+      <a class="btn glass" href="#pricing">See pricing</a>
     </div>
   </div>
   <svg class="ridges" viewBox="0 0 1440 230" preserveAspectRatio="none" aria-hidden="true">
@@ -69,8 +76,8 @@
       </div>
       <div class="value">
         <span class="num">03</span>
-        <h3>Priced for small business</h3>
-        <p>Simple monthly plans, with setup included. No surprise build fees.</p>
+        <h3>Clear, upfront pricing</h3>
+        <p>Every piece of work has its own price, so you know exactly what you're paying for.</p>
       </div>
     </div>
   </div>
@@ -81,7 +88,7 @@
     <div class="block-head reveal">
       <p class="eyebrow">What I do</p>
       <h2>Everything your business needs online.</h2>
-      <p>Pick one service or bundle them into a plan. Either way, it's all built in-house by someone who actually builds it.</p>
+      <p>Three services, priced separately so you only pay for what you need. All built in-house by someone who actually builds it.</p>
     </div>
     <div class="services">
       <a class="service reveal" href="/websites/">
@@ -92,20 +99,14 @@
       </a>
       <a class="service reveal" href="/marketing/">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1 1 0 0 0 1 1h2l5 4V5L7 9H5a1 1 0 0 0-1 1z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></span>
-        <h3>Marketing &amp; Advertising</h3>
-        <p>Facebook, Instagram, and Google ads, run for you and built around whatever budget you're comfortable with.</p>
+        <h3>Marketing</h3>
+        <p>Your ads and your social media, handled. Facebook, Instagram, and Google ads plus regular posting, built around your budget.</p>
         <span class="go">See details <span>&rarr;</span></span>
       </a>
-      <a class="service reveal" href="/social-media/">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/><path d="M12 15.5s-3-1.8-3-4a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2.2-3 4-3 4z"/></svg></span>
-        <h3>Social Media</h3>
-        <p>Regular posting and account upkeep so your business stays visible online. One less thing on your plate.</p>
-        <span class="go">See details <span>&rarr;</span></span>
-      </a>
-      <a class="service reveal" href="/custom-apps/">
+      <a class="service reveal" href="/custom-systems/">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M18.5 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>
-        <h3>Custom Built Apps</h3>
-        <p>Chatbots, tools, and automation built around your business. If you can picture it, I can probably build it.</p>
+        <h3>Custom Systems</h3>
+        <p>Custom-built apps, AI chatbots, tools, and automations built around how your business runs. If you can picture it, I can probably build it.</p>
         <span class="go">See details <span>&rarr;</span></span>
       </a>
     </div>
@@ -124,8 +125,8 @@
         <p>Send a quick note about what you do and what you need help with. No forms full of marketing terms.</p>
       </li>
       <li class="step reveal">
-        <h3>Get a plan that fits</h3>
-        <p>I'll recommend a plan or put together a custom one, with a clear price. No pressure to buy more than you need.</p>
+        <h3>Get a clear price</h3>
+        <p>I'll recommend exactly what fits your business, with every piece priced upfront. No pressure to buy more than you need.</p>
       </li>
       <li class="step reveal">
         <h3>I build it and keep it running</h3>
@@ -135,64 +136,277 @@
   </div>
 </section>
 
-<section class="block" id="plans">
+<section class="block" id="pricing">
   <div class="wrap">
     <div class="block-head center reveal">
-      <p class="eyebrow">Plans</p>
-      <h2>Pick a plan, or build your own.</h2>
-      <p>Plans built by a technical marketer: someone who actually builds the website, the ads, and the tools instead of planning them for someone else to build.</p>
+      <p class="eyebrow">Pricing</p>
+      <h2>Clear prices, no surprises.</h2>
+      <p>Every service is separate, so you only pay for what you need. Every piece of work has its own price, so you know exactly what you're paying for.</p>
     </div>
+
+    <h3 class="price-group reveal"><span class="icon sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r=".6" fill="currentColor"/><circle cx="9" cy="6.5" r=".6" fill="currentColor"/><path d="M7 13h6M7 16h10"/></svg></span> Websites</h3>
     <div class="plans">
-      <div class="plan reveal">
-        
-        <div class="plan-name">Launch</div>
-        <div class="plan-price"><span class="amount">$500</span><span class="period">/mo</span></div>
-        <p class="plan-for">Good for getting your business online and looking legit.</p>
+      <div class="plan reveal" data-plan-card="Static Site">
+        <div class="plan-name">Static Site</div>
+        <div class="plan-price"><span class="amount">$500</span><span class="period">one-time build</span></div>
+        <p class="plan-for">A fast, professional site built for your business. You text me changes and I make them.</p>
         <ul>
-          <li><a href="/websites/">Custom website</a></li>
-          <li><a href="/social-media/">Social media management</a></li>
+          <li>Custom design &amp; branding</li>
+          <li>Built for phones first</li>
+          <li>Google search setup</li>
+          <li>Domain, hosting &amp; secure padlock (HTTPS) setup</li>
+          <li>Tested on phones, tablets &amp; computers, then launched</li>
         </ul>
-        <a class="btn line plan-btn" data-plan="Launch" href="#contact">Choose Launch</a>
+        <div class="plan-extras">
+          <span><strong>+ $100</strong> per page</span>
+          <span><strong>+ $30/mo</strong> maintenance</span>
+        </div>
+        <a class="btn line plan-btn" data-plan="Static Site" href="#contact">Choose Static Site</a>
       </div>
-      <div class="plan featured reveal">
-        <span class="plan-badge">Most popular</span>
-        <div class="plan-name">Momentum</div>
-        <div class="plan-price"><span class="amount">$850</span><span class="period">/mo</span></div>
-        <p class="plan-for">Good for businesses ready to actively bring in new customers.</p>
+      <div class="plan featured reveal" data-plan-card="Full-Service Site">
+        <span class="plan-badge">Most complete</span>
+        <div class="plan-name">Full-Service Site</div>
+        <div class="plan-price"><span class="amount">$1,000</span><span class="period">one-time build</span></div>
+        <p class="plan-for">Everything in the Static Site, plus tools to update it yourself, take bookings or orders, and grow your customer list.</p>
         <ul>
-          <li><a href="/websites/">Custom website</a></li>
-          <li><a href="/social-media/">Social media management</a></li>
-          <li><a href="/marketing/">Facebook, Instagram &amp; Google ads</a></li>
+          <li>Everything in the Static Site</li>
+          <li>Dashboard to update your own content, no code</li>
+          <li>Online booking or ordering</li>
+          <li>Forms that send straight to your email</li>
+          <li>Google reviews section</li>
+          <li>Email &amp; text sign-up</li>
+          <li>Visitor analytics</li>
         </ul>
-        <a class="btn sun plan-btn" data-plan="Momentum" href="#contact">Choose Momentum</a>
+        <div class="plan-extras">
+          <span><strong>+ $100</strong> per page</span>
+          <span><strong>+ $30/mo</strong> maintenance</span>
+        </div>
+        <a class="btn sun plan-btn" data-plan="Full-Service Site" href="#contact">Choose Full-Service</a>
       </div>
-      <div class="plan reveal">
-        
-        <div class="plan-name">Full Stack</div>
-        <div class="plan-price"><span class="amount">$1,050</span><span class="period">/mo</span></div>
-        <p class="plan-for">The complete package, including your own AI chatbot.</p>
-        <ul>
-          <li><a href="/websites/">Custom website</a></li>
-          <li><a href="/social-media/">Social media management</a></li>
-          <li><a href="/marketing/">Facebook, Instagram &amp; Google ads</a></li>
-          <li><a href="/custom-apps/">AI chatbot for your website</a></li>
-        </ul>
-        <a class="btn line plan-btn" data-plan="Full Stack" href="#contact">Choose Full Stack</a>
-      </div>
-      <div class="plan custom reveal">
-        
-        <div class="plan-name">Custom Plan</div>
-        <div class="plan-price talk"><span class="amount">Let's talk</span></div>
-        <p class="plan-for">Not sure what fits, or need something different? We'll figure it out together.</p>
-        <ul>
-          <li>Mix and match any service</li>
-          <li>Built around your exact business</li>
-          <li>No pressure to buy more than you need</li>
-        </ul>
-        <a class="btn line plan-btn" data-plan="Custom Plan" href="#contact">Build a custom plan</a>
+      <div class="estimator reveal" id="estimator">
+        <h3>Estimate your website</h3>
+        <div class="seg" role="radiogroup" aria-label="Site type">
+          <button type="button" role="radio" aria-checked="true" data-base="500" data-name="Static Site">Static</button>
+          <button type="button" role="radio" aria-checked="false" data-base="1000" data-name="Full-Service Site">Full-Service</button>
+        </div>
+        <label class="est-label" for="pages">Pages <output id="pages-out">3</output></label>
+        <input type="range" id="pages" min="1" max="15" value="3">
+        <div class="est-lines">
+          <div><span class="est-base-name">Static build</span><span class="est-base">$500</span></div>
+          <div><span class="est-pages-label">3 pages &times; $100</span><span class="est-pages">$300</span></div>
+        </div>
+        <div class="est-total">
+          <span>One-time</span>
+          <strong class="est-sum">$800</strong>
+        </div>
+        <p class="est-monthly">then <strong>$30/mo</strong> maintenance</p>
+        <a class="btn sun est-btn" href="#contact">Get this quote &rarr;</a>
+        <p class="est-note">An estimate. Your final quote is confirmed together.</p>
       </div>
     </div>
-    <p class="plan-note">Every plan includes setup for anything built (website, chatbot). No separate build fee.</p>
+
+    <h3 class="price-group reveal"><span class="icon sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1 1 0 0 0 1 1h2l5 4V5L7 9H5a1 1 0 0 0-1 1z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></span> Marketing</h3>
+    <div class="plans">
+      <div class="plan reveal" data-plan-card="Ad Management">
+        <div class="plan-name">Ad Management</div>
+        <div class="plan-price"><span class="amount">$100</span><span class="period">/mo per platform</span></div>
+        <p class="plan-for">I plan, run, and track your ads, built around whatever budget you're comfortable with.</p>
+        <ul class="price-list">
+          <li><span>Account setup</span><strong>$100 one-time</strong></li>
+          <li><span>Google Ads management</span><strong>$100/mo</strong></li>
+          <li><span>Meta ads management (Facebook &amp; Instagram)</span><strong>$100/mo</strong></li>
+        </ul>
+        <p class="fine">Ad spend is not included. You pay Google and Meta directly for your ads, at whatever budget you choose.</p>
+        <a class="btn line plan-btn" data-plan="Ad Management" href="#contact">Choose Ad Management</a>
+      </div>
+      <div class="plan custom reveal" data-plan-card="Social Media">
+        <div class="plan-name">Social Media</div>
+        <div class="plan-price talk"><span class="amount">Let's talk</span></div>
+        <p class="plan-for">Regular posting and account upkeep so your business stays visible online.</p>
+        <ul>
+          <li>I create and schedule your posts</li>
+          <li>I manage your accounts for you</li>
+          <li>I reply to comments and messages</li>
+          <li>A simple monthly posting plan</li>
+        </ul>
+        <a class="btn line plan-btn" data-plan="Social Media" href="#contact">Get a quote</a>
+      </div>
+      <div class="estimator reveal" id="ad-estimator">
+        <h3>Estimate your ads</h3>
+        <p class="est-hint">Where do you want to advertise?</p>
+        <div class="chips est-platforms">
+          <label class="check"><input type="checkbox" value="google" checked><span>Google</span></label>
+          <label class="check"><input type="checkbox" value="meta" checked><span>Facebook &amp; Instagram</span></label>
+        </div>
+        <div class="est-lines">
+          <div><span>Account setup</span><span>$100 once</span></div>
+          <div><span class="ad-n-label">2 platforms &times; $100</span><span class="ad-monthly-line">$200/mo</span></div>
+        </div>
+        <div class="est-total">
+          <span>Monthly</span>
+          <strong class="ad-sum">$200</strong>
+        </div>
+        <p class="est-monthly">+ $100 one-time setup &middot; plus your ad spend</p>
+        <a class="btn sun ad-btn" href="#contact">Get this quote &rarr;</a>
+        <p class="est-note">Ad spend is paid directly to Google and Meta.</p>
+      </div>
+    </div>
+
+    <h3 class="price-group reveal"><span class="icon sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M18.5 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span> Custom Systems</h3>
+    <p class="group-sub reveal">Custom-built apps, AI chatbots, tools, and automations. Every system is different, so it's priced for your business.</p>
+
+    <div class="industry reveal" data-industry>
+      <div class="industry-head">
+        <div>
+          <h3>What could I build for you?</h3>
+          <p>Pick your type of business to see ideas.</p>
+        </div>
+        <div class="select-wrap">
+          <label class="sr-only" for="industry-home">Type of business</label>
+          <select id="industry-home">
+            <option value="restaurants-and-bars" selected>Restaurants &amp; bars</option>
+            <option value="salons-barbers-and-spas">Salons, barbers &amp; spas</option>
+            <option value="beauty-and-trade-schools">Beauty &amp; trade schools</option>
+            <option value="real-estate">Real estate</option>
+            <option value="cleaning-services">Cleaning services</option>
+            <option value="wellness-and-fitness">Wellness &amp; fitness</option>
+            <option value="travel-and-tourism">Travel &amp; tourism</option>
+            <option value="storage-and-rentals">Storage &amp; rentals</option>
+            <option value="property-management-and-inspections">Property management &amp; inspections</option>
+            <option value="contractors-and-home-services">Contractors &amp; home services</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+      </div>
+      <div class="industry-panel" data-panel="restaurants-and-bars">
+        <ul>
+          <li>Online ordering and a menu you can update yourself</li>
+          <li>Reservation and party booking system</li>
+          <li>AI chatbot that answers hours, menu, and specials questions</li>
+          <li>Rewards sign-up to bring regulars back</li>
+          <li>Staff scheduling app</li>
+        </ul>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Restaurants &amp; bars" href="#contact">Get a quote for this &rarr;</a>
+      </div>
+      <div class="industry-panel" data-panel="salons-barbers-and-spas" hidden>
+        <ul>
+          <li>Online booking with automatic reminders</li>
+          <li>AI chatbot for services, prices, and availability</li>
+          <li>Client history and preferences tracker</li>
+          <li>Automatic rebooking and review requests</li>
+        </ul>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Salons, barbers &amp; spas" href="#contact">Get a quote for this &rarr;</a>
+      </div>
+      <div class="industry-panel" data-panel="beauty-and-trade-schools" hidden>
+        <ul>
+          <li>Online enrollment portal and applications</li>
+          <li>Student tracking dashboard</li>
+          <li>AI chatbot that answers program and financial questions</li>
+          <li>Campus tour booking</li>
+        </ul>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Beauty &amp; trade schools" href="#contact">Get a quote for this &rarr;</a>
+      </div>
+      <div class="industry-panel" data-panel="real-estate" hidden>
+        <ul>
+          <li>Lead capture that sends new leads straight to your phone</li>
+          <li>AI chatbot that answers listing questions 24/7</li>
+          <li>Showing scheduler</li>
+          <li>Automatic client follow-ups</li>
+          <li>Custom listing pages</li>
+        </ul>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Real estate" href="#contact">Get a quote for this &rarr;</a>
+      </div>
+      <div class="industry-panel" data-panel="cleaning-services" hidden>
+        <ul>
+          <li>Instant quote calculator on your website</li>
+          <li>Booking and recurring scheduling</li>
+          <li>Job checklist app for your crew</li>
+          <li>Automatic invoice and review reminders</li>
+        </ul>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Cleaning services" href="#contact">Get a quote for this &rarr;</a>
+      </div>
+      <div class="industry-panel" data-panel="wellness-and-fitness" hidden>
+        <ul>
+          <li>Class and appointment booking</li>
+          <li>Membership and package tracking</li>
+          <li>Intake forms that go straight to your inbox</li>
+          <li>AI chatbot for schedules and pricing</li>
+        </ul>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Wellness &amp; fitness" href="#contact">Get a quote for this &rarr;</a>
+      </div>
+      <div class="industry-panel" data-panel="travel-and-tourism" hidden>
+        <ul>
+          <li>Trip inquiry and quote builder</li>
+          <li>AI chatbot for itinerary and travel questions</li>
+          <li>Booking requests and deposit tracking</li>
+          <li>Automatic customer follow-up emails</li>
+        </ul>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Travel &amp; tourism" href="#contact">Get a quote for this &rarr;</a>
+      </div>
+      <div class="industry-panel" data-panel="storage-and-rentals" hidden>
+        <ul>
+          <li>Unit availability and pricing display</li>
+          <li>Online rental requests</li>
+          <li>Automatic payment reminders</li>
+          <li>AI chatbot for sizes, hours, and access questions</li>
+        </ul>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Storage &amp; rentals" href="#contact">Get a quote for this &rarr;</a>
+      </div>
+      <div class="industry-panel" data-panel="property-management-and-inspections" hidden>
+        <ul>
+          <li>Inspection and reporting app</li>
+          <li>Maintenance request portal</li>
+          <li>Tenant and owner portal</li>
+          <li>Reports emailed out automatically</li>
+        </ul>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Property management &amp; inspections" href="#contact">Get a quote for this &rarr;</a>
+      </div>
+      <div class="industry-panel" data-panel="contractors-and-home-services" hidden>
+        <ul>
+          <li>Quote request form and estimate calculator</li>
+          <li>Job scheduling app</li>
+          <li>Before-and-after photo galleries</li>
+          <li>Automatic review requests after each job</li>
+        </ul>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Contractors &amp; home services" href="#contact">Get a quote for this &rarr;</a>
+      </div>
+      <div class="industry-panel" data-panel="other" hidden>
+        <p class="industry-other">Every business is different. Tell me what's slowing you down or what you wish you had, and I'll build a system around it.</p>
+        <a class="btn sun industry-btn" data-plan="Custom Systems" href="#contact">Tell me about it &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block faq-wrap" id="faq">
+  <div class="wrap faq-grid">
+    <div class="block-head reveal">
+      <p class="eyebrow">FAQ</p>
+      <h2>Good questions.</h2>
+      <p>Don't see yours? <a href="#contact">Ask me directly.</a></p>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>Do I need to know anything technical?<span class="plus" aria-hidden="true"></span></summary>
+        <p>Nope. I handle the technical side, and everything gets explained in plain terms. You'll always know what you're paying for and how it's working.</p>
+      </details>
+      <details>
+        <summary>What's the difference between a Static and Full-Service site?<span class="plus" aria-hidden="true"></span></summary>
+        <p>With a Static Site, you text me changes and I make them. A Full-Service Site adds tools so you can update it yourself, take bookings or orders, and collect customer sign-ups.</p>
+      </details>
+      <details>
+        <summary>Do I have to buy all three services?<span class="plus" aria-hidden="true"></span></summary>
+        <p>No. Websites, Marketing, and Custom Systems are separate, so you only pay for what you need. Mix and match whenever you want.</p>
+      </details>
+      <details>
+        <summary>Who will I actually be working with?<span class="plus" aria-hidden="true"></span></summary>
+        <p>Me, Ava. Nexa builds everything in-house, so the person you talk to is the person building your site and running your marketing.</p>
+      </details>
+      <details>
+        <summary>What does the AI chatbot do?<span class="plus" aria-hidden="true"></span></summary>
+        <p>It sits on your website and answers common customer questions for you, so people get answers even when you're busy.</p>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -211,6 +425,13 @@
       <form class="form" action="https://formsubmit.co/aamagee113@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New inquiry from nexaone.org">
         <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://nexaone.org/thanks/">
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="plan" id="plan-field">
+        <input type="hidden" name="services" id="services-field">
+        <div class="full plan-pill-row" hidden>
+          <span class="plan-pill">Interested in: <strong></strong> <button type="button" class="plan-clear" aria-label="Remove selection">&times;</button></span>
+        </div>
         <div>
           <label for="name">Name</label>
           <input type="text" id="name" name="name" autocomplete="name" required>
@@ -220,19 +441,31 @@
           <input type="email" id="email" name="email" autocomplete="email" required>
         </div>
         <div class="full">
-          <label for="business">Business name</label>
+          <label for="business">Business name <span class="opt">(optional)</span></label>
           <input type="text" id="business" name="business" autocomplete="organization">
         </div>
+        <fieldset class="full needs">
+          <legend>What do you need? <span class="opt">(tap any)</span></legend>
+          <div class="chips">
+            <label class="check"><input type="checkbox" value="Website"><span>Website</span></label>
+            <label class="check"><input type="checkbox" value="Social media"><span>Social media</span></label>
+            <label class="check"><input type="checkbox" value="Ads"><span>Ads</span></label>
+            <label class="check"><input type="checkbox" value="AI chatbot / custom tool"><span>AI chatbot / custom tool</span></label>
+            <label class="check"><input type="checkbox" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
         <div class="full">
-          <label for="message">What do you need help with?</label>
-          <textarea id="message" name="message" required></textarea>
+          <label for="message">Tell me about your business</label>
+          <textarea id="message" name="message" placeholder="What do you do, and what would you like help with?" required></textarea>
         </div>
-        <button class="btn sun" type="submit">Send message &rarr;</button>
+        <button class="btn sun" type="submit"><span class="btn-label">Send message &rarr;</span></button>
       </form>
     </div>
   </div>
 </section>
 
+</main>
+<button class="to-top" type="button" aria-label="Back to top">&uarr;</button>
 <footer>
   <div class="wrap">
     <div class="footer-top">
@@ -253,15 +486,14 @@
           <h4>Services</h4>
           <ul>
             <li><a href="/websites/">Websites</a></li>
-            <li><a href="/marketing/">Marketing &amp; Ads</a></li>
-            <li><a href="/social-media/">Social Media</a></li>
-            <li><a href="/custom-apps/">Custom Apps</a></li>
+            <li><a href="/marketing/">Marketing</a></li>
+            <li><a href="/custom-systems/">Custom Systems</a></li>
           </ul>
         </div>
         <div>
           <h4>Nexa</h4>
           <ul>
-            <li><a href="/#plans">Plans &amp; pricing</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
             <li><a href="/#contact">Get a quote</a></li>
             <li><a href="/portfolio/">About Ava</a></li>
           </ul>
