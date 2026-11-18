@@ -961,3 +961,5 @@ input[type="range"]::-moz-range-thumb {
   .float { animation: none; translate: none; }
   .tour-visual { transform: none; }
 }
+.ms-sun.float { --depth: 46; --dur: 5s; --delay: -1.5s; --amp: 8px; }
+.v-web:hover .ms-sun { scale: 1.08; filter: drop-shadow(0 0 18px rgba(255, 116, 3, .55)); transition: scale .5s ease, filter .5s ease; }
