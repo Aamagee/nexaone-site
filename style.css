@@ -1249,3 +1249,8 @@ h1, h2 { text-wrap: balance; }
 .tour-stage { grid-template-columns: 1fr; }
 .tour-steps { width: 100%; max-width: 900px; margin: 0 auto; }
 @media (min-width: 1001px) { .tour-visual { margin: 0 auto; } .step-copy { margin-left: auto; margin-right: auto; text-align: center; } }
+
+/* homepage has no top bar */
+.has-glow .tour { padding-top: 0; }
+@media (min-width: 1001px) { .has-glow .tour-stage { padding-top: 0; } }
+@media (max-width: 1000px) { .has-glow .tour { padding-top: 48px; } }
