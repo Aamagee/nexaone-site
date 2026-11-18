@@ -1175,3 +1175,34 @@ h1, h2 { text-wrap: balance; }
 .has-glow .nav { background: color-mix(in srgb, var(--dark) 94%, transparent); box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .6); }
 .badge-sec { padding-top: 130px; padding-bottom: 70px; }
 .hero.home + .statement { padding-top: 12vh; border-top: 1px solid var(--on-dark-line); }
+
+/* ==========================================================
+   Ring header: bright interactive sunset gradient
+   ========================================================== */
+.hero.home { background: linear-gradient(140deg, #ffb347 0%, #ff8a2b 38%, #ff6a3a 68%, #e2471f 100%); color: var(--ink); }
+.hero.home::before { background: radial-gradient(60% 55% at 85% 10%, rgba(255, 245, 220, .55), transparent 70%); z-index: 0; }
+.hero-blobs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.hero-blobs i { position: absolute; border-radius: 50%; will-change: transform, translate; }
+.hero-blobs .hb1 { width: 70vmax; height: 70vmax; left: -18vmax; top: -22vmax; background: radial-gradient(circle, rgba(255, 224, 140, .95), rgba(255, 224, 140, 0) 62%); translate: calc(var(--px, 0) * 22vw) calc(var(--py, 0) * 22vh); animation: hb-drift 14s ease-in-out infinite alternate; }
+.hero-blobs .hb2 { width: 60vmax; height: 60vmax; right: -16vmax; bottom: -26vmax; background: radial-gradient(circle, rgba(255, 92, 120, .7), rgba(255, 92, 120, 0) 62%); translate: calc(var(--px, 0) * -26vw) calc(var(--py, 0) * -26vh); animation: hb-drift 17s ease-in-out -5s infinite alternate-reverse; }
+.hero-blobs .hb3 { width: 46vmax; height: 46vmax; left: 30vw; top: 18vh; background: radial-gradient(circle, rgba(255, 250, 235, .55), rgba(255, 250, 235, 0) 60%); translate: calc(var(--px, 0) * 34vw) calc(var(--py, 0) * 30vh); animation: hb-drift 11s ease-in-out -3s infinite alternate; }
+@keyframes hb-drift { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(6vw, -4vh) scale(1.12); } 100% { transform: translate(-5vw, 5vh) scale(.94); } }
+
+/* rings + sun read as light on the bright gradient */
+.hero.home #arc-grad stop:nth-child(1) { stop-color: #fff; stop-opacity: 0; }
+.hero.home #arc-grad stop:nth-child(2) { stop-color: #fff; stop-opacity: .22; }
+.hero.home #arc-grad stop:nth-child(3) { stop-color: #fff6ea; stop-opacity: .5; }
+.hero.home #arc-grad stop:nth-child(4) { stop-color: #fffaf2; stop-opacity: .75; }
+.hero.home #arc-grad stop:nth-child(5) { stop-color: #fff; stop-opacity: .95; }
+.hero.home .arc-rings { opacity: 1; }
+.hero.home .hero-sun { background: radial-gradient(circle, #fffdf6 0%, #fff0c6 32%, rgba(255, 226, 150, .55) 52%, rgba(255, 210, 122, 0) 72%); opacity: 1; }
+.hero.home .hero-spot { background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .28), transparent 70%), radial-gradient(rgba(255, 255, 255, .9) 1.2px, transparent 1.7px) 0 0 / 22px 22px; }
+.hero.home { background-image: linear-gradient(140deg, #ffb347 0%, #ff8a2b 38%, #ff6a3a 68%, #e2471f 100%); }
+
+/* headline: dark ink + glowing white "best light." + slower, softer fade-in */
+.hero.home h1 { color: #2a1810; }
+.hero.home h1 .glow { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #fff; text-shadow: 0 0 28px rgba(255, 255, 255, .65), 0 2px 18px rgba(170, 50, 10, .35); }
+.hero.home h1 .fx-word { transition-duration: 1.2s, 1.4s, 1.2s; transition-delay: calc(var(--i, 0) * 110ms); filter: blur(10px); }
+.hero.home h1.fx-in .fx-word { filter: none; }
+.hero.home + .statement { border-top: 0; }
+@media (prefers-reduced-motion: reduce) { .hero-blobs i { animation: none; translate: none; } }
