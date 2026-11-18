@@ -1083,3 +1083,4 @@ h1, h2 { text-wrap: balance; }
 .tour-logo { display: block; width: 56px; height: 56px; margin: 0 0 26px 2px; filter: drop-shadow(0 6px 16px rgba(255, 116, 3, .35)); }
 @media (max-width: 1000px) { .tour-side { display: none; } }
 .has-glow .choice.choice-alt { background-color: var(--dark); background-image: var(--dots); background-size: 22px 22px; color: var(--on-dark); }
+.hh-row { grid-template-columns: 1fr; }
