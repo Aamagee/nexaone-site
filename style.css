@@ -1337,3 +1337,19 @@ footer .lg { font-size: 30px; color: var(--ink); }
 .brand:hover .lg-sun { transform: scale(1.06); }
 .lg-sun { transition: transform .4s cubic-bezier(.2, .7, .2, 1); }
 .lg-sun { background: var(--sun); width: 1.7em; height: 1.7em; margin-top: -.96em; left: -.1em; }
+
+/* ---------- Logo (founts 6 style): bold lowercase "nexa." with a soft sun orb behind, "studio" small ---------- */
+.lg.lg6 { display: inline-flex; align-items: baseline; gap: .28em; padding: .2em .1em; font-size: 28px; grid-template-columns: none; }
+.lg6 .lg-word { position: relative; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 800; letter-spacing: -0.045em; font-size: 1em; }
+.lg6 .lg-sub { margin: 0; justify-self: auto; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 400; font-size: .5em; letter-spacing: .02em; opacity: .75; }
+.lg6 .lg-sun {
+  left: 1.05em; top: 50%; width: 1.45em; height: 1.32em; margin-top: -.62em; border-radius: 50%;
+  background: var(--sun); filter: blur(1.5px);
+}
+.lg6 .lg-sun::after {
+  content: ""; position: absolute; left: 55%; top: 12%; width: 150%; height: 76%; border-radius: 50%;
+  background: linear-gradient(90deg, rgba(255, 116, 3, .4), rgba(255, 164, 2, 0)); filter: blur(6px);
+}
+.nav .lg.lg6 { font-size: 26px; }
+footer .lg.lg6 { font-size: 34px; }
+.lg6 .lg-sun { left: 1.55em; margin-top: -.7em; }
