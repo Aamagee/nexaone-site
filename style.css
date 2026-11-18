@@ -1174,3 +1174,4 @@ h1, h2 { text-wrap: balance; }
 /* homepage starts on the light badge: keep the nav solid from the top */
 .has-glow .nav { background: color-mix(in srgb, var(--dark) 94%, transparent); box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .6); }
 .badge-sec { padding-top: 130px; padding-bottom: 70px; }
+.hero.home + .statement { padding-top: 12vh; border-top: 1px solid var(--on-dark-line); }
