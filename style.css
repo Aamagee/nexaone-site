@@ -1287,3 +1287,6 @@ h1, h2, h3, .statement-text { letter-spacing: 0.02em; }
 .statement-text .hl .w { transition: color .35s ease; }
 .statement-text .hl .w.lit { background: var(--sunset-bright); -webkit-background-clip: text; background-clip: text; color: transparent; }
 @media (prefers-reduced-motion: reduce) { .statement-text .hl .w { background: var(--sunset-bright); -webkit-background-clip: text; background-clip: text; color: transparent; } }
+.choice h3 { font-size: 1.38rem; letter-spacing: .01em; }
+.choice { padding-bottom: 76px; }
+@media (min-width: 1001px) { .step-copy { max-width: 820px; } }
