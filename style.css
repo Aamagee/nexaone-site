@@ -663,3 +663,6 @@ input[type="range"]::-moz-range-thumb {
   .industry { padding: 24px 18px; }
   .select-wrap { min-width: 0; width: 100%; }
 }
+
+.plans.two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 1000px) { .plans.two { grid-template-columns: 1fr; max-width: 460px; } }

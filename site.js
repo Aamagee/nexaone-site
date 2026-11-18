@@ -126,26 +126,6 @@
     calc();
   }
 
-  /* ---------- Ad estimator ---------- */
-  var ad = $('#ad-estimator');
-  if (ad) {
-    var boxes = $$('.est-platforms input', ad);
-    function adCalc() {
-      var on = boxes.filter(function (b) { return b.checked; });
-      var n = on.length, sum = n * 100;
-      $('.ad-n-label', ad).textContent = n + (n === 1 ? ' platform' : ' platforms') + ' × $100';
-      $('.ad-monthly-line', ad).textContent = money(sum) + '/mo';
-      var t = $('.ad-sum', ad);
-      t.textContent = money(sum);
-      t.classList.remove('bump'); void t.offsetWidth; t.classList.add('bump');
-      var names = on.map(function (b) { return b.value === 'google' ? 'Google' : 'Facebook & Instagram'; });
-      ad._summary = 'Ad Management' + (names.length ? ': ' + names.join(' + ') : '') + ' (' + money(sum) + '/mo + $100 setup)';
-    }
-    boxes.forEach(function (b) { b.addEventListener('change', adCalc); });
-    $('.ad-btn', ad).addEventListener('click', function () { setPlan(ad._summary); });
-    adCalc();
-  }
-
   /* ---------- Custom Systems: business-type picker ---------- */
   $$('[data-industry]').forEach(function (box) {
     var sel = $('select', box);
