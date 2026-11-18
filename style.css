@@ -35,8 +35,8 @@
   --shadow: 0 1px 2px rgba(47, 27, 17, 0.05), 0 24px 48px -28px rgba(112, 73, 104, 0.45);
   --radius: 18px;
 
-  --display: "Unbounded", "Sora", system-ui, sans-serif;
-  --sans: "Sora", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --display: "Fraunces", Georgia, serif;
+  --sans: "Unbounded", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* Alternate palette (from colorsforsite.jpg) — preview only */
@@ -1120,7 +1120,7 @@ h1, h2 { text-wrap: balance; }
 .badge .b-arc, .badge .b-big { font-family: "Unbounded", sans-serif; font-weight: 800; fill: currentColor; }
 .badge .b-arc { font-size: 72px; }
 .badge .b-big { font-size: 64px; fill: url(#badge-grad); }
-.badge .b-small { font: 600 21px/1 "Sora", sans-serif; letter-spacing: .08em; fill: #fdf1e6; opacity: .8; }
+.badge .b-small { font: 500 19px/1 "Unbounded", sans-serif; letter-spacing: .08em; fill: #fdf1e6; opacity: .8; }
 .badge .b-line, .badge .b-rays path { fill: none; stroke: currentColor; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
 .badge .b-thin { stroke-width: 4; }
 .badge .b-face { fill: rgba(255, 138, 36, .12); stroke: currentColor; stroke-width: 7; }
@@ -1258,3 +1258,13 @@ h1, h2 { text-wrap: balance; }
 @media (min-width: 1001px) { .has-glow section.tour { padding-top: 0; } }
 .has-glow #services { padding-top: 0; }
 @media (max-width: 1000px) { .has-glow #services { padding-top: 48px; } }
+
+/* Fraunces (soft, fat display serif) for titles; Unbounded (light) for body */
+h1, h2, h3, .brand-name { font-family: var(--display); font-weight: 900; font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144; letter-spacing: -0.015em; }
+.brand-sub { font-weight: 400; font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144; }
+body { font-weight: 300; font-size: 0.95rem; }
+strong, b, .btn, .eyebrow, .plan-name, .price-group, .tour-step h3 + p strong { font-weight: 500; }
+.eyebrow { font-weight: 500; letter-spacing: .12em; }
+.has-glow .block-head h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.04; }
+.step-copy h3, .choice h3 { line-height: 1.1; }
+.statement-text { font-family: var(--display); font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144; letter-spacing: -0.01em; }
