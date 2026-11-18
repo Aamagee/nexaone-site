@@ -1397,3 +1397,5 @@ footer .lg6 .lg-sub { color: #c25a26; }
 .lg6 .lg-sun { right: .38em; }
 .sky-sun { transition: opacity .6s ease; }
 .tour-stage.logo-on .sky-sun { opacity: 0; }
+.intro-orb { right: .95em; }
+.lg6 .lg-sun { right: .85em; }
