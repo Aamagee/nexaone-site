@@ -1268,3 +1268,5 @@ strong, b, .btn, .eyebrow, .plan-name, .price-group, .tour-step h3 + p strong { 
 .has-glow .block-head h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.04; }
 .step-copy h3, .choice h3 { line-height: 1.1; }
 .statement-text { font-family: var(--display); font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144; letter-spacing: -0.01em; }
+.choice h3 { font-size: 1.45rem; }
+.step-copy h3 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); }
