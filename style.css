@@ -1138,5 +1138,27 @@ h1, h2 { text-wrap: balance; }
 @keyframes b-walk { 0%, 100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-8px) rotate(1.5deg); } }
 @keyframes b-spin { to { transform: rotate(360deg); } }
 @keyframes b-twinkle { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(.55); opacity: .5; } }
-.hero.home .hh { padding-top: 110px; padding-bottom: 64px; }
+.hero.home .hh { padding-top: 140px; padding-bottom: 96px; }
 @media (prefers-reduced-motion: reduce) { .badge .b-guy, .badge .b-rays, .badge .b-sparkles path { animation: none; } }
+
+/* ---------- Slogan badge section (under the header): walking sun mascot ---------- */
+.badge-sec { padding: 110px 0 10px; }
+.badge-sec .badge { margin: 0 auto; width: min(480px, 88vw); color: #e8611c; }
+.badge-sec .badge .b-small { fill: var(--ink); opacity: .75; }
+.badge-sec .badge .b-face { fill: rgba(255, 164, 2, .22); }
+.badge-sec .badge .b-sparkles path { fill: #ff9a1f; }
+.badge .b-sole { fill: #fff3e2; stroke: currentColor; stroke-width: 6; stroke-linejoin: round; }
+.badge .b-lace { fill: none; stroke: #fff3e2; stroke-width: 4; stroke-linecap: round; }
+.badge .b-case-band { stroke: #fff3e2; stroke-width: 4; opacity: .8; }
+.badge .b-shoe { stroke: currentColor; stroke-width: 6; stroke-linejoin: round; }
+/* walk cycle: legs swing from the hip, body bounces each step, briefcase sways */
+.badge .b-leg, .badge .b-body, .badge .b-case-arm { transform-box: view-box; }
+.badge .b-leg-front { transform-origin: 286px 360px; animation: b-step 1s ease-in-out infinite; }
+.badge .b-leg-back { transform-origin: 314px 360px; animation: b-step 1s ease-in-out -.5s infinite; }
+.badge .b-body { transform-origin: 300px 360px; animation: b-bounce .5s ease-in-out infinite alternate; }
+.badge .b-case-arm { transform-origin: 376px 312px; animation: b-sway 1s ease-in-out infinite; }
+.badge .b-guy { animation: none; }
+@keyframes b-step { 0%, 100% { transform: rotate(24deg); } 50% { transform: rotate(-24deg); } }
+@keyframes b-bounce { from { transform: translateY(0); } to { transform: translateY(-9px) rotate(1deg); } }
+@keyframes b-sway { 0%, 100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
+@media (prefers-reduced-motion: reduce) { .badge .b-leg, .badge .b-body, .badge .b-case-arm { animation: none; } }
