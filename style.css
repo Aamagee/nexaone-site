@@ -1077,3 +1077,8 @@ h1, h2 { text-wrap: balance; }
 .fx-word { filter: blur(4px); }
 .fx-in .fx-word { filter: none; }
 @media (prefers-reduced-motion: reduce) { .float { animation: none; } .tour-step.seen .float { transform: none; } }
+
+/* sun logo above the walkthrough list */
+.tour-side { align-self: center; }
+.tour-logo { display: block; width: 56px; height: 56px; margin: 0 0 26px 2px; filter: drop-shadow(0 6px 16px rgba(255, 116, 3, .35)); }
+@media (max-width: 1000px) { .tour-side { display: none; } }
