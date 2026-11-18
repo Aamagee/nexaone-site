@@ -1162,3 +1162,9 @@ h1, h2 { text-wrap: balance; }
 @keyframes b-bounce { from { transform: translateY(0); } to { transform: translateY(-9px) rotate(1deg); } }
 @keyframes b-sway { 0%, 100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
 @media (prefers-reduced-motion: reduce) { .badge .b-leg, .badge .b-body, .badge .b-case-arm { animation: none; } }
+.badge .b-leg-front { transform-origin: 286px 368px; }
+.badge .b-leg-back { transform-origin: 314px 368px; }
+.badge-sec .badge .b-face { fill: #ffe2b8; }
+.badge .b-wave { transform-box: view-box; transform-origin: 226px 280px; animation: b-wave 1.1s ease-in-out infinite; }
+@keyframes b-wave { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(16deg); } }
+@media (prefers-reduced-motion: reduce) { .badge .b-wave { animation: none; } }
