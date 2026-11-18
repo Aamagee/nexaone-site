@@ -1109,3 +1109,5 @@ h1, h2 { text-wrap: balance; }
 .tour-side .tour-nav a { padding: 10px 12px; margin-left: -12px; border-radius: 12px; transition: color .35s, opacity .35s, background .35s; }
 .tour-side .tour-nav a.on { background: linear-gradient(90deg, rgba(255, 116, 3, .16), rgba(255, 164, 2, .04)); box-shadow: inset 3px 0 0 var(--accent-2); }
 .tour-stage { grid-template-columns: 300px 1fr; }
+.tour-side .tour-nav a:not(.on) { color: var(--ink-soft); opacity: .7; }
+.tour-side .tour-nav a:not(.on):hover { opacity: 1; }
