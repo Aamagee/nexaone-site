@@ -1402,3 +1402,5 @@ footer .lg6 .lg-sub { color: #c25a26; }
 .intro-tag { margin: 22px 0 0; font: italic 700 clamp(1.4rem, 2.6vw, 2.2rem)/1.2 "Playfair Display", Georgia, serif; color: #fdf1e6; letter-spacing: .01em; }
 .intro-tag .kw { background: var(--sunset-bright); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .intro-tag + .intro-hint { margin-top: 30px; }
+.intro-tag { font: 400 clamp(1rem, 1.6vw, 1.3rem)/1.4 "Unbounded", sans-serif; font-style: normal; letter-spacing: .04em; }
+.intro-tag .kw { font-weight: 600; }
