@@ -40,6 +40,7 @@
       hero.style.setProperty('--sun-y', (y * 0.45).toFixed(1) + 'px');
       hero.style.setProperty('--r1-y', (y * 0.16).toFixed(1) + 'px');
       hero.style.setProperty('--r2-y', (y * 0.07).toFixed(1) + 'px');
+      hero.style.setProperty('--arc-rot', (y * 0.02).toFixed(2) + 'deg');
     };
     window.addEventListener('scroll', function () {
       if (!ticking) { ticking = true; requestAnimationFrame(paint); }

@@ -869,3 +869,43 @@ input[type="range"]::-moz-range-thumb {
 .v-mkt > *, .v-sys > * { width: 100%; }
 .v-mkt .ad-card { max-width: 230px; justify-self: end; }
 .ad-cta em { white-space: nowrap; }
+
+/* ==========================================================
+   Homepage header: glowing sunset rings (homepage only)
+   ========================================================== */
+.hero.home { min-height: 100vh; min-height: 100svh; padding: 0; display: flex; flex-direction: column; justify-content: flex-end; }
+.hero.home::before { background: radial-gradient(55% 60% at 92% 0%, rgba(255, 116, 3, .2), transparent 70%); }
+.hero.home .hero-sun { top: -300px; right: -240px; bottom: auto; width: 640px; height: 640px; opacity: .85; }
+.arcs { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.arcs circle { fill: none; stroke: url(#arc-grad); stroke-linecap: butt; transform-box: view-box; transform-origin: 1500px -120px; rotate: calc(var(--arc-rot, 0deg) * var(--k, 1)); }
+.arc-glow circle { stroke-width: 40; stroke-dasharray: 46 54; opacity: .35; }
+.arc-rings circle { animation: arc-in 1.8s cubic-bezier(.2, .7, .2, 1) var(--d, 0s) both; }
+@keyframes arc-in { from { stroke-dashoffset: 40; opacity: 0; } to { stroke-dashoffset: 0; opacity: 1; } }
+
+.hh { position: relative; z-index: 2; width: 100%; padding-top: 140px; padding-bottom: 56px; }
+.hh-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: end; }
+.hero.home h1 { font-size: clamp(3rem, 7.6vw, 6.6rem); font-weight: 600; line-height: 1.02; letter-spacing: -0.035em; max-width: 10ch; }
+.hero.home .promo-badge { margin: 0 0 28px; }
+.hh-side { padding-bottom: 10px; }
+.hh-side p { color: var(--on-dark-soft); font-size: 1.05rem; line-height: 1.6; margin: 0 0 26px; max-width: 40ch; }
+
+.hh-strip { position: relative; z-index: 2; border-top: 1px solid var(--on-dark-line); padding: 26px 0 34px; }
+.hh-strip p { text-align: center; color: var(--on-dark-soft); font-size: .9rem; margin: 0 0 18px; }
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: marquee 48s linear infinite; }
+.marquee-track span { display: inline-flex; align-items: center; gap: 22px; padding-right: 22px; white-space: nowrap; font: 500 clamp(1.05rem, 1.6vw, 1.35rem)/1 var(--display); color: rgba(253, 241, 230, .55); }
+.marquee-track span::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+@media (max-width: 1000px) {
+  .hh-row { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 760px) {
+  .hh { padding-top: 120px; padding-bottom: 40px; }
+  .hero.home .hero-sun { top: -200px; right: -180px; width: 420px; height: 420px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arc-rings circle, .marquee-track { animation: none; }
+}
+.arc-rings { opacity: .82; }
+.hh-side p { text-shadow: 0 1px 14px rgba(30, 15, 28, .9); }

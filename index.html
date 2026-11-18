@@ -40,35 +40,71 @@
 </nav>
 <main id="main">
 
-<header class="hero">
+<header class="hero home">
   <div class="hero-sun" aria-hidden="true"></div>
-  <div class="wrap hero-inner">
-    <h1>Let's build your <span class="glow">business.</span></h1>
-    <p class="lede">Nexa designs your website, runs your marketing, and builds custom systems that save you time. You work with the person actually doing the work, get straight answers, and see every price before you commit.</p>
-    <a class="promo-badge" href="/pricing/" aria-label="Discounted pricing while I build my portfolio. See pricing">
-      <svg class="promo-ring" viewBox="0 0 100 100" aria-hidden="true">
-        <defs><path id="promo-circle" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1 -76 0"/></defs>
-        <text><textPath href="#promo-circle" textLength="236">DISCOUNTED PRICING &#8226; WHILE I BUILD MY PORTFOLIO &#8226; </textPath></text>
-      </svg>
-      <span class="promo-core" aria-hidden="true">%</span>
-    </a>
-    <div class="hero-actions">
-      <a class="btn sun" href="/pricing/#contact">Get a quote</a>
-      <a class="btn glass" href="/pricing/">See pricing</a>
+  <svg class="arcs" viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMin slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="arc-grad" gradientUnits="userSpaceOnUse" x1="620" y1="760" x2="1440" y2="40">
+        <stop offset="0" stop-color="#704968" stop-opacity="0"/>
+        <stop offset=".3" stop-color="#cb3c18" stop-opacity=".55"/>
+        <stop offset=".6" stop-color="#ff7403"/>
+        <stop offset=".85" stop-color="#ffc77a"/>
+        <stop offset="1" stop-color="#fff3e2"/>
+      </linearGradient>
+      <filter id="arc-glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="16"/></filter>
+    </defs>
+    <g class="arc-glow" filter="url(#arc-glow)">
+      <circle cx="1500" cy="-120" r="560" pathLength="100" style="--k:1"/>
+      <circle cx="1500" cy="-120" r="700" pathLength="100" style="--k:1.4"/>
+    </g>
+    <g class="arc-rings">
+      <circle cx="1500" cy="-120" r="480" pathLength="100" style="--k:.7;--d:.1s" stroke-width="14" stroke-dasharray="24 3 9 64"/>
+      <circle cx="1500" cy="-120" r="560" pathLength="100" style="--k:1;--d:.2s" stroke-width="26" stroke-dasharray="34 4 14 48"/>
+      <circle cx="1500" cy="-120" r="630" pathLength="100" style="--k:1.25;--d:.3s" stroke-width="18" stroke-dasharray="18 5 26 51"/>
+      <circle cx="1500" cy="-120" r="700" pathLength="100" style="--k:1.5;--d:.4s" stroke-width="30" stroke-dasharray="40 3 8 49"/>
+      <circle cx="1500" cy="-120" r="780" pathLength="100" style="--k:1.8;--d:.5s" stroke-width="12" stroke-dasharray="22 6 30 42"/>
+      <circle cx="1500" cy="-120" r="860" pathLength="100" style="--k:2.1;--d:.6s" stroke-width="20" stroke-dasharray="36 4 12 48"/>
+    </g>
+  </svg>
+
+  <div class="wrap hh">
+    <div class="hh-row">
+      <div class="hh-main">
+        <a class="promo-badge" href="/pricing/" aria-label="Discounted pricing while I build my portfolio. See pricing">
+          <svg class="promo-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <defs><path id="promo-circle" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1 -76 0"/></defs>
+            <text><textPath href="#promo-circle" textLength="236">DISCOUNTED PRICING &#8226; WHILE I BUILD MY PORTFOLIO &#8226; </textPath></text>
+          </svg>
+          <span class="promo-core" aria-hidden="true">%</span>
+        </a>
+        <h1>Let's build your <span class="glow">business.</span></h1>
+      </div>
+      <div class="hh-side">
+        <p>Nexa designs your website, runs your marketing, and builds custom systems that save you time. You work with the person actually doing the work.</p>
+        <div class="hero-actions">
+          <a class="btn sun" href="/pricing/#contact">Get a quote</a>
+          <a class="btn glass" href="/pricing/">See pricing</a>
+        </div>
+      </div>
     </div>
   </div>
-  <svg class="ridges" viewBox="0 0 1440 230" preserveAspectRatio="none" aria-hidden="true">
-    <path class="r1" d="M0 120L130 78L250 112L390 40L520 98L650 66L790 118L910 48L1050 96L1190 28L1310 86L1440 58V230H0Z"/>
-    <path class="r2" d="M0 172L160 122L300 160L460 102L610 150L760 112L900 166L1060 116L1220 152L1340 122L1440 142V230H0Z"/>
-    <path class="r3" d="M0 214C240 186 480 202 720 193C960 184 1200 206 1440 190V230H0Z"/>
-  </svg>
+
+  <div class="hh-strip">
+    <div class="wrap"><p>All built in-house, from scratch</p></div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Custom websites</span><span>Google Ads</span><span>Facebook &amp; Instagram ads</span><span>AI chatbots</span><span>Booking systems</span><span>Flyers &amp; banners</span><span>Client portals</span><span>Custom apps</span>
+        <span>Custom websites</span><span>Google Ads</span><span>Facebook &amp; Instagram ads</span><span>AI chatbots</span><span>Booking systems</span><span>Flyers &amp; banners</span><span>Client portals</span><span>Custom apps</span>
+      </div>
+    </div>
+  </div>
 </header>
 
 <section class="tour" id="services" aria-labelledby="tour-title">
   <div class="wrap">
     <div class="tour-head reveal">
       <p class="tour-kicker">What Nexa does</p>
-      <h2 id="tour-title">One person, building <span class="glow-ink">everything your business needs online.</span></h2>
+      <h2 id="tour-title">Everything your business needs <span class="glow-ink">to grow.</span></h2>
     </div>
     <div class="tour-grid">
       <ol class="tour-nav">
@@ -93,8 +129,8 @@
             <div class="chip chip-b">Works on every phone</div>
           </div>
           <p class="step-num">01 / Websites</p>
-          <h3>A website that looks like you, not a template.</h3>
-          <p>Clean, professional sites on your own domain, designed around your business. Love how it looks, or your money back.</p>
+          <h3>A website perfect for your brand.</h3>
+          <p>No templates used, ever. Every site is designed from scratch on your own domain. Love how it looks, or your money back.</p>
           <a class="step-link" href="/websites/">See websites <span>&rarr;</span></a>
         </article>
 
