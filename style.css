@@ -1168,3 +1168,4 @@ h1, h2 { text-wrap: balance; }
 .badge .b-wave { transform-box: view-box; transform-origin: 226px 280px; animation: b-wave 1.1s ease-in-out infinite; }
 @keyframes b-wave { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(16deg); } }
 @media (prefers-reduced-motion: reduce) { .badge .b-wave { animation: none; } }
+.tour { padding-top: 40px; }
