@@ -1274,3 +1274,16 @@ strong, b, .btn, .eyebrow, .plan-name, .price-group, .tour-step h3 + p strong { 
 /* Abril Fatface has one weight: keep it at 400 so the browser does not fake-bold it */
 h1, h2, h3, .brand-name, .statement-text { font-family: var(--display); font-weight: 400; font-variation-settings: normal; letter-spacing: 0; }
 .statement-text { line-height: 1.22; }
+
+/* ---------- Bigger, airier titles + sunset-gradient key words ---------- */
+:root { --sunset: linear-gradient(100deg, #cb3c18 0%, #ff5e3a 30%, #ff7403 60%, #ffa402 100%); --sunset-bright: linear-gradient(100deg, #ff6a3a 0%, #ff8a2b 40%, #ffb347 75%, #ffd27a 100%); }
+h1, h2, h3, .statement-text { letter-spacing: 0.02em; }
+.has-glow .block-head h2 { font-size: clamp(2.6rem, 5.6vw, 4.6rem); line-height: 1.04; }
+.step-copy h3 { font-size: clamp(1.9rem, 3.1vw, 2.6rem); line-height: 1.08; }
+.statement-text { font-size: clamp(1.9rem, 3.7vw, 3.1rem); line-height: 1.22; max-width: 1040px; }
+.choice h3 { font-size: 1.65rem; }
+.kw { background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: .04em; }
+/* statement: highlighted words lift into the bright sunset gradient as they light up */
+.statement-text .hl .w { transition: color .35s ease; }
+.statement-text .hl .w.lit { background: var(--sunset-bright); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@media (prefers-reduced-motion: reduce) { .statement-text .hl .w { background: var(--sunset-bright); -webkit-background-clip: text; background-clip: text; color: transparent; } }
