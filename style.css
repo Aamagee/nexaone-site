@@ -1085,3 +1085,4 @@ h1, h2 { text-wrap: balance; }
 .has-glow .choice.choice-alt { background-color: var(--dark); background-image: var(--dots); background-size: 22px 22px; color: var(--on-dark); }
 .hh-row { grid-template-columns: 1fr; }
 .hero.home .hh { padding-bottom: 96px; }
+.tour-step h3 { margin-top: 26px; }
