@@ -1,10 +1,9 @@
-// PREVIEW ONLY: palette + heading-font switcher for reviewing the redesign.
+// PREVIEW ONLY: palette switcher for reviewing the redesign.
 // Delete this file and its <script> tag in each page before going live.
 (function () {
   var root = document.documentElement;
   var groups = [
-    { key: 'nexa-palette', attr: 'data-palette', label: 'Palette', opts: [['sunset', 'Sunset'], ['earthy', 'Earthy']] },
-    { key: 'nexa-font', attr: 'data-font', label: 'Headings', opts: [['fraunces', 'Fraunces'], ['outfit', 'Outfit'], ['space', 'Space Grotesk']] }
+    { key: 'nexa-palette', attr: 'data-palette', label: 'Palette', opts: [['sunset', 'Sunset'], ['earthy', 'Earthy']] }
   ];
   function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
