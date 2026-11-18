@@ -29,6 +29,24 @@
   onScroll();
   if (top) top.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
+  /* ---------- Hero parallax: sun sets behind the mountains on scroll ---------- */
+  var hero = $('.hero'), sun = $('.hero-sun');
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (hero && sun && !still) {
+    var ticking = false;
+    var paint = function () {
+      ticking = false;
+      var y = Math.min(Math.max(window.scrollY, 0), hero.offsetHeight);
+      hero.style.setProperty('--sun-y', (y * 0.45).toFixed(1) + 'px');
+      hero.style.setProperty('--r1-y', (y * 0.16).toFixed(1) + 'px');
+      hero.style.setProperty('--r2-y', (y * 0.07).toFixed(1) + 'px');
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+    }, { passive: true });
+    paint();
+  }
+
   /* ---------- Mobile menu ---------- */
   var toggle = $('.menu-toggle');
   function closeMenu() {
@@ -136,7 +154,7 @@
       btn.addEventListener('click', function (e) {
         var name = btn.getAttribute('data-plan');
         if (form) setPlan(name);
-        else { e.preventDefault(); location.href = '/?plan=' + encodeURIComponent(name) + '#contact'; }
+        else { e.preventDefault(); location.href = '/pricing/?plan=' + encodeURIComponent(name) + '#contact'; }
       });
     });
   });
