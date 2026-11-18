@@ -143,6 +143,46 @@
     });
   }
 
+  /* ---------- Headings rise in word by word, subtext fades up after ---------- */
+  if (!still && 'IntersectionObserver' in window) {
+    var skip = '.tour-visual, .tour-step, .statement, .plan, .choice, .estimator, .industry-panel, form';
+    var fxHeads = $$('main h1, main h2, main h3').filter(function (el) { return !el.closest(skip); });
+    var fxSubs = $$('main p, main li').filter(function (el) {
+      return !el.closest(skip) && !el.closest('.nav') && el.textContent.trim();
+    });
+    fxHeads.forEach(function (h) {
+      h.classList.add('fx-head');
+      if (h.tagName === 'H3') return;
+      var i = 0;
+      Array.prototype.slice.call(h.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var s = document.createElement('span');
+            s.className = 'fx-word';
+            s.style.setProperty('--i', i++);
+            s.textContent = part;
+            frag.appendChild(s);
+          });
+          h.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          child.classList.add('fx-word');
+          child.style.setProperty('--i', i++);
+        }
+      });
+      h.classList.add('fx-split');
+    });
+    fxSubs.forEach(function (p) { p.classList.add('fx-sub'); });
+    var fxIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('fx-in'); fxIO.unobserve(e.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+    fxHeads.concat(fxSubs).forEach(function (el) { fxIO.observe(el); });
+  }
+
   /* ---------- Statement: words light up as it scrolls through the screen ---------- */
   var statement = $('[data-words]');
   if (statement) {
