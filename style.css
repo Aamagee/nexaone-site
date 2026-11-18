@@ -1315,3 +1315,9 @@ h1, h2, h3, .brand-name, .statement-text { font-family: var(--display); font-sty
 }
 @keyframes copy-float { 0%, 100% { transform: translateY(0) rotate(-.4deg); } 50% { transform: translateY(-10px) rotate(.4deg); } }
 @media (prefers-reduced-motion: reduce) { .tour-step .step-copy { animation: none; } }
+
+/* floating card: title (Playfair italic) / subtitle (Unbounded medium) / description (Unbounded light) */
+.step-copy .card-title { font-size: clamp(2rem, 3vw, 2.7rem); line-height: 1; margin: 0 0 10px; }
+.step-copy .card-sub { font-family: var(--sans); font-style: normal; font-weight: 500; font-size: 1rem; line-height: 1.35; color: var(--ink); margin: 0 0 8px; }
+.step-copy .card-sub + p { font-weight: 300; font-size: .86rem; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+@media (min-width: 1001px) { .tour-step .step-copy p.card-sub { font-size: 1rem; } }
