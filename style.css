@@ -35,7 +35,7 @@
   --shadow: 0 1px 2px rgba(47, 27, 17, 0.05), 0 24px 48px -28px rgba(112, 73, 104, 0.45);
   --radius: 18px;
 
-  --display: "Geist", system-ui, sans-serif;
+  --display: "Unbounded", "Geist", system-ui, sans-serif;
   --sans: "Geist", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
@@ -1020,3 +1020,16 @@ h3.fx-head.fx-in { opacity: 1; translate: none; }
 li.fx-sub:nth-child(2) { transition-delay: .24s; } li.fx-sub:nth-child(3) { transition-delay: .3s; }
 li.fx-sub:nth-child(4) { transition-delay: .36s; } li.fx-sub:nth-child(5) { transition-delay: .42s; }
 li.fx-sub:nth-child(n+6) { transition-delay: .48s; }
+
+/* Unbounded is wide: tune title sizes + tracking */
+h1, h2, h3 { letter-spacing: -0.02em; }
+.hero.home h1 { font-size: clamp(2.5rem, 6.2vw, 5.4rem); letter-spacing: -0.03em; }
+.has-glow .tour-head h2, .has-glow .block-head h2 { font-size: clamp(1.9rem, 3.9vw, 3rem); letter-spacing: -0.025em; line-height: 1.1; }
+.tour-nav a { font-size: clamp(1.05rem, 1.5vw, 1.35rem); white-space: nowrap; }
+.tour-step h3 { font-size: clamp(1.3rem, 2.1vw, 1.65rem); }
+.statement-text { font-size: clamp(1.4rem, 2.8vw, 2.3rem); line-height: 1.32; }
+.choice h3 { font-size: 1.1rem; }
+.marquee-track span { font-size: clamp(.95rem, 1.35vw, 1.15rem); }
+.tour-grid { grid-template-columns: 280px 1fr; }
+.has-glow .block-head.center { max-width: 920px; }
+h1, h2 { text-wrap: balance; }
