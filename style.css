@@ -27,8 +27,8 @@
   --grad: linear-gradient(120deg, #cb3c18 0%, #ff7403 55%, #ffa402 100%);
   --sun: radial-gradient(circle at 50% 50%, #ffd27a 0%, #ffa402 30%, #ff7403 55%, #cb3c18 75%, rgba(203, 60, 24, 0) 100%);
   --glow: rgba(255, 116, 3, 0.22);
-  --ridge-1: #704968;
-  --ridge-2: #4a2a42;
+  --ridge-1: #9a4f30;
+  --ridge-2: #4f2b1a;
   --check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23cb3c18' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
   --shadow-sm: 0 1px 2px rgba(47, 27, 17, 0.06);
@@ -1033,3 +1033,47 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .tour-grid { grid-template-columns: 280px 1fr; }
 .has-glow .block-head.center { max-width: 920px; }
 h1, h2 { text-wrap: balance; }
+
+/* ==========================================================
+   Pinned walkthrough (desktop) + performance pass
+   ========================================================== */
+.tour-stage { display: grid; grid-template-columns: 280px 1fr; gap: 64px; }
+@media (min-width: 1001px) {
+  .tour { padding-bottom: 40px; }
+  .tour-head { margin-bottom: 0; }
+  .tour-grid { display: block; height: calc(100vh + 3 * 70vh); position: relative; }
+  .tour-stage { position: sticky; top: 0; height: 100vh; align-items: center; padding-top: 72px; }
+  .tour-nav { position: static; top: auto; align-self: center; }
+  .tour-steps { position: relative; height: min(640px, calc(100vh - 150px)); }
+  .tour-step, .tour-step:last-child { position: absolute; inset: 0; padding: 0; display: flex; flex-direction: column; justify-content: center; opacity: 0; visibility: hidden; transition: opacity .5s ease, visibility 0s linear .5s; }
+  .tour-step.active { opacity: 1; visibility: visible; transition: opacity .5s ease .1s, visibility 0s; }
+  .tour-visual { width: min(100%, calc((100vh - 330px) * 1.6)); aspect-ratio: 16 / 10; flex: none; }
+  .step-num { margin-top: 24px; }
+}
+/* floats only run while their panel is showing */
+.tour-step:not(.seen) .float { animation-play-state: paused; }
+
+/* lighter effects: no live blur over moving layers */
+.page-glow i { filter: none; }
+.page-glow .g1 { background: radial-gradient(circle, rgba(255, 116, 3, .36), rgba(255, 116, 3, .12) 40%, rgba(255, 116, 3, 0) 70%); }
+.page-glow .g2 { background: radial-gradient(circle, rgba(255, 164, 2, .34), rgba(255, 164, 2, .1) 40%, rgba(255, 164, 2, 0) 70%); }
+.page-glow .g3 { background: radial-gradient(circle, rgba(203, 60, 24, .24), rgba(203, 60, 24, .08) 40%, rgba(203, 60, 24, 0) 70%); }
+.has-glow .choice { backdrop-filter: none; background: rgba(255, 255, 255, .86); }
+.arcs { will-change: transform; transform-origin: 104% -13%; rotate: var(--arc-rot, 0deg); }
+.arcs circle { rotate: none; }
+.arc-rings circle { filter: none; }
+.arcs .arc-rings { filter: drop-shadow(0 0 0 transparent); }
+
+/* headline breaks cleanly */
+.hero.home h1 { max-width: 12ch; }
+.hero.home h1 { max-width: 14.5ch; text-wrap: wrap; }
+
+/* ---------- Perf: GPU-friendly floats (no per-frame custom property) ---------- */
+@keyframes bob2 { 0%, 100% { translate: 0 0; } 50% { translate: 0 calc(var(--amp, 8px) * -1); } }
+.float { animation-name: bob2; translate: none; }
+.tour-step.seen .float { transform: translate3d(calc(var(--vx, 0) * var(--depth, 16) * 1px), calc(var(--vy, 0) * var(--depth, 16) * 1px), 0); }
+.tour-step.built .float { transition: transform .25s ease-out, scale .4s ease, filter .5s ease; }
+.arcs, .hero.home .hero-sun, .page-glow i, .marquee-track { will-change: transform, translate, rotate; }
+.fx-word { filter: blur(4px); }
+.fx-in .fx-word { filter: none; }
+@media (prefers-reduced-motion: reduce) { .float { animation: none; } .tour-step.seen .float { transform: none; } }

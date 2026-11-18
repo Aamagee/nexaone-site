@@ -59,17 +59,23 @@
         gy = e.clientY / window.innerHeight - 0.5;
       }, { passive: true });
     }
+    var glowRunning = false;
     var glowLoop = function () {
       var h = document.documentElement.scrollHeight - window.innerHeight;
       sp = h > 0 ? window.scrollY / h : 0;
-      gcx += (gx - gcx) * 0.05; gcy += (gy - gcy) * 0.05; scp += (sp - scp) * 0.08;
+      gcx += (gx - gcx) * 0.06; gcy += (gy - gcy) * 0.06; scp += (sp - scp) * 0.1;
       var vw = window.innerWidth, vh = window.innerHeight, a = scp * Math.PI * 2;
       blobs[0].style.transform = 'translate3d(' + (gcx * vw * 0.22 + Math.sin(a) * vw * 0.12).toFixed(1) + 'px,' + (gcy * vh * 0.22 + scp * vh * 0.5).toFixed(1) + 'px,0) scale(' + (1 + Math.sin(a) * 0.15).toFixed(3) + ')';
       blobs[1].style.transform = 'translate3d(' + (gcx * vw * -0.16 - Math.sin(a * 0.8) * vw * 0.18).toFixed(1) + 'px,' + (gcy * vh * -0.16 + Math.cos(a) * vh * 0.2).toFixed(1) + 'px,0)';
       blobs[2].style.transform = 'translate3d(' + (gcx * vw * 0.3 + Math.cos(a * 1.3) * vw * 0.15).toFixed(1) + 'px,' + (gcy * vh * 0.3 - scp * vh * 0.4).toFixed(1) + 'px,0) scale(' + (1.1 - Math.cos(a) * 0.15).toFixed(3) + ')';
-      requestAnimationFrame(glowLoop);
+      // only keep animating while something is still settling
+      if (Math.abs(gx - gcx) > 0.002 || Math.abs(gy - gcy) > 0.002 || Math.abs(sp - scp) > 0.0005) requestAnimationFrame(glowLoop);
+      else glowRunning = false;
     };
-    requestAnimationFrame(glowLoop);
+    var wakeGlow = function () { if (!glowRunning) { glowRunning = true; requestAnimationFrame(glowLoop); } };
+    window.addEventListener('scroll', wakeGlow, { passive: true });
+    if (finePointer) window.addEventListener('pointermove', wakeGlow, { passive: true });
+    wakeGlow();
   }
 
   /* ---------- Interactive header: glow follows the cursor, rings + sun drift ---------- */
@@ -105,7 +111,49 @@
     var setOn = function (id) {
       tourLinks.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + id); });
     };
-    if ('IntersectionObserver' in window && !still) {
+    var tourGrid = $('.tour-grid');
+    var pinned = function () { return window.matchMedia('(min-width: 1001px)').matches; };
+    var activeIdx = -1;
+    var activate = function (i) {
+      if (i === activeIdx) return;
+      activeIdx = i;
+      steps.forEach(function (s, j) {
+        s.classList.toggle('active', j === i);
+        clearTimeout(s._built);
+        if (j === i) {
+          if (still) s.classList.add('seen', 'built');
+          else {
+            setTimeout(function () { s.classList.add('seen'); }, 30);
+            s._built = setTimeout(function () { s.classList.add('built'); }, 2600);
+          }
+        } else if (!still) s.classList.remove('seen', 'built'); // replay its build-in next time
+      });
+      setOn(steps[i].id);
+    };
+    var tourScroll = function () {
+      if (!pinned() || !tourGrid) return;
+      var r = tourGrid.getBoundingClientRect(), track = r.height - window.innerHeight;
+      var p = track > 0 ? Math.min(Math.max(-r.top / track, 0), 0.9999) : 0;
+      activate(Math.floor(p * steps.length));
+    };
+    tourLinks.forEach(function (a, i) {
+      a.addEventListener('click', function (e) {
+        if (!pinned() || !tourGrid) return;
+        e.preventDefault();
+        var top = tourGrid.getBoundingClientRect().top + window.scrollY;
+        var track = tourGrid.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: top + track * (i + 0.5) / steps.length, behavior: still ? 'auto' : 'smooth' });
+      });
+    });
+    window.addEventListener('scroll', tourScroll, { passive: true });
+    window.addEventListener('resize', function () {
+      if (!pinned()) { activeIdx = -1; steps.forEach(function (s) { s.classList.remove('active'); s.classList.add('seen'); }); }
+      tourScroll();
+    });
+    if (pinned()) {
+      activate(0);
+      tourScroll();
+    } else if ('IntersectionObserver' in window && !still) {
       var seen = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (e.isIntersecting) { e.target.classList.add('seen'); seen.unobserve(e.target); }
