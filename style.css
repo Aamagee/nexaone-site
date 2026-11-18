@@ -1404,3 +1404,4 @@ footer .lg6 .lg-sub { color: #c25a26; }
 .intro-tag + .intro-hint { margin-top: 30px; }
 .intro-tag { font: 400 clamp(1rem, 1.6vw, 1.3rem)/1.4 "Unbounded", sans-serif; font-style: normal; letter-spacing: .04em; }
 .intro-tag .kw { font-weight: 600; }
+.intro-tag { font-size: clamp(.85rem, 1.2vw, 1rem); letter-spacing: .34em; text-transform: uppercase; margin-right: -.34em; }
