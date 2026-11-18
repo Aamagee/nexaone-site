@@ -48,6 +48,57 @@
     paint();
   }
 
+  /* ---------- Page gradient: blobs drift with scroll and lean toward the cursor ---------- */
+  var blobs = $$('.page-glow i');
+  if (blobs.length && !still) {
+    var gx = 0, gy = 0, gcx = 0, gcy = 0, sp = 0, scp = 0;
+    var finePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+    if (finePointer) {
+      window.addEventListener('pointermove', function (e) {
+        gx = e.clientX / window.innerWidth - 0.5;
+        gy = e.clientY / window.innerHeight - 0.5;
+      }, { passive: true });
+    }
+    var glowLoop = function () {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      sp = h > 0 ? window.scrollY / h : 0;
+      gcx += (gx - gcx) * 0.05; gcy += (gy - gcy) * 0.05; scp += (sp - scp) * 0.08;
+      var vw = window.innerWidth, vh = window.innerHeight, a = scp * Math.PI * 2;
+      blobs[0].style.transform = 'translate3d(' + (gcx * vw * 0.22 + Math.sin(a) * vw * 0.12).toFixed(1) + 'px,' + (gcy * vh * 0.22 + scp * vh * 0.5).toFixed(1) + 'px,0) scale(' + (1 + Math.sin(a) * 0.15).toFixed(3) + ')';
+      blobs[1].style.transform = 'translate3d(' + (gcx * vw * -0.16 - Math.sin(a * 0.8) * vw * 0.18).toFixed(1) + 'px,' + (gcy * vh * -0.16 + Math.cos(a) * vh * 0.2).toFixed(1) + 'px,0)';
+      blobs[2].style.transform = 'translate3d(' + (gcx * vw * 0.3 + Math.cos(a * 1.3) * vw * 0.15).toFixed(1) + 'px,' + (gcy * vh * 0.3 - scp * vh * 0.4).toFixed(1) + 'px,0) scale(' + (1.1 - Math.cos(a) * 0.15).toFixed(3) + ')';
+      requestAnimationFrame(glowLoop);
+    };
+    requestAnimationFrame(glowLoop);
+  }
+
+  /* ---------- Interactive header: glow follows the cursor, rings + sun drift ---------- */
+  var homeHero = $('.hero.home');
+  if (homeHero && !still && window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+    var tx = 0, ty = 0, cx = 0, cy = 0, moving = false;
+    var drift = function () {
+      cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+      homeHero.style.setProperty('--px', cx.toFixed(4));
+      homeHero.style.setProperty('--py', cy.toFixed(4));
+      if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) requestAnimationFrame(drift);
+      else moving = false;
+    };
+    homeHero.addEventListener('pointermove', function (e) {
+      var r = homeHero.getBoundingClientRect();
+      var x = e.clientX - r.left, y = e.clientY - r.top;
+      homeHero.style.setProperty('--mx', x + 'px');
+      homeHero.style.setProperty('--my', y + 'px');
+      homeHero.classList.add('pointer-on');
+      tx = x / r.width - 0.5; ty = y / r.height - 0.5;
+      if (!moving) { moving = true; requestAnimationFrame(drift); }
+    });
+    homeHero.addEventListener('pointerleave', function () {
+      homeHero.classList.remove('pointer-on');
+      tx = 0; ty = 0;
+      if (!moving) { moving = true; requestAnimationFrame(drift); }
+    });
+  }
+
   /* ---------- Homepage walkthrough: highlight the service on screen, build its visual ---------- */
   var steps = $$('.tour-step'), tourLinks = $$('.tour-nav a');
   if (steps.length) {

@@ -909,3 +909,29 @@ input[type="range"]::-moz-range-thumb {
 }
 .arc-rings { opacity: .82; }
 .hh-side p { text-shadow: 0 1px 14px rgba(30, 15, 28, .9); }
+
+/* Interactive header: cursor glow lights up the dot grid, rings + sun drift with the mouse */
+.hero-spot {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .5s ease;
+  background:
+    radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 116, 3, .16), transparent 70%),
+    radial-gradient(rgba(255, 164, 2, .95) 1.2px, transparent 1.7px) 0 0 / 22px 22px;
+  -webkit-mask-image: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), #000 0%, rgba(0,0,0,.35) 45%, transparent 75%);
+  mask-image: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), #000 0%, rgba(0,0,0,.35) 45%, transparent 75%);
+}
+.hero.home.pointer-on .hero-spot { opacity: 1; }
+.hero.home .arcs { translate: calc(var(--px, 0) * -26px) calc(var(--py, 0) * -26px); }
+.hero.home .hero-sun { translate: calc(var(--px, 0) * -44px) calc(var(--sun-y, 0px) + var(--py, 0) * -44px); }
+
+/* Homepage: soft orange gradient behind the light sections, moves with scroll + cursor */
+.page-glow { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.page-glow i { position: absolute; border-radius: 50%; filter: blur(70px); will-change: transform; }
+.page-glow .g1 { width: 62vmax; height: 62vmax; left: -12vmax; top: -10vmax; background: radial-gradient(circle, rgba(255, 116, 3, .46), rgba(255, 116, 3, 0) 68%); }
+.page-glow .g2 { width: 54vmax; height: 54vmax; right: -14vmax; top: 18vh; background: radial-gradient(circle, rgba(255, 164, 2, .42), rgba(255, 164, 2, 0) 68%); }
+.page-glow .g3 { width: 48vmax; height: 48vmax; left: 22vw; bottom: -18vmax; background: radial-gradient(circle, rgba(203, 60, 24, .3), rgba(203, 60, 24, 0) 68%); }
+.has-glow main > * { position: relative; z-index: 1; }
+.has-glow .tour-visual { box-shadow: 0 30px 70px -30px rgba(112, 40, 20, .45); }
+.has-glow .choice { background: rgba(255, 255, 255, .78); backdrop-filter: blur(10px); }
+.has-glow .choice-alt { background-color: var(--dark); }
+.has-glow footer { position: relative; z-index: 1; }
+.brand-sub { font-weight: 400; letter-spacing: -0.02em; opacity: .75; }
