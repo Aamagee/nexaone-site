@@ -166,6 +166,7 @@
       if (!pinned() || !tourGrid) return;
       var r = tourGrid.getBoundingClientRect(), track = r.height - window.innerHeight;
       var p = track > 0 ? Math.min(Math.max(-r.top / track, 0), 0.9999) : 0;
+      if (stage) stage.classList.toggle("logo-on", !!INTRO && p < INTRO);
       if (INTRO && p < INTRO) {
         var t = p / INTRO;
         stage.style.setProperty('--intro-o', Math.max(0, 1 - Math.max(0, t - 0.1) / 0.45).toFixed(3));
