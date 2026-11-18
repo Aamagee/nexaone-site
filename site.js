@@ -131,11 +131,40 @@
       });
       setOn(steps[i].id);
     };
+    /* sky: a day passes as you scroll the services (dawn -> sunrise -> midday -> golden hour -> dusk) */
+    var sky = $('.tour-sky'), skySun = $('.sky-sun');
+    var SKY = [
+      [0.00, '#4a2c4a', '#c0605a', '#ffb48a', '#5a3044', '#3a1e2c'],
+      [0.22, '#ffb999', '#ffd0a6', '#ffeacc', '#c98a6a', '#a8684c'],
+      [0.50, '#ffe7c2', '#fff1d9', '#fff9ef', '#e8b48c', '#d49a70'],
+      [0.78, '#ff9f5a', '#ffc07a', '#ffe0b0', '#b8603c', '#8e4428'],
+      [1.00, '#3a1f2e', '#b8452a', '#ff8c48', '#4a2418', '#2a1810']
+    ];
+    var hex = function (h) { return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; };
+    var mix = function (a, b, t) {
+      var x = hex(a), y = hex(b);
+      return 'rgb(' + Math.round(x[0] + (y[0] - x[0]) * t) + ',' + Math.round(x[1] + (y[1] - x[1]) * t) + ',' + Math.round(x[2] + (y[2] - x[2]) * t) + ')';
+    };
+    var paintSky = function (p) {
+      if (!sky) return;
+      var i = 0;
+      while (i < SKY.length - 2 && p > SKY[i + 1][0]) i++;
+      var a = SKY[i], b = SKY[i + 1], t = (p - a[0]) / (b[0] - a[0]);
+      t = t * t * (3 - 2 * t); // ease between stops so the blend feels smooth
+      ['--s1', '--s2', '--s3', '--h1', '--h2'].forEach(function (k, j) { sky.style.setProperty(k, mix(a[j + 1], b[j + 1], t)); });
+      if (skySun) {
+        var w = sky.clientWidth, h = sky.clientHeight;
+        var x = w * (0.06 + 0.88 * p), y = h * (0.9 - Math.sin(Math.PI * p) * 0.8);
+        skySun.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + (1.15 - Math.sin(Math.PI * p) * 0.3).toFixed(3) + ')';
+      }
+    };
+    var skyTicking = false;
     var tourScroll = function () {
       if (!pinned() || !tourGrid) return;
       var r = tourGrid.getBoundingClientRect(), track = r.height - window.innerHeight;
       var p = track > 0 ? Math.min(Math.max(-r.top / track, 0), 0.9999) : 0;
       activate(Math.floor(p * steps.length));
+      if (!skyTicking) { skyTicking = true; requestAnimationFrame(function () { skyTicking = false; paintSky(p); }); }
     };
     tourLinks.forEach(function (a, i) {
       a.addEventListener('click', function (e) {
