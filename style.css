@@ -35,7 +35,7 @@
   --shadow: 0 1px 2px rgba(43, 20, 36, 0.05), 0 24px 48px -28px rgba(112, 73, 104, 0.45);
   --radius: 18px;
 
-  --display: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+  --display: "Fraunces", Georgia, serif;
   --sans: "DM Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
@@ -361,3 +361,8 @@ footer { padding: 56px 0 44px; }
   .form { grid-template-columns: 1fr; }
   .footer-links { gap: 36px; }
 }
+
+/* Heading font alternates — preview only (preview.js) */
+:root[data-font="outfit"] { --display: "Outfit", "DM Sans", system-ui, sans-serif; }
+:root[data-font="space"] { --display: "Space Grotesk", "DM Sans", system-ui, sans-serif; }
+:root:not([data-font]) h1, :root:not([data-font]) h2 { font-weight: 600 !important; letter-spacing: -0.02em; }
