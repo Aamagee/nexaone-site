@@ -1399,3 +1399,6 @@ footer .lg6 .lg-sub { color: #c25a26; }
 .tour-stage.logo-on .sky-sun { opacity: 0; }
 .intro-orb { right: .95em; }
 .lg6 .lg-sun { right: .85em; }
+.intro-tag { margin: 22px 0 0; font: italic 700 clamp(1.4rem, 2.6vw, 2.2rem)/1.2 "Playfair Display", Georgia, serif; color: #fdf1e6; letter-spacing: .01em; }
+.intro-tag .kw { background: var(--sunset-bright); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.intro-tag + .intro-hint { margin-top: 30px; }
