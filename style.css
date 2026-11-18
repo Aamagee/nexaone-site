@@ -35,8 +35,8 @@
   --shadow: 0 1px 2px rgba(43, 20, 36, 0.05), 0 24px 48px -28px rgba(112, 73, 104, 0.45);
   --radius: 18px;
 
-  --display: "Space Grotesk", "DM Sans", system-ui, sans-serif;
-  --sans: "DM Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --display: "Geist", system-ui, sans-serif;
+  --sans: "Geist", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* Alternate palette (from colorsforsite.jpg) — preview only */
