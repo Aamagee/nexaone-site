@@ -1321,3 +1321,8 @@ h1, h2, h3, .brand-name, .statement-text { font-family: var(--display); font-sty
 .step-copy .card-sub { font-family: var(--sans); font-style: normal; font-weight: 500; font-size: 1rem; line-height: 1.35; color: var(--ink); margin: 0 0 8px; }
 .step-copy .card-sub + p { font-weight: 300; font-size: .86rem; line-height: 1.55; color: var(--ink-soft); margin: 0; }
 @media (min-width: 1001px) { .tour-step .step-copy p.card-sub { font-size: 1rem; } }
+.step-copy .card-title { font-size: clamp(3.6rem, 6vw, 4.8rem); line-height: .95; margin-bottom: 14px; }
+@media (min-width: 1001px) { .tour-step .step-copy { width: min(460px, 50%); margin-top: -150px; } }
+@media (max-width: 760px) { .step-copy .card-title { font-size: 3rem; } }
+.tour-step .step-copy .card-title { font-size: clamp(3.6rem, 6vw, 4.8rem); line-height: .95; margin-bottom: 14px; }
+@media (max-width: 760px) { .tour-step .step-copy .card-title { font-size: 3rem; } }
