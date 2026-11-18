@@ -1086,3 +1086,18 @@ h1, h2 { text-wrap: balance; }
 .hh-row { grid-template-columns: 1fr; }
 .hero.home .hh { padding-bottom: 96px; }
 .tour-step h3 { margin-top: 26px; }
+
+/* ---------- Service icon tiles: sunset gradient, glossy, tilt on hover ---------- */
+.icon.tile {
+  position: relative; display: inline-grid; place-items: center; width: 54px; height: 54px; border-radius: 16px;
+  background: linear-gradient(145deg, #ffb347 0%, #ff7403 45%, #cb3c18 100%);
+  box-shadow: 0 12px 26px -10px rgba(255, 116, 3, .65), inset 0 1px 0 rgba(255, 255, 255, .45), inset 0 -6px 12px rgba(120, 30, 8, .25);
+  transition: transform .4s cubic-bezier(.2, .7, .2, 1), box-shadow .4s ease;
+  overflow: hidden;
+}
+.icon.tile::before { content: ""; position: absolute; inset: 0 0 50% 0; background: linear-gradient(180deg, rgba(255, 255, 255, .28), rgba(255, 255, 255, 0)); pointer-events: none; }
+.icon.tile svg { width: 28px; height: 28px; position: relative; filter: drop-shadow(0 2px 3px rgba(120, 30, 8, .3)); }
+.choice:hover .icon.tile { transform: rotate(-8deg) scale(1.08); box-shadow: 0 18px 32px -10px rgba(255, 116, 3, .8), inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -6px 12px rgba(120, 30, 8, .25); }
+.choice-alt .icon.tile { background: linear-gradient(145deg, #ffd27a 0%, #ffa402 50%, #ff7403 100%); }
+.price-group .icon.tile { width: 42px; height: 42px; border-radius: 13px; }
+.price-group .icon.tile svg { width: 22px; height: 22px; }
