@@ -36,7 +36,7 @@
     var ticking = false;
     var paint = function () {
       ticking = false;
-      var y = Math.min(Math.max(window.scrollY, 0), hero.offsetHeight);
+      var y = Math.min(Math.max(window.scrollY - hero.offsetTop + window.innerHeight * 0.35, 0), hero.offsetHeight);
       hero.style.setProperty('--sun-y', (y * 0.45).toFixed(1) + 'px');
       hero.style.setProperty('--r1-y', (y * 0.16).toFixed(1) + 'px');
       hero.style.setProperty('--r2-y', (y * 0.07).toFixed(1) + 'px');

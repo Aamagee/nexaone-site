@@ -1170,3 +1170,7 @@ h1, h2 { text-wrap: balance; }
 @media (prefers-reduced-motion: reduce) { .badge .b-wave { animation: none; } }
 .tour { padding-top: 40px; }
 .badge .b-wave { animation: none; transform: none; }
+
+/* homepage starts on the light badge: keep the nav solid from the top */
+.has-glow .nav { background: color-mix(in srgb, var(--dark) 94%, transparent); box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .6); }
+.badge-sec { padding-top: 130px; padding-bottom: 70px; }
