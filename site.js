@@ -129,7 +129,7 @@
           }
         } else if (!still) s.classList.remove('seen', 'built'); // replay its build-in next time
       });
-      setOn(steps[i].id);
+      if (i >= 0) setOn(steps[i].id);
     };
     /* sky: a day passes as you scroll the services (dawn -> sunrise -> midday -> golden hour -> dusk) */
     var sky = $('.tour-sky'), skySun = $('.sky-sun');
@@ -159,12 +159,45 @@
       }
     };
     var skyTicking = false;
+    /* opening logo: first fifth of the scroll track; its sun flies into slide one's sun */
+    var stage = $('.tour-stage'), intro = $('.tour-intro'), introOrb = $('.intro-orb'), flySun = $('.fly-sun');
+    var targetSun = $('#tour-web .ms-sun');
+    var INTRO = intro && flySun ? 0.2 : 0;
+    if (INTRO && stage) stage.classList.add('has-fly');
+    var flyTo = function (t) {
+      if (!flySun || !introOrb || !targetSun || !stage) return;
+      var s = stage.getBoundingClientRect(), a = introOrb.getBoundingClientRect(), b = targetSun.getBoundingClientRect();
+      var e = t * t * (3 - 2 * t);
+      var w0 = a.width || 1;
+      var x = (a.left - s.left) + ((b.left - s.left) - (a.left - s.left)) * e;
+      var y = (a.top - s.top) + ((b.top - s.top) - (a.top - s.top)) * e;
+      var k = (w0 + (b.width - w0) * e) / w0;
+      flySun.style.width = w0 + 'px'; flySun.style.height = w0 + 'px';
+      flySun.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + k.toFixed(4) + ')';
+    };
     var tourScroll = function () {
       if (!pinned() || !tourGrid) return;
       var r = tourGrid.getBoundingClientRect(), track = r.height - window.innerHeight;
       var p = track > 0 ? Math.min(Math.max(-r.top / track, 0), 0.9999) : 0;
-      activate(Math.floor(p * steps.length));
-      if (!skyTicking) { skyTicking = true; requestAnimationFrame(function () { skyTicking = false; paintSky(p); }); }
+      if (INTRO && p < INTRO) {
+        var t = p / INTRO;
+        stage.style.setProperty('--intro-o', Math.max(0, 1 - Math.max(0, t - 0.1) / 0.45).toFixed(3));
+        stage.style.setProperty('--intro-t', (t * t * (3 - 2 * t)).toFixed(3));
+        stage.classList.add('intro');
+        activate(t >= 0.7 ? 0 : -1);
+        flySun.classList.remove('gone');
+        flyTo(t);
+      } else {
+        if (INTRO) {
+          stage.style.setProperty('--intro-o', '0');
+          stage.classList.remove('intro');
+          flySun.classList.add('gone');
+        }
+        var q = INTRO ? (p - INTRO) / (1 - INTRO) : p;
+        activate(Math.min(steps.length - 1, Math.floor(q * steps.length)));
+      }
+      var skyP = INTRO ? Math.max(0, (p - INTRO) / (1 - INTRO)) : p;
+      if (!skyTicking) { skyTicking = true; requestAnimationFrame(function () { skyTicking = false; paintSky(skyP); }); }
     };
     tourLinks.forEach(function (a, i) {
       a.addEventListener('click', function (e) {
@@ -181,7 +214,7 @@
       tourScroll();
     });
     if (pinned()) {
-      activate(0);
+      activate(INTRO ? -1 : 0);
       tourScroll();
     } else if ('IntersectionObserver' in window && !still) {
       var seen = new IntersectionObserver(function (entries) {
