@@ -1112,4 +1112,4 @@ h1, h2 { text-wrap: balance; }
 .tour-side .tour-nav a:not(.on) { color: var(--ink-soft); opacity: .7; }
 .tour-side .tour-nav a:not(.on):hover { opacity: 1; }
 .hero.home h1 { max-width: 15ch; }
-.hero.home h1 { letter-spacing: -0.065em; word-spacing: -0.04em; }
+.hero.home h1 { letter-spacing: -0.06em; word-spacing: 0.04em; }
