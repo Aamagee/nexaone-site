@@ -33,7 +33,7 @@
       <li><a href="/#services">Services</a></li>
       <li><a href="/#how">How it works</a></li>
       <li><a href="/#pricing">Pricing</a></li>
-      <li class="nav-cta"><a class="btn sun small" href="/#contact">Build your quote</a></li>
+      <li class="nav-cta"><a class="btn sun small" href="/#contact">Get a quote</a></li>
     </ul>
     <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
       <span></span><span></span><span></span>
@@ -53,7 +53,7 @@
     <h1>Let's build your <span class="glow">business.</span></h1>
     <p class="lede">Nexa designs your website, runs your marketing, and builds custom systems that save you time. You work with the person actually doing the work, get straight answers, and see every price before you commit.</p>
     <div class="hero-actions">
-      <a class="btn sun" href="#contact">Build your quote</a>
+      <a class="btn sun" href="#contact">Get a quote</a>
       <a class="btn glass" href="#pricing">See pricing</a>
     </div>
   </div>
@@ -152,7 +152,7 @@
     </div>
 
     <h3 class="price-group reveal"><span class="icon sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r=".6" fill="currentColor"/><circle cx="9" cy="6.5" r=".6" fill="currentColor"/><path d="M7 13h6M7 16h10"/></svg></span> Websites</h3>
-    <div class="plans two">
+    <div class="plans">
       <div class="plan reveal" data-plan-card="Static Site">
         <div class="plan-name">Static Site</div>
         <div class="plan-price"><span class="amount">$500</span><span class="period">one-time build</span></div>
@@ -168,7 +168,7 @@
           <span><strong>+ $100</strong> per page</span>
           <span><strong>+ $30/mo</strong> maintenance</span>
         </div>
-        <a class="btn line plan-btn" data-add="static" href="#contact">Add to my quote</a>
+        <a class="btn line plan-btn" data-plan="Static Site" href="#contact">Choose Static Site</a>
       </div>
       <div class="plan featured reveal" data-plan-card="Full-Service Site">
         <span class="plan-badge">Most complete</span>
@@ -188,7 +188,27 @@
           <span><strong>+ $100</strong> per page</span>
           <span><strong>+ $30/mo</strong> maintenance</span>
         </div>
-        <a class="btn sun plan-btn" data-add="full" href="#contact">Add to my quote</a>
+        <a class="btn sun plan-btn" data-plan="Full-Service Site" href="#contact">Choose Full-Service</a>
+      </div>
+      <div class="estimator reveal" id="estimator">
+        <h3>Estimate your website</h3>
+        <div class="seg" role="radiogroup" aria-label="Site type">
+          <button type="button" role="radio" aria-checked="true" data-base="500" data-name="Static Site">Static</button>
+          <button type="button" role="radio" aria-checked="false" data-base="1000" data-name="Full-Service Site">Full-Service</button>
+        </div>
+        <label class="est-label" for="pages">Pages <output id="pages-out">3</output></label>
+        <input type="range" id="pages" min="1" max="15" value="3">
+        <div class="est-lines">
+          <div><span class="est-base-name">Static build</span><span class="est-base">$500</span></div>
+          <div><span class="est-pages-label">3 pages &times; $100</span><span class="est-pages">$300</span></div>
+        </div>
+        <div class="est-total">
+          <span>One-time</span>
+          <strong class="est-sum">$800</strong>
+        </div>
+        <p class="est-monthly">then <strong>$30/mo</strong> maintenance</p>
+        <a class="btn sun est-btn" href="#contact">Get this quote &rarr;</a>
+        <p class="est-note">An estimate. Your final quote is confirmed together.</p>
       </div>
     </div>
 
@@ -204,7 +224,7 @@
           <li><span>Meta ads management (Facebook &amp; Instagram)</span><strong>$100/mo</strong></li>
         </ul>
         <p class="fine">Ad spend is not included. You pay Google and Meta directly for your ads, at whatever budget you choose.</p>
-        <a class="btn line plan-btn" data-add="google,meta" href="#contact">Add to my quote</a>
+        <a class="btn line plan-btn" data-plan="Ad Management" href="#contact">Choose Ad Management</a>
       </div>
       <div class="plan custom reveal" data-plan-card="Social Media">
         <div class="plan-name">Social Media</div>
@@ -216,7 +236,7 @@
           <li>I reply to comments and messages</li>
           <li>A simple monthly posting plan</li>
         </ul>
-        <a class="btn line plan-btn" data-add="social" href="#contact">Add to my quote</a>
+        <a class="btn line plan-btn" data-plan="Social Media" href="#contact">Get a quote</a>
       </div>
     </div>
 
@@ -268,7 +288,7 @@
           <li>Rewards sign-up to bring regulars back</li>
           <li>Staff scheduling app</li>
         </ul>
-        <a class="btn sun industry-btn" data-add="custom" data-type="restaurants-and-bars" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Restaurants &amp; bars" href="#contact">Get a quote for this &rarr;</a>
       </div>
       <div class="industry-panel" data-panel="salons-barbers-and-spas" hidden>
         <ul>
@@ -277,7 +297,7 @@
           <li>Client history and preferences tracker</li>
           <li>Automatic rebooking and review requests</li>
         </ul>
-        <a class="btn sun industry-btn" data-add="custom" data-type="salons-barbers-and-spas" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Salons, barbers &amp; spas" href="#contact">Get a quote for this &rarr;</a>
       </div>
       <div class="industry-panel" data-panel="beauty-and-trade-schools" hidden>
         <ul>
@@ -286,7 +306,7 @@
           <li>AI chatbot that answers program and financial questions</li>
           <li>Campus tour booking</li>
         </ul>
-        <a class="btn sun industry-btn" data-add="custom" data-type="beauty-and-trade-schools" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Beauty &amp; trade schools" href="#contact">Get a quote for this &rarr;</a>
       </div>
       <div class="industry-panel" data-panel="real-estate" hidden>
         <ul>
@@ -296,7 +316,7 @@
           <li>Automatic client follow-ups</li>
           <li>Custom listing pages</li>
         </ul>
-        <a class="btn sun industry-btn" data-add="custom" data-type="real-estate" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Real estate" href="#contact">Get a quote for this &rarr;</a>
       </div>
       <div class="industry-panel" data-panel="cleaning-services" hidden>
         <ul>
@@ -305,7 +325,7 @@
           <li>Job checklist app for your crew</li>
           <li>Automatic invoice and review reminders</li>
         </ul>
-        <a class="btn sun industry-btn" data-add="custom" data-type="cleaning-services" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Cleaning services" href="#contact">Get a quote for this &rarr;</a>
       </div>
       <div class="industry-panel" data-panel="wellness-and-fitness" hidden>
         <ul>
@@ -314,7 +334,7 @@
           <li>Intake forms that go straight to your inbox</li>
           <li>AI chatbot for schedules and pricing</li>
         </ul>
-        <a class="btn sun industry-btn" data-add="custom" data-type="wellness-and-fitness" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Wellness &amp; fitness" href="#contact">Get a quote for this &rarr;</a>
       </div>
       <div class="industry-panel" data-panel="travel-and-tourism" hidden>
         <ul>
@@ -323,7 +343,7 @@
           <li>Booking requests and deposit tracking</li>
           <li>Automatic customer follow-up emails</li>
         </ul>
-        <a class="btn sun industry-btn" data-add="custom" data-type="travel-and-tourism" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Travel &amp; tourism" href="#contact">Get a quote for this &rarr;</a>
       </div>
       <div class="industry-panel" data-panel="storage-and-rentals" hidden>
         <ul>
@@ -332,7 +352,7 @@
           <li>Automatic payment reminders</li>
           <li>AI chatbot for sizes, hours, and access questions</li>
         </ul>
-        <a class="btn sun industry-btn" data-add="custom" data-type="storage-and-rentals" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Storage &amp; rentals" href="#contact">Get a quote for this &rarr;</a>
       </div>
       <div class="industry-panel" data-panel="property-management-and-inspections" hidden>
         <ul>
@@ -341,7 +361,7 @@
           <li>Tenant and owner portal</li>
           <li>Reports emailed out automatically</li>
         </ul>
-        <a class="btn sun industry-btn" data-add="custom" data-type="property-management-and-inspections" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Property management &amp; inspections" href="#contact">Get a quote for this &rarr;</a>
       </div>
       <div class="industry-panel" data-panel="contractors-and-home-services" hidden>
         <ul>
@@ -350,11 +370,11 @@
           <li>Before-and-after photo galleries</li>
           <li>Automatic review requests after each job</li>
         </ul>
-        <a class="btn sun industry-btn" data-add="custom" data-type="contractors-and-home-services" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems: Contractors &amp; home services" href="#contact">Get a quote for this &rarr;</a>
       </div>
       <div class="industry-panel" data-panel="other" hidden>
         <p class="industry-other">Every business is different. Tell me what's slowing you down or what you wish you had, and I'll build a system around it.</p>
-        <a class="btn sun industry-btn" data-add="custom" data-type="other" href="#contact">Add to my quote &rarr;</a>
+        <a class="btn sun industry-btn" data-plan="Custom Systems" href="#contact">Tell me about it &rarr;</a>
       </div>
     </div>
   </div>
@@ -362,117 +382,55 @@
 
 <section class="block" id="contact">
   <div class="wrap">
-    <div class="block-head center reveal">
-      <p class="eyebrow">Build your quote</p>
-      <h2>Pick what you need. See your price.</h2>
-      <p>Select everything you're interested in and your quote adds up as you go. Send it over and I'll get back to you with next steps.</p>
-    </div>
-
-    <form class="builder reveal" id="quote-form" action="https://formsubmit.co/aamagee113@gmail.com" method="POST" novalidate>
-      <input type="hidden" name="_subject" value="New quote request from nexaone.org">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://nexaone.org/thanks/">
-      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <input type="hidden" name="Quote" id="q-summary">
-      <input type="hidden" name="One-time total" id="q-once">
-      <input type="hidden" name="Monthly total" id="q-month">
-
-      <div class="cart-options">
-        <fieldset class="opt-group">
-          <legend><span class="icon sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r=".6" fill="currentColor"/><circle cx="9" cy="6.5" r=".6" fill="currentColor"/><path d="M7 13h6M7 16h10"/></svg></span> Website</legend>
-          <div class="opt-cards three">
-            <label class="opt"><input type="radio" name="site" value="none" form="no-submit" checked><span><strong>No website</strong><em>Skip</em></span></label>
-            <label class="opt"><input type="radio" name="site" value="static" form="no-submit"><span><strong>Static Site</strong><em>$500 build</em></span></label>
-            <label class="opt"><input type="radio" name="site" value="full" form="no-submit"><span><strong>Full-Service Site</strong><em>$1,000 build</em></span></label>
-          </div>
-          <div class="pages-row" hidden>
-            <span>How many pages? <small>$100 each</small></span>
-            <div class="stepper">
-              <button type="button" class="step-btn" data-step="-1" aria-label="Fewer pages">&minus;</button>
-              <output id="page-count" aria-live="polite">1</output>
-              <button type="button" class="step-btn" data-step="1" aria-label="More pages">+</button>
-            </div>
-          </div>
-          <p class="opt-note site-note" hidden>Includes website maintenance at $30/mo.</p>
-        </fieldset>
-
-        <fieldset class="opt-group">
-          <legend><span class="icon sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1 1 0 0 0 1 1h2l5 4V5L7 9H5a1 1 0 0 0-1 1z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></span> Marketing</legend>
-          <div class="opt-cards">
-            <label class="opt"><input type="checkbox" data-item="google" form="no-submit"><span><strong>Google Ads management</strong><em>$100/mo</em></span></label>
-            <label class="opt"><input type="checkbox" data-item="meta" form="no-submit"><span><strong>Facebook &amp; Instagram ads management</strong><em>$100/mo</em></span></label>
-            <label class="opt"><input type="checkbox" data-item="social" form="no-submit"><span><strong>Social media management</strong><em>Quote</em></span></label>
-          </div>
-          <p class="opt-note">Ads include a one-time $100 account setup. Ad spend is paid directly to Google and Meta.</p>
-        </fieldset>
-
-        <fieldset class="opt-group">
-          <legend><span class="icon sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M18.5 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span> Custom Systems</legend>
-          <div class="opt-cards">
-            <label class="opt"><input type="checkbox" data-item="custom" form="no-submit"><span><strong>Custom app, chatbot, or automation</strong><em>Quote</em></span></label>
-          </div>
-          <div class="custom-type" hidden>
-            <label for="cs-type">What kind of business?</label>
-            <div class="select-wrap light">
-              <select id="cs-type" form="no-submit">
-                <option value="">Choose one (optional)</option>
-                <option value="restaurants-and-bars">Restaurants &amp; bars</option>
-                <option value="salons-barbers-and-spas">Salons, barbers &amp; spas</option>
-                <option value="beauty-and-trade-schools">Beauty &amp; trade schools</option>
-                <option value="real-estate">Real estate</option>
-                <option value="cleaning-services">Cleaning services</option>
-                <option value="wellness-and-fitness">Wellness &amp; fitness</option>
-                <option value="travel-and-tourism">Travel &amp; tourism</option>
-                <option value="storage-and-rentals">Storage &amp; rentals</option>
-                <option value="property-management-and-inspections">Property management &amp; inspections</option>
-                <option value="contractors-and-home-services">Contractors &amp; home services</option>
-                <option value="other">Something else</option>
-              </select>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-
-      <aside class="cart" aria-label="Your quote">
-        <h3>Your quote</h3>
-        <ul class="cart-lines" aria-live="polite">
-          <li class="cart-empty">Pick what you need and your quote shows up here.</li>
-        </ul>
-        <div class="cart-totals">
-          <div><span>One-time</span><strong class="t-once">$0</strong></div>
-          <div><span>Monthly</span><strong class="t-month">$0<small>/mo</small></strong></div>
-        </div>
-        <p class="cart-note quote-note" hidden>Items marked &ldquo;Quote&rdquo; get priced for your business.</p>
-        <p class="cart-note ads-note" hidden>Ad spend not included.</p>
-
-        <div class="cart-fields">
-          <div class="two-up">
-            <div>
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" autocomplete="name" required>
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" autocomplete="email" required>
-            </div>
-          </div>
-          <div>
-            <label for="business">Business name <span class="opt-label">(optional)</span></label>
-            <input type="text" id="business" name="business" autocomplete="organization">
-          </div>
-          <div>
-            <label for="message">Anything else I should know? <span class="opt-label msg-opt">(optional)</span></label>
-            <textarea id="message" name="message" placeholder="Tell me a bit about your business and what you'd like help with."></textarea>
-          </div>
-        </div>
-        <button class="btn sun" type="submit">Send my quote request &rarr;</button>
-        <p class="cart-fine">No payment now. I'll review your request and get back to you.</p>
+    <div class="contact reveal">
+      <div class="contact-intro">
+        <p class="eyebrow">Get a quote</p>
+        <h2>Let's talk about your business.</h2>
+        <p>Tell me a bit about what you need, and I'll get back to you with next steps and a price that fits your budget.</p>
         <div class="contact-direct">
           <span>Or email me directly</span>
           <button type="button" class="copy-email" data-email="aamagee113@gmail.com">aamagee113@gmail.com</button>
         </div>
-      </aside>
-    </form>
+      </div>
+      <form class="form" action="https://formsubmit.co/aamagee113@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New inquiry from nexaone.org">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://nexaone.org/thanks/">
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="plan" id="plan-field">
+        <input type="hidden" name="services" id="services-field">
+        <div class="full plan-pill-row" hidden>
+          <span class="plan-pill">Interested in: <strong></strong> <button type="button" class="plan-clear" aria-label="Remove selection">&times;</button></span>
+        </div>
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div class="full">
+          <label for="business">Business name <span class="opt">(optional)</span></label>
+          <input type="text" id="business" name="business" autocomplete="organization">
+        </div>
+        <fieldset class="full needs">
+          <legend>What do you need? <span class="opt">(tap any)</span></legend>
+          <div class="chips">
+            <label class="check"><input type="checkbox" value="Website"><span>Website</span></label>
+            <label class="check"><input type="checkbox" value="Social media"><span>Social media</span></label>
+            <label class="check"><input type="checkbox" value="Ads"><span>Ads</span></label>
+            <label class="check"><input type="checkbox" value="AI chatbot / custom tool"><span>AI chatbot / custom tool</span></label>
+            <label class="check"><input type="checkbox" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
+        <div class="full">
+          <label for="message">Tell me about your business</label>
+          <textarea id="message" name="message" placeholder="What do you do, and what would you like help with?" required></textarea>
+        </div>
+        <button class="btn sun" type="submit"><span class="btn-label">Send message &rarr;</span></button>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -506,7 +464,7 @@
           <h4>Nexa</h4>
           <ul>
             <li><a href="/#pricing">Pricing</a></li>
-            <li><a href="/#contact">Build your quote</a></li>
+            <li><a href="/#contact">Get a quote</a></li>
             <li><a href="/portfolio/">About Ava</a></li>
           </ul>
         </div>
