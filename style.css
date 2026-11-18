@@ -1326,3 +1326,14 @@ h1, h2, h3, .brand-name, .statement-text { font-family: var(--display); font-sty
 @media (max-width: 760px) { .step-copy .card-title { font-size: 3rem; } }
 .tour-step .step-copy .card-title { font-size: clamp(3.6rem, 6vw, 4.8rem); line-height: .95; margin-bottom: 14px; }
 @media (max-width: 760px) { .tour-step .step-copy .card-title { font-size: 3rem; } }
+
+/* ---------- Logo: NEXA wordmark over a sunset circle, STUDIO beneath ---------- */
+.lg { position: relative; display: inline-grid; grid-template-columns: auto; line-height: 1; font-size: 26px; padding: .18em 0 .2em .5em; isolation: isolate; }
+.lg-sun { position: absolute; left: 0; top: 50%; width: 1.5em; height: 1.5em; margin-top: -.86em; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffa45c 0%, #ff6a2b 55%, #e2471f 100%); z-index: -1; }
+.lg-word { font-family: "Unbounded", sans-serif; font-weight: 800; font-style: normal; letter-spacing: -0.05em; color: currentColor; }
+.lg-sub { justify-self: end; margin-top: .32em; font-family: "Unbounded", sans-serif; font-weight: 600; font-style: normal; font-size: .3em; letter-spacing: .32em; margin-right: -.32em; color: currentColor; opacity: .85; }
+.nav .lg { font-size: 24px; }
+footer .lg { font-size: 30px; color: var(--ink); }
+.brand:hover .lg-sun { transform: scale(1.06); }
+.lg-sun { transition: transform .4s cubic-bezier(.2, .7, .2, 1); }
+.lg-sun { background: var(--sun); width: 1.7em; height: 1.7em; margin-top: -.96em; left: -.1em; }
