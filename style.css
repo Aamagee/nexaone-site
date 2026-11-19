@@ -1872,4 +1872,3 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 }
 @media (prefers-reduced-motion: reduce) { .pi-frame, .photo-tour .tour-frame, .photo-tour .tour-steps, .pi-photo, .tour-photos { translate: none; } }
 
-  fill: #fff; stroke: rgba(42, 24, 16, .55); stroke-width: 1.2; stroke-linejoin: round;
