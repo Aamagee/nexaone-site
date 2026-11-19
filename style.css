@@ -1411,3 +1411,10 @@ footer .lg6 .lg-sub { color: #c25a26; }
 .intro-sub { text-shadow: 0 2px 10px rgba(42, 24, 16, .35); }
 .nav .lg6 .lg-word { text-shadow: 0 1px 0 #e2946a, 0 2px 0 #b85c3c, 0 4px 10px rgba(0, 0, 0, .45); }
 footer .lg6 .lg-word { text-shadow: 0 1px 0 #e2946a, 0 2px 0 #c76a42, 0 6px 14px rgba(42, 24, 16, .25); }
+
+/* walkthrough cards: dark frosted glass (mockup 2) */
+.tour-step .step-copy { background: rgba(42, 24, 16, .72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid rgba(253, 241, 230, .18); box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .6); color: #fdf1e6; }
+.tour-step .step-copy .card-title { color: #fdf1e6; }
+.tour-step .step-copy .card-title .kw { background: var(--sunset-bright); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tour-step .step-copy .card-sub { color: #fdf1e6; }
+.tour-step .step-copy .card-sub + p { color: rgba(253, 241, 230, .78); }
