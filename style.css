@@ -1881,3 +1881,14 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 }
 .pi-frame, .photo-tour .tour-frame { box-shadow: 0 50px 90px -40px rgba(10, 5, 2, .6), inset 0 1px 0 rgba(255, 255, 255, .25); }
 @media (prefers-reduced-motion: reduce) { .photo-intro .pi-frame { transform: none; } .photo-tour .tour-frame, .photo-tour .tour-steps { transform: translate(-50%, -50%); } }
+
+/* "How should your business grow?" cards fill with the sunset gradient on hover */
+.has-glow .choice { isolation: isolate; transition: transform .35s ease, box-shadow .35s ease, color .35s ease, border-color .35s ease; }
+.has-glow .choice::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: var(--sunset); opacity: 0; transition: opacity .4s ease; pointer-events: none; }
+.has-glow .choice:hover, .has-glow .choice:focus-visible { color: #fff; border-color: rgba(255, 255, 255, .45); box-shadow: 0 30px 60px -28px rgba(203, 60, 24, .6); }
+.has-glow .choice:hover::after, .has-glow .choice:focus-visible::after { opacity: 1; }
+.has-glow .choice:hover h3, .has-glow .choice:hover p, .has-glow .choice:focus-visible h3, .has-glow .choice:focus-visible p { color: #fff; }
+.has-glow .choice:hover .icon.tile, .has-glow .choice:focus-visible .icon.tile { background: rgba(255, 255, 255, .2); border-color: rgba(255, 255, 255, .55); }
+.has-glow .choice:hover .icon.tile svg *, .has-glow .choice:focus-visible .icon.tile svg * { stroke: #fff !important; }
+.has-glow .choice:hover .choice-go, .has-glow .choice:focus-visible .choice-go { background: rgba(255, 255, 255, .22); color: #fff; border-color: rgba(255, 255, 255, .6); }
+.has-glow .choice h3, .has-glow .choice p, .icon.tile svg * { transition: color .35s ease, stroke .35s ease; }
