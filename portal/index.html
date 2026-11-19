@@ -68,6 +68,40 @@
         </div>
       </section>
 
+
+      <!-- admin (Ava) -->
+      <section class="pv pv-admin" hidden>
+        <header class="sub-head portal-head">
+          <div>
+            <h1 class="hub-h">Admin</h1>
+            <p class="pi-sub">All clients, projects and billing.</p>
+          </div>
+          <button class="plan-btn p-signout" type="button">Sign out</button>
+        </header>
+
+        <div class="adm-links">
+          <a class="plan-btn" href="https://nexaone-workspace.pages.dev" target="_blank" rel="noopener">Workspace: add &amp; edit clients <span aria-hidden="true">&rarr;</span></a>
+          <a class="plan-btn" href="https://dashboard.stripe.com/subscriptions" target="_blank" rel="noopener">Stripe subscriptions <span aria-hidden="true">&rarr;</span></a>
+          <a class="plan-btn" href="https://supabase.com/dashboard/project/gmjwlvcpowiirmufatjs/auth/users" target="_blank" rel="noopener">Invite a client to the portal <span aria-hidden="true">&rarr;</span></a>
+        </div>
+
+        <div class="p-block">
+          <div class="price-sec-head"><h2>Subscription links</h2></div>
+          <p class="p-billing-note">Send a client the link for their plan. They enter their card or bank once, and Stripe bills them automatically every month.</p>
+          <div class="adm-subs">
+            <div class="p-card"><div><b>Website Maintenance</b><span>$30/mo</span></div><button class="plan-btn adm-copy" type="button" data-link="https://buy.stripe.com/cNi00jc6Rduoemgarrfw400">Copy link</button></div>
+            <div class="p-card"><div><b>AI Chatbot</b><span>$50/mo</span></div><button class="plan-btn adm-copy" type="button" data-link="https://buy.stripe.com/4gMeVd2wheys7XSdDDfw401">Copy link</button></div>
+            <div class="p-card"><div><b>Google Ads Management</b><span>$100/mo</span></div><button class="plan-btn adm-copy" type="button" data-link="https://buy.stripe.com/5kQfZh6Mx1LG3HC6bbfw402">Copy link</button></div>
+            <div class="p-card"><div><b>Meta Ads Management</b><span>$100/mo</span></div><button class="plan-btn adm-copy" type="button" data-link="https://buy.stripe.com/00w00jeeZbmg91Warrfw403">Copy link</button></div>
+          </div>
+        </div>
+
+        <div class="p-block">
+          <div class="price-sec-head"><h2>Clients</h2></div>
+          <div class="adm-clients"><p class="p-empty">Loading&hellip;</p></div>
+        </div>
+      </section>
+
       <p class="pv-loading">Loading&hellip;</p>
     </div>
 
@@ -93,6 +127,7 @@
       $('.pv-loading').hidden = true;
       $('.pv-out').hidden = which !== 'out';
       $('.pv-in').hidden = which !== 'in';
+      $('.pv-admin').hidden = which !== 'admin';
     };
 
     var load = async function () {
@@ -122,6 +157,36 @@
       if (me.error || pr.error || iv.error) $('.p-unlinked').hidden = false;
     };
 
+
+    var ADMIN = 'aamagee113@gmail.com';
+    var norm = function (s) { return String(s || '').trim().toLowerCase(); };
+    /* admin view: your own Workspace rows (Row Level Security only returns your data) */
+    var loadAdmin = async function () {
+      show('admin');
+      var c = await sb.from('clients').select('id,name,contact_email,contact_phone').order('name');
+      var pr = await sb.from('projects').select('name,client_name,status,created_at').order('created_at', { ascending: false });
+      var iv = await sb.from('invoices').select('client_id,description,amount_cents,status,due_date').order('created_at', { ascending: false });
+      var clients = c.data || [], projects = pr.data || [], invoices = iv.data || [];
+      if (c.error) { $('.adm-clients').innerHTML = '<p class="p-empty">Could not load clients: ' + esc(c.error.message) + '</p>'; return; }
+      $('.adm-clients').innerHTML = clients.length ? clients.map(function (cl) {
+        var ps = projects.filter(function (p) { return norm(p.client_name) === norm(cl.name); });
+        var is = invoices.filter(function (i) { return i.client_id === cl.id; });
+        var due = is.filter(function (i) { return i.status === 'sent'; }).reduce(function (a, i) { return a + i.amount_cents; }, 0);
+        return '<div class="adm-client"><div class="adm-c-top"><div><b>' + esc(cl.name) + '</b><span>' +
+          esc(cl.contact_email || 'No email yet (needed to sign in to the portal)') + (cl.contact_phone ? ' &middot; ' + esc(cl.contact_phone) : '') + '</span></div>' +
+          (due ? '<span class="st st-due">' + esc(money(due)) + ' due</span>' : '<span class="st st-done">Paid up</span>') + '</div>' +
+          '<div class="adm-c-rows">' + (ps.length ? ps.map(function (p) { var s = STATUS[p.status] || [p.status, '']; return '<span class="st ' + s[1] + '">' + esc(p.name) + ': ' + esc(s[0]) + '</span>'; }).join('') : '<span class="p-empty">No projects</span>') + '</div></div>';
+      }).join('') : '<p class="p-empty">No clients yet. Add them in your Workspace, with their email so they can sign in.</p>';
+    };
+    document.querySelectorAll('.adm-copy').forEach(function (b) {
+      b.addEventListener('click', function () {
+        navigator.clipboard.writeText(b.getAttribute('data-link')).then(function () { b.textContent = 'Copied!'; setTimeout(function () { b.textContent = 'Copy link'; }, 1600); });
+      });
+    });
+    var route = function (session) {
+      if (session && norm(session.user && session.user.email) === ADMIN) loadAdmin(); else load();
+    };
+
     /* sign-in link (only works for emails you've invited; no public sign-ups) */
     $('.portal-form').addEventListener('submit', async function (e) {
       e.preventDefault();
@@ -140,12 +205,12 @@
       }
     });
 
-    $('.p-signout').addEventListener('click', async function () { await sb.auth.signOut(); show('out'); });
+    document.querySelectorAll('.p-signout').forEach(function (b) { b.addEventListener('click', async function () { await sb.auth.signOut(); show('out'); }); });
 
     sb.auth.onAuthStateChange(function (event, session) {
-      if (event === 'SIGNED_IN' && session) { history.replaceState(null, '', '/portal/'); load(); }
+      if (event === 'SIGNED_IN' && session) { history.replaceState(null, '', '/portal/'); route(session); }
     });
-    sb.auth.getSession().then(function (r) { if (r.data && r.data.session) load(); else show('out'); });
+    sb.auth.getSession().then(function (r) { if (r.data && r.data.session) route(r.data.session); else show('out'); });
   })();
 </script>
 </body>
