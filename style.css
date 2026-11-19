@@ -1522,3 +1522,9 @@ footer .lg.lg6 .lg-word, footer .lg.lg6 .lg-sub { font-size: 15px; }
   .tour-steps { --vis-w: min(100%, calc((100vh - 320px) * 1.6)); height: min(800px, calc(100vh - 40px)); }
   .tour-step .step-copy { margin-top: -34px; }
 }
+
+/* titles: letter spacing a touch tighter */
+h1, h2, h3 { letter-spacing: .025em; }
+.tour-step .step-copy .card-title { letter-spacing: .02em; }
+.has-glow .block-head h2 { letter-spacing: .02em; }
+.choice h3 { letter-spacing: .025em; }
