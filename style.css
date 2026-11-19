@@ -2138,3 +2138,4 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .sent-note p { margin: 0 0 14px; font: 400 .95rem/1.6 var(--sans); }
 .sent-note .sent-t { font: 600 1.3rem/1.3 var(--display); }
 @media (max-width: 600px) { .cf-row { grid-template-columns: 1fr; } .cform { padding: 20px 16px; } }
+.cform[hidden], .sent-note[hidden] { display: none; }
