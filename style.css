@@ -1650,3 +1650,61 @@ h1, h2, h3 { letter-spacing: .025em; }
 .ib-b { font: 500 11px/1 "Unbounded", sans-serif; letter-spacing: .6em; margin-right: -.6em; }
 .intro-badge + .intro-tag { margin-top: 44px; }
 @media (max-width: 760px) { .intro-badge { width: 200px; height: 200px; } .ib-a { font-size: 30px; } }
+
+/* ==========================================================
+   Opening screen: a mini website in a frame, with a laptop,
+   clipboard and phone floating out of it (Aardvark-style)
+   ========================================================== */
+.mini-wrap { position: relative; width: min(1000px, 88vw); margin: 0 auto; }
+.mini-site {
+  position: relative; overflow: hidden; isolation: isolate;
+  height: min(540px, 62vh); min-height: 380px; border-radius: 26px; padding: 22px 34px 34px;
+  background: #fff4e8; color: #2a1810; text-align: left;
+  border: 10px solid #2a1810;
+  box-shadow: 0 40px 80px -40px rgba(42, 24, 16, .7);
+  display: flex; flex-direction: column;
+}
+.mini-waves { position: absolute; right: 0; top: 0; width: 64%; height: 100%; z-index: -1; }
+.mini-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: auto; }
+.mini-logo.lg6 .lg-word { color: #2a1810; }
+.mini-logo.lg6 .lg-sub { color: #c25a26; border-left-color: rgba(42, 24, 16, .45); }
+.mini-logo .lg-word, .mini-logo .lg-sub { font-size: 11px !important; }
+.mini-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.mini-pills a { font: 500 .72rem/1 var(--sans); text-decoration: none; color: #2a1810; padding: 8px 13px; border-radius: 99px; background: rgba(255, 255, 255, .7); border: 1px solid rgba(42, 24, 16, .1); }
+.mini-pills a:hover { background: #fff; }
+.mini-pills .mini-cta { background: #ff7a2b; color: #fff; border-color: transparent; }
+.mini-h { margin: 0; max-width: 11ch; font: 700 clamp(2.4rem, 5.6vw, 4.6rem)/.98 "Poppins", sans-serif; letter-spacing: -.02em; }
+.mini-h .kw { background: var(--sunset); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.mini-p { margin: 16px 0 18px; max-width: 34ch; font: 300 .86rem/1.55 var(--sans); color: rgba(42, 24, 16, .8); }
+.mini-btn { align-self: flex-start; font: 600 .8rem/1 var(--sans); text-decoration: none; color: #fff; background: #2a1810; padding: 12px 18px; border-radius: 99px; }
+.mini-btn:hover { background: #cb3c18; }
+
+/* floating objects */
+.obj { position: absolute; z-index: 3; pointer-events: none; filter: drop-shadow(0 24px 30px rgba(42, 24, 16, .35)); }
+.obj-laptop { width: clamp(180px, 24vw, 300px); left: -7%; top: -15%; rotate: -14deg; animation: obj-a 7s ease-in-out infinite; }
+.obj-clip { width: clamp(130px, 16vw, 200px); right: -6%; top: 22%; rotate: 16deg; animation: obj-b 6.2s ease-in-out -2s infinite; }
+.obj-phone { width: clamp(90px, 10vw, 130px); left: 4%; bottom: -16%; rotate: -20deg; animation: obj-c 5.6s ease-in-out -1s infinite; }
+@keyframes obj-a { 0%, 100% { translate: 0 0; } 50% { translate: 6px -14px; } }
+@keyframes obj-b { 0%, 100% { translate: 0 0; } 50% { translate: -8px 12px; } }
+@keyframes obj-c { 0%, 100% { translate: 0 0; } 50% { translate: 8px -10px; } }
+
+/* objects drift outward as the intro scrolls away */
+.obj-laptop { transform: translate(calc(var(--intro-t, 0) * -140px), calc(var(--intro-t, 0) * -120px)); }
+.obj-clip { transform: translate(calc(var(--intro-t, 0) * 160px), calc(var(--intro-t, 0) * -40px)); }
+.obj-phone { transform: translate(calc(var(--intro-t, 0) * -80px), calc(var(--intro-t, 0) * 140px)); }
+
+.tour-intro .intro-hint { margin-top: 64px; }
+@media (min-width: 1001px) {
+  .tour-stage.logo-on .mini-site { pointer-events: auto; }
+  .tour-intro { transform: none; }
+  .tour-intro .mini-site { transform: scale(calc(1 - var(--intro-t, 0) * .06)); }
+}
+@media (max-width: 1000px) {
+  .tour-intro { min-height: 100vh; padding-top: 40px; padding-bottom: 40px; }
+  .mini-site { height: auto; min-height: 0; padding: 18px 20px 26px; border-width: 7px; }
+  .mini-pills a:not(.mini-cta) { display: none; }
+  .mini-h { margin-top: 40px; }
+  .obj-laptop { left: -4%; top: -9%; } .obj-clip { right: -4%; top: auto; bottom: -8%; } .obj-phone { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .obj { animation: none; } }
+@media (min-width: 1001px) { .obj-laptop { left: -13%; top: -24%; } .obj-phone { left: -7%; bottom: -22%; } .mini-site { padding-left: 44px; } }
