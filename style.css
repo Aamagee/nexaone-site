@@ -1427,3 +1427,11 @@ h1, h2, h3, .statement-text { font-family: var(--display); font-style: normal; f
 .has-glow .block-head h2 { font-size: clamp(1.9rem, 3.8vw, 3.1rem); line-height: 1.1; }
 .choice h3 { font-size: 1.05rem; line-height: 1.25; }
 .kw { padding-right: 0; }
+
+/* logo word in the title font (Michroma), plain cream, neutral shadow; STUDIO unchanged */
+.intro-word { font-family: "Michroma", sans-serif; font-style: normal; font-weight: 400; font-size: .6em; letter-spacing: .01em; color: #fdf1e6; text-shadow: 0 8px 28px rgba(42, 24, 16, .5); }
+.intro-logo { align-items: center; gap: .14em; }
+.lg6 .lg-word { font-family: "Michroma", sans-serif; font-style: normal; font-weight: 400; font-size: .74em; letter-spacing: .01em; }
+.nav .lg6 .lg-word { color: #fdf1e6; text-shadow: 0 2px 8px rgba(0, 0, 0, .4); }
+footer .lg6 .lg-word { text-shadow: none; }
+.lg.lg6 { align-items: center; }
