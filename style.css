@@ -1876,8 +1876,8 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 /* floating screen: the outline (and everything on it) tilts in 3D toward the cursor */
 @media (min-width: 1001px) and (pointer: fine) {
   .pi-frame, .photo-tour .tour-frame, .photo-tour .tour-steps { translate: none; }
-  .photo-intro .pi-frame { transform: perspective(1600px) rotateY(calc(var(--mx, 0) * 13deg)) rotateX(calc(var(--my, 0) * -7deg)); }
-  .photo-tour .tour-frame, .photo-tour .tour-steps { transform: translate(-50%, -50%) perspective(1600px) rotateY(calc(var(--mx, 0) * 13deg)) rotateX(calc(var(--my, 0) * -7deg)); }
+  .photo-intro .pi-frame { transform: perspective(1600px) rotateY(calc(var(--mx, 0) * 16deg)) rotateX(calc(var(--my, 0) * -13deg)); }
+  .photo-tour .tour-frame, .photo-tour .tour-steps { transform: translate(-50%, -50%) perspective(1600px) rotateY(calc(var(--mx, 0) * 16deg)) rotateX(calc(var(--my, 0) * -13deg)); }
 }
 .pi-frame, .photo-tour .tour-frame { box-shadow: 0 50px 90px -40px rgba(10, 5, 2, .6), inset 0 1px 0 rgba(255, 255, 255, .25); }
 @media (prefers-reduced-motion: reduce) { .photo-intro .pi-frame { transform: none; } .photo-tour .tour-frame, .photo-tour .tour-steps { transform: translate(-50%, -50%); } }
