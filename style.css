@@ -1418,3 +1418,12 @@ footer .lg6 .lg-word { text-shadow: 0 1px 0 #e2946a, 0 2px 0 #c76a42, 0 6px 14px
 .tour-step .step-copy .card-title .kw { background: var(--sunset-bright); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .tour-step .step-copy .card-sub { color: #fdf1e6; }
 .tour-step .step-copy .card-sub + p { color: rgba(253, 241, 230, .78); }
+
+/* Titles: Michroma (free Microgramma-style wide square). Logo keeps Playfair. */
+:root { --display: "Michroma", "Unbounded", sans-serif; }
+h1, h2, h3, .statement-text { font-family: var(--display); font-style: normal; font-weight: 400; letter-spacing: .01em; }
+.tour-step .step-copy .card-title { font-size: clamp(2rem, 3.2vw, 2.8rem); line-height: 1.02; letter-spacing: -.01em; }
+.statement-text { font-size: clamp(1.4rem, 2.6vw, 2.2rem); line-height: 1.35; }
+.has-glow .block-head h2 { font-size: clamp(1.9rem, 3.8vw, 3.1rem); line-height: 1.1; }
+.choice h3 { font-size: 1.05rem; line-height: 1.25; }
+.kw { padding-right: 0; }
