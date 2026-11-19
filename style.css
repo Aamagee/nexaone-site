@@ -1708,3 +1708,40 @@ h1, h2, h3 { letter-spacing: .025em; }
 }
 @media (prefers-reduced-motion: reduce) { .obj { animation: none; } }
 @media (min-width: 1001px) { .obj-laptop { left: -13%; top: -24%; } .obj-phone { left: -7%; bottom: -22%; } .mini-site { padding-left: 44px; } }
+
+/* ==========================================================
+   Opening screen v2: full-bleed professional photo with a thin
+   white website outline on top (Estudio Niksen-style)
+   ========================================================== */
+.photo-intro { overflow: hidden; isolation: isolate; background: #2a1810; justify-content: center; }
+.pi-photo { position: absolute; inset: 0; z-index: -1;
+  background: url("https://images.unsplash.com/photo-1536772352522-6f715556f25f?auto=format&fit=crop&w=2400&q=80") center 62% / cover no-repeat;
+  transform: scale(calc(1.04 + var(--intro-t, 0) * .06)); }
+.pi-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(42, 24, 16, 0) 45%, rgba(42, 24, 16, .45) 100%); }
+.pi-frame { position: relative; width: min(1240px, 86vw); height: min(680px, 74vh); display: flex; flex-direction: column;
+  border: 1.5px solid rgba(255, 255, 255, .92); text-align: left; }
+.pi-bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 18px 22px; background: #fff; color: #2a1810; }
+.pi-links { display: flex; gap: 22px; }
+.pi-links a, .pi-cta { font: 500 .7rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: #2a1810; }
+.pi-links a:hover, .pi-cta:hover { color: #cb3c18; }
+.pi-cta { justify-self: end; }
+.pi-logo.lg6 .lg-word { color: #2a1810; }
+.pi-logo.lg6 .lg-sub { color: #c25a26; border-left-color: rgba(42, 24, 16, .45); }
+.pi-logo .lg-word, .pi-logo .lg-sub { font-size: 13px !important; }
+.pi-copy { margin-top: auto; padding: 0 28px 26px; }
+.pi-h { margin: 0 0 18px; max-width: 13ch; font: 600 clamp(2.4rem, 5.4vw, 4.6rem)/1 "Poppins", sans-serif; letter-spacing: -.03em; color: #fff; text-shadow: 0 2px 30px rgba(42, 24, 16, .25); }
+.pi-btn { display: inline-block; font: 500 .7rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: #2a1810; background: #fff; padding: 11px 14px; }
+.pi-btn:hover { background: #ffd27a; }
+.photo-intro .intro-hint { position: absolute; left: 50%; bottom: 2.2vh; margin: 0; transform: translateX(-50%); color: rgba(255, 255, 255, .85); }
+.tour-stage.logo-on .tour-intro.photo-intro { pointer-events: auto; }
+@media (min-width: 1001px) {
+  .tour-intro.photo-intro { left: 50%; right: auto; width: 100vw; margin-left: -50vw; transform: none; }
+  .photo-intro .pi-frame { transform: scale(calc(1 - var(--intro-t, 0) * .05)); }
+}
+@media (max-width: 1000px) {
+  .tour-intro.photo-intro { position: relative; min-height: 100svh; margin: 0 calc(50% - 50vw); padding: 0; }
+  .pi-frame { width: calc(100vw - 32px); height: calc(100svh - 110px); }
+  .pi-links { display: none; }
+  .pi-bar { grid-template-columns: auto 1fr; padding: 14px 16px; }
+  .pi-copy { padding: 0 18px 20px; }
+}
