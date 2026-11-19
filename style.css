@@ -1528,3 +1528,9 @@ h1, h2, h3 { letter-spacing: .025em; }
 .tour-step .step-copy .card-title { letter-spacing: .02em; }
 .has-glow .block-head h2 { letter-spacing: .02em; }
 .choice h3 { letter-spacing: .025em; }
+
+/* "Coded for You" card: title on one line, card nudged up */
+@media (min-width: 1001px) {
+  #tour-code .step-copy { width: min(580px, 64%); margin-top: -62px; }
+  #tour-code .step-copy .card-title { white-space: nowrap; }
+}
