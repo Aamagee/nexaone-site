@@ -1633,3 +1633,20 @@ h1, h2, h3 { letter-spacing: .025em; }
 .badge-sec { padding-top: 10px; }
 .has-glow .choose { padding-bottom: 40px; }
 .choice-go, .choice-alt .choice-go { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 300; font-size: 1.05rem; line-height: 1; border-color: rgba(42, 24, 16, .14); background: rgba(255, 255, 255, .55); }
+
+/* ---------- Opening logo: round foggy-glass badge (mockup 3) with wide Unbounded NEXA (mockup 7) ---------- */
+.intro-badge {
+  position: relative; isolation: isolate; width: 240px; height: 240px; border-radius: 50%;
+  display: grid; place-content: center; justify-items: center; text-align: center; color: #2a1810;
+  background: rgba(255, 250, 244, .42);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3); backdrop-filter: blur(20px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, .75);
+  box-shadow: 0 30px 60px -28px rgba(42, 24, 16, .55), inset 0 1px 0 rgba(255, 255, 255, .85);
+}
+.ib-glow { position: absolute; z-index: -1; left: -70px; top: -60px; width: 260px; height: 260px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 210, 122, .95) 0%, rgba(255, 170, 70, .55) 38%, rgba(255, 140, 50, 0) 70%); }
+.ib-a { font: 800 36px/1 "Unbounded", sans-serif; letter-spacing: .18em; margin-right: -.18em; }
+.ib-rule { display: block; width: 50px; height: 1.5px; margin: 14px auto; background: currentColor; opacity: .7; }
+.ib-b { font: 500 11px/1 "Unbounded", sans-serif; letter-spacing: .6em; margin-right: -.6em; }
+.intro-badge + .intro-tag { margin-top: 44px; }
+@media (max-width: 760px) { .intro-badge { width: 200px; height: 200px; } .ib-a { font-size: 30px; } }
