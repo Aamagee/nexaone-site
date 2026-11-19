@@ -1556,3 +1556,9 @@ h1, h2, h3 { letter-spacing: .025em; }
 /* opening wordmark: bold white */
 .intro-word, .intro-sub { font-weight: 800; color: #fff; }
 .intro-sub { border-left-color: rgba(255, 255, 255, .85); }
+
+/* divider line sits exactly at the screen center (lined up with the scroll arrow) */
+.intro-logo { display: grid; grid-template-columns: 1fr 1fr; width: 100%; align-items: center; }
+.intro-word { justify-self: end; text-align: right; padding-right: .62em; }
+.intro-sub { justify-self: start; margin-right: 0; padding-left: .9em; }
+.intro-orb { left: 50%; }
