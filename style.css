@@ -1567,3 +1567,4 @@ h1, h2, h3 { letter-spacing: .025em; }
 .intro-orb { left: calc(50% - 210px); }
 .intro-tag { margin-top: 72px; }
 .intro-tag + .intro-hint { margin-top: 56px; }
+.intro-tag + .intro-hint { margin-top: 26px; }
