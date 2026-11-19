@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Nexa Studio</title>
+<meta name="description" content="Send Nexa Studio a quick inquiry about websites, marketing, AI chatbots, or custom systems for your small business.">
+<meta name="theme-color" content="#2a1810">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="hub-page sub-page">
+<div class="hub-photo fixed" aria-hidden="true"></div>
+<main class="sub" id="main">
+  <div class="hub-frame sub-frame contact-frame">
+    <div class="pi-bar">
+      <a class="hub-home" href="/" aria-label="Nexa Studio home"><span class="lg lg6 pi-logo" aria-hidden="true"><span class="lg-word">nexa</span><span class="lg-sub">studio</span></span></a>
+      <span class="hub-bar-mid">Contact</span>
+      <a class="pi-cta" href="/start/">&larr; Get started</a>
+    </div>
+
+    <div class="sub-body contact-body">
+      <header class="sub-head">
+        <h1 class="hub-h">Contact</h1>
+        <p class="pi-sub">Let's talk about your business.</p>
+        <p class="pi-desc">Fill this out and I'll get back to you the way you prefer, usually within a day.</p>
+      </header>
+
+      <div class="sent-note" hidden>
+        <p class="sent-t">Thanks! Your message was sent.</p>
+        <p>I'll be in touch soon, the way you asked me to.</p>
+        <a class="plan-btn" href="/">Back home <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <form class="cform" action="https://formsubmit.co/aamagee113@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New inquiry from nexaone.org">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://nexaone.org/contact/?sent=1">
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="cf-row">
+          <label class="cf-field"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+          <label class="cf-field"><span>Business name <em>(optional)</em></span><input type="text" name="business" autocomplete="organization"></label>
+        </div>
+
+        <fieldset class="cf-group">
+          <legend>What are you interested in?</legend>
+          <div class="chips">
+            <label class="chip-opt"><input type="checkbox" name="interested_in" value="Websites"><span>Websites</span></label>
+            <label class="chip-opt"><input type="checkbox" name="interested_in" value="Marketing"><span>Marketing</span></label>
+            <label class="chip-opt"><input type="checkbox" name="interested_in" value="AI Chatbot"><span>AI Chatbot</span></label>
+            <label class="chip-opt"><input type="checkbox" name="interested_in" value="Custom Systems"><span>Custom Systems</span></label>
+            <label class="chip-opt"><input type="checkbox" name="interested_in" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="cf-group">
+          <legend>How should I contact you?</legend>
+          <div class="chips">
+            <label class="chip-opt"><input type="radio" name="preferred_contact" value="Email" required checked><span>Email</span></label>
+            <label class="chip-opt"><input type="radio" name="preferred_contact" value="Phone call"><span>Phone call</span></label>
+            <label class="chip-opt"><input type="radio" name="preferred_contact" value="Text"><span>Text</span></label>
+          </div>
+        </fieldset>
+
+        <div class="cf-row">
+          <label class="cf-field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+          <label class="cf-field cf-phone"><span>Phone <em class="ph-opt">(optional)</em></span><input type="tel" name="phone" autocomplete="tel"></label>
+        </div>
+
+        <label class="cf-field"><span>Anything I should know? <em>(optional)</em></span><textarea name="message" rows="3" placeholder="A sentence or two about your business and what you'd like help with."></textarea></label>
+
+        <button class="plan-btn inquire-btn cf-send" type="submit">Send inquiry <span aria-hidden="true">&rarr;</span></button>
+      </form>
+    </div>
+
+    <footer class="sub-foot">
+      <span>&copy; 2026 Nexa Studio, a NexaOne LLC company</span>
+      <span>Founded by technical marketer Ava Magee</span>
+    </footer>
+  </div>
+</main>
+<script>
+  (function () {
+    var form = document.querySelector('.cform'), q = new URLSearchParams(location.search);
+    /* after FormSubmit sends, it returns here with ?sent=1 */
+    if (q.get('sent')) { form.hidden = true; document.querySelector('.sent-note').hidden = false; return; }
+    /* phone is required when they pick a phone call or text */
+    var phone = form.querySelector('input[name="phone"]'), opt = form.querySelector('.ph-opt');
+    var sync = function () {
+      var m = form.querySelector('input[name="preferred_contact"]:checked').value;
+      var need = m !== 'Email';
+      phone.required = need; opt.textContent = need ? '(required)' : '(optional)';
+    };
+    form.querySelectorAll('input[name="preferred_contact"]').forEach(function (r) { r.addEventListener('change', sync); });
+    sync();
+    /* pre-check a service passed in the link, e.g. /contact/?services=websites */
+    var map = { websites: 'Websites', marketing: 'Marketing', 'ai-chatbot': 'AI Chatbot', 'custom-systems': 'Custom Systems' };
+    (q.get('services') || '').split(',').forEach(function (s) {
+      var box = map[s] && form.querySelector('input[name="interested_in"][value="' + map[s] + '"]');
+      if (box) box.checked = true;
+    });
+  })();
+</script>
+</body>
+</html>
