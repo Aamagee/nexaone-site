@@ -244,6 +244,28 @@
     setOn(steps[0].id);
   }
 
+  /* ---------- Photo screens: outline + text drift a little with the cursor ---------- */
+  if (!still && window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+    var pStage = $('.tour-stage');
+    if (pStage) {
+      var pmx = 0, pmy = 0, pcx = 0, pcy = 0, pRun = false;
+      var pStep = function () {
+        pcx += (pmx - pcx) * 0.07; pcy += (pmy - pcy) * 0.07;
+        pStage.style.setProperty('--mx', pcx.toFixed(4));
+        pStage.style.setProperty('--my', pcy.toFixed(4));
+        if (Math.abs(pmx - pcx) > 0.001 || Math.abs(pmy - pcy) > 0.001) requestAnimationFrame(pStep);
+        else pRun = false;
+      };
+      var pKick = function () { if (!pRun) { pRun = true; requestAnimationFrame(pStep); } };
+      window.addEventListener('pointermove', function (e) {
+        pmx = e.clientX / window.innerWidth - 0.5;
+        pmy = e.clientY / window.innerHeight - 0.5;
+        pKick();
+      }, { passive: true });
+      document.addEventListener('pointerleave', function () { pmx = 0; pmy = 0; pKick(); });
+    }
+  }
+
   /* ---------- Walkthrough visuals: tilt toward the cursor, layers shift by depth ---------- */
   if (!still && window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
     $$('.tour-visual').forEach(function (v) {
