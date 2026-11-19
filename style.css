@@ -1632,3 +1632,4 @@ h1, h2, h3 { letter-spacing: .025em; }
 .badge-sec .badge { width: min(300px, 70vw); }
 .badge-sec { padding-top: 10px; }
 .has-glow .choose { padding-bottom: 40px; }
+.choice-go, .choice-alt .choice-go { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 300; font-size: 1.05rem; line-height: 1; border-color: rgba(42, 24, 16, .14); background: rgba(255, 255, 255, .55); }
