@@ -2099,3 +2099,7 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .choose .hub-card .hub-t { color: #fff; }
 @media (max-width: 1000px) { .choose .hub-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .choose .hub-cards { grid-template-columns: 1fr; } }
+/* pricing dropdowns without checkboxes */
+.svc-row { padding-left: 0; }
+.svc-toggle { padding-left: 26px; }
+.svc-inner { padding-left: 26px; }

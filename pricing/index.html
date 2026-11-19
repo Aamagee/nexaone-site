@@ -26,7 +26,7 @@
       <header class="sub-head">
         <h1 class="hub-h">Pricing</h1>
         <p class="pi-sub">Clear prices, no surprises.</p>
-        <p class="pi-desc">Every service is separate, so you only pay for what you need. Check the ones you're interested in, open any of them to see the details, then continue when you're ready.</p>
+        <p class="pi-desc">Every service is separate, so you only pay for what you need. Open any service to see what's included and what it costs.</p>
       </header>
 
       <div class="svc-list">
@@ -34,7 +34,6 @@
         <!-- 1. Websites -->
         <div class="svc">
           <div class="svc-row">
-            <label class="svc-check"><input type="checkbox" name="svc" value="websites" data-label="Websites"><span class="box" aria-hidden="true"></span><span class="sr-only">Select Websites</span></label>
             <button class="svc-toggle" type="button" aria-expanded="false" aria-controls="svc-web">
               <span class="svc-name">Websites</span>
               <span class="svc-from">from $500</span>
@@ -63,7 +62,6 @@
         <!-- 2. Marketing -->
         <div class="svc">
           <div class="svc-row">
-            <label class="svc-check"><input type="checkbox" name="svc" value="marketing" data-label="Marketing"><span class="box" aria-hidden="true"></span><span class="sr-only">Select Marketing</span></label>
             <button class="svc-toggle" type="button" aria-expanded="false" aria-controls="svc-mkt">
               <span class="svc-name">Marketing</span>
               <span class="svc-from">from $30</span>
@@ -93,7 +91,6 @@
         <!-- 3. AI Chatbot -->
         <div class="svc">
           <div class="svc-row">
-            <label class="svc-check"><input type="checkbox" name="svc" value="ai-chatbot" data-label="AI Chatbot"><span class="box" aria-hidden="true"></span><span class="sr-only">Select AI Chatbot</span></label>
             <button class="svc-toggle" type="button" aria-expanded="false" aria-controls="svc-bot">
               <span class="svc-name">AI Chatbot</span><span class="svc-tagline">Your own AI agent</span>
               <span class="svc-from">$50/mo</span>
@@ -113,7 +110,6 @@
         <!-- 4. Custom Systems -->
         <div class="svc">
           <div class="svc-row">
-            <label class="svc-check"><input type="checkbox" name="svc" value="custom-systems" data-label="Custom Systems"><span class="box" aria-hidden="true"></span><span class="sr-only">Select Custom Systems</span></label>
             <button class="svc-toggle" type="button" aria-expanded="false" aria-controls="svc-sys">
               <span class="svc-name">Custom Systems</span><span class="svc-tagline">Your dream app</span>
               <span class="svc-from">quoted</span>
@@ -130,11 +126,6 @@
           </div></div>
         </div>
 
-      </div>
-
-      <div class="svc-summary" aria-live="polite">
-        <p><span class="svc-count">Nothing selected yet.</span> <span class="svc-picked"></span></p>
-        <a class="plan-btn svc-go" href="/contact/">Continue <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
 
@@ -154,18 +145,6 @@
         btn.closest('.svc').classList.toggle('open', !open);
       });
     });
-    /* checkboxes -> summary + continue link (/contact/?services=a,b) */
-    var boxes = [].slice.call(document.querySelectorAll('.svc-check input'));
-    var count = document.querySelector('.svc-count'), picked = document.querySelector('.svc-picked'), go = document.querySelector('.svc-go');
-    var update = function () {
-      var on = boxes.filter(function (b) { return b.checked; });
-      boxes.forEach(function (b) { b.closest('.svc').classList.toggle('picked', b.checked); });
-      count.textContent = on.length ? on.length + ' selected:' : 'Nothing selected yet.';
-      picked.textContent = on.map(function (b) { return b.getAttribute('data-label'); }).join(', ');
-      go.href = '/contact/' + (on.length ? '?services=' + on.map(function (b) { return b.value; }).join(',') : '');
-    };
-    boxes.forEach(function (b) { b.addEventListener('change', update); });
-    update();
   })();
 </script>
 </body>
