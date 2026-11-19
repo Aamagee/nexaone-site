@@ -1534,3 +1534,7 @@ h1, h2, h3 { letter-spacing: .025em; }
   #tour-code .step-copy { width: min(580px, 64%); margin-top: -62px; }
   #tour-code .step-copy .card-title { white-space: nowrap; }
 }
+
+/* softer, more rounded cards */
+.tour-step .step-copy { border-radius: 34px; padding-left: 26px; padding-right: 26px; }
+.tour-visual { border-radius: 34px; }
