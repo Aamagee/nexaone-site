@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started | Nexa Studio</title>
+<meta name="description" content="See pricing, learn how Nexa Studio works, sign in to your client portal, or get in touch.">
+<meta name="theme-color" content="#2a1810">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="hub-page">
+<main class="hub" id="main">
+  <div class="hub-photo" aria-hidden="true"></div>
+  <div class="hub-frame">
+    <div class="pi-bar">
+      <a class="hub-home" href="/" aria-label="Nexa Studio home"><span class="lg lg6 pi-logo" aria-hidden="true"><span class="lg-word">nexa</span><span class="lg-sub">studio</span></span></a>
+      <span class="hub-bar-mid">Get started</span>
+      <a class="pi-cta" href="/">&larr; Back home</a>
+    </div>
+    <div class="hub-body">
+      <div class="hub-head">
+        <h1 class="hub-h">Where would you like to start?</h1>
+        <p class="pi-sub">Pick one below.</p>
+      </div>
+      <nav class="hub-cards" aria-label="Get started options">
+        <a class="hub-card" href="/pricing/">
+          <span class="hub-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12.6V4.5A1.5 1.5 0 0 1 4.5 3h8.1a1.5 1.5 0 0 1 1.06.44l7 7a1.5 1.5 0 0 1 0 2.12l-8.1 8.1a1.5 1.5 0 0 1-2.12 0l-7-7A1.5 1.5 0 0 1 3 12.6z"/><circle cx="8" cy="8" r="1.6"/></svg></span>
+          <span class="hub-t">Pricing</span>
+          <span class="hub-d">Packages and what everything costs.</span>
+          <span class="hub-go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="hub-card" href="/info/">
+          <span class="hub-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".6"/></svg></span>
+          <span class="hub-t">Information</span>
+          <span class="hub-d">How it works, what's included, and answers to common questions.</span>
+          <span class="hub-go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="hub-card" href="/portal/">
+          <span class="hub-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg></span>
+          <span class="hub-t">Client Portal</span>
+          <span class="hub-d">Already working with me? Sign in to see your project.</span>
+          <span class="hub-go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="hub-card" href="/contact/">
+          <span class="hub-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.8 6.5l8.2 6.2 8.2-6.2"/></svg></span>
+          <span class="hub-t">Contact</span>
+          <span class="hub-d">Questions or a quote? Send me a message.</span>
+          <span class="hub-go" aria-hidden="true">&rarr;</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+</main>
+<script>
+  /* floating screen: tilts a little toward the cursor (same feel as the homepage) */
+  (function () {
+    if (!window.matchMedia || !matchMedia('(pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var root = document.documentElement, tx = 0, ty = 0, cx = 0, cy = 0, run = false;
+    var step = function () {
+      cx += (tx - cx) * 0.07; cy += (ty - cy) * 0.07;
+      root.style.setProperty('--mx', cx.toFixed(4)); root.style.setProperty('--my', cy.toFixed(4));
+      if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) requestAnimationFrame(step); else run = false;
+    };
+    var kick = function () { if (!run) { run = true; requestAnimationFrame(step); } };
+    addEventListener('pointermove', function (e) { tx = e.clientX / innerWidth - 0.5; ty = e.clientY / innerHeight - 0.5; kick(); }, { passive: true });
+    document.addEventListener('pointerleave', function () { tx = 0; ty = 0; kick(); });
+  })();
+</script>
+</body>
+</html>
