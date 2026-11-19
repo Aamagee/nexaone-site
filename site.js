@@ -118,6 +118,8 @@
     var activate = function (i) {
       if (i === activeIdx) return;
       activeIdx = i;
+      var st = document.querySelector('.tour-stage');
+      if (st) st.setAttribute('data-step', i);
       steps.forEach(function (s, j) {
         s.classList.toggle('active', j === i);
         clearTimeout(s._built);
@@ -195,6 +197,18 @@
         var q = (i + 0.5) / steps.length;
         var p = INTRO ? INTRO + (1 - INTRO) * q : q;
         window.scrollTo({ top: top + track * p, behavior: behavior });
+      });
+    });
+    /* frame tabs: jump to that slide */
+    $$('.tf-tabs a').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (!pinned() || !tourGrid) return;
+        e.preventDefault();
+        var i = parseInt(a.getAttribute('data-i'), 10);
+        var top = tourGrid.getBoundingClientRect().top + window.scrollY;
+        var track = tourGrid.offsetHeight - window.innerHeight;
+        var q = (i + 0.5) / steps.length;
+        window.scrollTo({ top: top + track * (INTRO ? INTRO + (1 - INTRO) * q : q), behavior: still ? 'auto' : 'smooth' });
       });
     });
     tourLinks.forEach(function (a, i) {
