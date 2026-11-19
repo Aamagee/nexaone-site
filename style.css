@@ -1515,3 +1515,10 @@ footer .lg.lg6 .lg-word, footer .lg.lg6 .lg-sub { font-size: 15px; }
 .intro-orb { margin-top: -2.55em; }
 .intro-tag, .intro-hint { position: relative; z-index: 2; }
 .intro-tag { margin-top: 48px; }
+
+/* card titles back to normal capitalization; cards sit lower so they only kiss the panel edge */
+.tour-step .step-copy .card-title { text-transform: none; }
+@media (min-width: 1001px) {
+  .tour-steps { --vis-w: min(100%, calc((100vh - 320px) * 1.6)); height: min(800px, calc(100vh - 40px)); }
+  .tour-step .step-copy { margin-top: -34px; }
+}
