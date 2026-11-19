@@ -1445,3 +1445,12 @@ h1, h2, h3, .statement-text { font-family: var(--display); font-weight: 700; let
 .choice h3 { font-size: 1.3rem; letter-spacing: -.02em; }
 .intro-word { font-family: "Poppins", sans-serif; font-weight: 700; font-size: .78em; letter-spacing: -.04em; }
 .lg6 .lg-word { font-family: "Poppins", sans-serif; font-weight: 700; font-size: .9em; letter-spacing: -.04em; }
+
+/* Poppins a touch lighter + a touch more spacing */
+h1, h2, h3, .statement-text { font-weight: 600; letter-spacing: 0; }
+.tour-step .step-copy .card-title { letter-spacing: -.012em; }
+.has-glow .block-head h2 { letter-spacing: -.012em; }
+.statement-text { font-weight: 500; letter-spacing: .005em; }
+.choice h3 { letter-spacing: 0; }
+.intro-word { font-weight: 600; letter-spacing: -.015em; }
+.lg6 .lg-word { font-weight: 600; letter-spacing: -.015em; }
