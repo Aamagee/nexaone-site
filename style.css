@@ -1454,3 +1454,6 @@ h1, h2, h3, .statement-text { font-weight: 600; letter-spacing: 0; }
 .choice h3 { letter-spacing: 0; }
 .intro-word { font-weight: 600; letter-spacing: -.015em; }
 .lg6 .lg-word { font-weight: 600; letter-spacing: -.015em; }
+
+/* all titles lowercase */
+h1, h2, h3 { text-transform: lowercase; }
