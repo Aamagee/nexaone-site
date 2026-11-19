@@ -1568,3 +1568,4 @@ h1, h2, h3 { letter-spacing: .025em; }
 .intro-tag { margin-top: 72px; }
 .intro-tag + .intro-hint { margin-top: 56px; }
 .intro-tag + .intro-hint { margin-top: 26px; }
+@media (min-width: 1001px) { #tour-sys .step-copy { width: min(540px, 60%); } #tour-sys .step-copy .card-title { white-space: nowrap; } }
