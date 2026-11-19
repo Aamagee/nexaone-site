@@ -1457,3 +1457,9 @@ h1, h2, h3, .statement-text { font-weight: 600; letter-spacing: 0; }
 
 /* all titles lowercase */
 h1, h2, h3 { text-transform: lowercase; }
+
+/* titles: more letter spacing */
+h1, h2, h3 { letter-spacing: .04em; }
+.tour-step .step-copy .card-title { letter-spacing: .035em; }
+.has-glow .block-head h2 { letter-spacing: .035em; }
+.choice h3 { letter-spacing: .04em; }
