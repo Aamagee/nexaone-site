@@ -180,6 +180,23 @@
       var skyP = INTRO ? Math.max(0, (p - INTRO) / (1 - INTRO)) : p;
       if (!skyTicking) { skyTicking = true; requestAnimationFrame(function () { skyTicking = false; paintSky(skyP); }); }
     };
+    /* floating "next" arrows: glide to the next slide (last one continues to the section below) */
+    $$('.next-arrow').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var i = parseInt(btn.getAttribute('data-next'), 10) + 1;
+        var behavior = still ? 'auto' : 'smooth';
+        if (i >= steps.length || !tourGrid) {
+          var after = tourGrid ? tourGrid.closest('section').nextElementSibling : null;
+          if (after) window.scrollTo({ top: after.getBoundingClientRect().top + window.scrollY, behavior: behavior });
+          return;
+        }
+        var top = tourGrid.getBoundingClientRect().top + window.scrollY;
+        var track = tourGrid.offsetHeight - window.innerHeight;
+        var q = (i + 0.5) / steps.length;
+        var p = INTRO ? INTRO + (1 - INTRO) * q : q;
+        window.scrollTo({ top: top + track * p, behavior: behavior });
+      });
+    });
     tourLinks.forEach(function (a, i) {
       a.addEventListener('click', function (e) {
         if (!pinned() || !tourGrid) return;
