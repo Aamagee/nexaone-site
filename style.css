@@ -1693,7 +1693,7 @@ h1, h2, h3 { letter-spacing: .025em; }
    per slide, the same thin white website outline, white type.
    ========================================================== */
 .tour-photos, .tour-frame { display: none; }
-.tp0 { --img: url("https://images.unsplash.com/photo-1544474560-5b2a788d024a?auto=format&rect=1250,2050,3300,1950&w=2400&q=80"); }
+.tp0 { --img: url("https://images.unsplash.com/photo-1544474560-5b2a788d024a?auto=format&fit=crop&w=2400&q=80"); }
 .tp1 { --img: url("https://images.unsplash.com/photo-1768180316485-2c7306ab38ff?auto=format&fit=crop&w=2400&q=80"); }
 .tp2 { --img: url("https://images.unsplash.com/photo-1533630757306-cbadb934bcb1?auto=format&fit=crop&w=2400&q=80"); }
 .tp3 { --img: url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=2400&q=80"); }
@@ -1747,7 +1747,7 @@ h1, h2, h3 { letter-spacing: .025em; }
   .photo-tour .tour-step::after { content: ""; position: absolute; inset: 14px; border: 1.5px solid rgba(255, 255, 255, .85); pointer-events: none; }
   .photo-tour .tour-step .step-copy { background: none; border: 0; box-shadow: none; padding: 0; margin-top: 28px; -webkit-backdrop-filter: none; backdrop-filter: none; }
   .photo-tour .tour-step .tour-visual { border-radius: 2px; }
-  #tour-web { --img: url("https://images.unsplash.com/photo-1544474560-5b2a788d024a?auto=format&rect=1250,2050,3300,1950&w=1200&q=75"); }
+  #tour-web { --img: url("https://images.unsplash.com/photo-1544474560-5b2a788d024a?auto=format&fit=crop&w=1200&q=75"); }
   #tour-mkt { --img: url("https://images.unsplash.com/photo-1768180316485-2c7306ab38ff?auto=format&fit=crop&w=1200&q=75"); }
   #tour-sys { --img: url("https://images.unsplash.com/photo-1533630757306-cbadb934bcb1?auto=format&fit=crop&w=1200&q=75"); }
   #tour-code { --img: url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=75"); }
