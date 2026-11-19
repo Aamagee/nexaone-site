@@ -1562,3 +1562,4 @@ h1, h2, h3 { letter-spacing: .025em; }
 .intro-word { justify-self: end; text-align: right; padding-right: .62em; }
 .intro-sub { justify-self: start; margin-right: 0; padding-left: .9em; }
 .intro-orb { left: 50%; }
+.intro-orb { left: calc(50% - 90px); }
