@@ -1540,3 +1540,9 @@ h1, h2, h3 { letter-spacing: .025em; }
 .tour-visual { border-radius: 34px; }
 .statement-text { font-size: clamp(2rem, 4.2vw, 3.4rem); max-width: 900px; }
 .statement { padding: 16vh 0; }
+
+/* opening wordmark much smaller; sun stays big */
+.intro-logo { font-size: clamp(.95rem, 1.35vw, 1.2rem); }
+.intro-sub { border-left-width: 1.5px; }
+.intro-orb { width: 150px; height: 140px; left: -50px; margin-top: -76px; }
+.intro-tag { margin-top: 40px; }
