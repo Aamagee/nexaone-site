@@ -2073,3 +2073,24 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 @media (max-width: 760px) { .info-list { grid-template-columns: 1fr; } .info-sec { padding: 22px 18px 6px; } }
 .svc-tagline { padding: 5px 9px; border-radius: 99px; font: 600 .58rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--sunset); }
 .pi-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- "How should your business grow?": photo background + dark frosted cards ---------- */
+.has-glow .choose { position: relative; isolation: isolate; overflow: hidden; padding: 120px 0 130px; color: #fff; }
+.has-glow .choose::before { content: ""; position: absolute; inset: 0; z-index: -2;
+  background: url("https://images.unsplash.com/photo-1679978677453-9452668cb867?auto=format&fit=crop&w=2400&q=80") center / cover no-repeat; }
+.has-glow .choose::after { content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(30, 16, 10, .55) 0%, rgba(30, 16, 10, .3) 45%, rgba(30, 16, 10, .6) 100%); }
+.has-glow .choose .block-head h2 { color: #fff; }
+.has-glow .choose .block-head p { color: rgba(255, 255, 255, .85); }
+.has-glow .choose .eyebrow { color: #ffd27a; }
+.has-glow .choose .eyebrow::before { background: #ffd27a; }
+.has-glow .choose .kw { background: var(--sunset-bright); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.has-glow .choose .choice, .has-glow .choose .choice.choice-alt {
+  background: rgba(42, 24, 16, .42); color: #fff; border: 1px solid rgba(255, 255, 255, .22);
+  -webkit-backdrop-filter: blur(20px) saturate(1.25); backdrop-filter: blur(20px) saturate(1.25);
+  box-shadow: 0 30px 60px -30px rgba(10, 5, 2, .65), inset 0 1px 0 rgba(255, 255, 255, .12); }
+.has-glow .choose .choice h3 { color: #fff; }
+.has-glow .choose .choice p, .has-glow .choose .choice.choice-alt p { color: rgba(255, 255, 255, .8); }
+.has-glow .choose .icon.tile { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .3); box-shadow: none; }
+.has-glow .choose .icon.tile svg * { stroke: #fff !important; }
+.has-glow .choose .choice-go { background: rgba(255, 255, 255, .12); color: #fff; border-color: rgba(255, 255, 255, .38); }
