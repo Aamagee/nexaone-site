@@ -1626,3 +1626,7 @@ h1, h2, h3 { letter-spacing: .025em; }
 }
 .choice:hover .choice-go { background: rgba(255, 248, 240, .7); color: #2a1810; border-color: rgba(255, 255, 255, .9); }
 .icon.tile svg { width: 25px; height: 25px; }
+
+/* walking sun badge: smaller and lower, sits just above the footer */
+.badge-sec { padding-top: 110px; padding-bottom: 36px; }
+.badge-sec .badge { width: min(300px, 70vw); }
