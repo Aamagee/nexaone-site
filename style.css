@@ -2094,3 +2094,8 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .has-glow .choose .icon.tile { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .3); box-shadow: none; }
 .has-glow .choose .icon.tile svg * { stroke: #fff !important; }
 .has-glow .choose .choice-go { background: rgba(255, 255, 255, .12); color: #fff; border-color: rgba(255, 255, 255, .38); }
+/* start cards inside the homepage "grow" section */
+.choose .hub-cards { margin-top: 10px; text-align: left; }
+.choose .hub-card .hub-t { color: #fff; }
+@media (max-width: 1000px) { .choose .hub-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .choose .hub-cards { grid-template-columns: 1fr; } }
