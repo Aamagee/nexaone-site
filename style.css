@@ -1848,3 +1848,5 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .pi-h, .photo-tour .tour-step .step-copy .card-title { font-weight: 500; letter-spacing: -.035em; }
 .lg6 .lg-word, .lg6 .lg-sub { font-family: var(--sans); font-style: normal; }
 .pi-links a, .pi-cta, .tf-tabs a, .pi-btn { font-weight: 600; }
+/* gradient words: give descenders (g, y, p) room so they are not clipped */
+.kw { padding-bottom: .14em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
