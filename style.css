@@ -2139,3 +2139,28 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .sent-note .sent-t { font: 600 1.3rem/1.3 var(--display); }
 @media (max-width: 600px) { .cf-row { grid-template-columns: 1fr; } .cform { padding: 20px 16px; } }
 .cform[hidden], .sent-note[hidden] { display: none; }
+
+/* ---------- Client portal ---------- */
+.pv[hidden], .pv-loading[hidden] { display: none; }
+.pv-loading { color: rgba(255, 255, 255, .7); font: 400 .9rem/1.5 var(--sans); }
+.portal-msg { margin: 0; min-height: 1.4em; font: 500 .88rem/1.5 var(--sans); color: #ffd27a; }
+.portal-help, .portal-note { margin: 18px 0 0; font: 400 .88rem/1.6 var(--sans); color: rgba(255, 255, 255, .8); }
+.portal-note { margin: 0 0 24px; padding: 16px 18px; border-radius: 12px; border: 1px solid rgba(255, 190, 110, .55); background: rgba(42, 24, 16, .45); }
+.portal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.portal-head .plan-btn { margin: 0; cursor: pointer; font-family: var(--sans); }
+.p-block { margin-bottom: 34px; }
+.p-card { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; padding: 18px 20px; border-radius: 14px; color: #fff;
+  background: rgba(42, 24, 16, .45); border: 1px solid rgba(255, 255, 255, .22);
+  -webkit-backdrop-filter: blur(20px) saturate(1.25); backdrop-filter: blur(20px) saturate(1.25); }
+.p-card b { display: block; font: 600 1rem/1.3 var(--display); }
+.p-card div > span { font: 400 .8rem/1.4 var(--sans); color: rgba(255, 255, 255, .65); }
+.p-inv-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.p-inv-right .plan-btn { margin: 0; }
+.p-amt { font: 600 1.05rem/1 var(--sans); }
+.st { padding: 6px 10px; border-radius: 99px; font: 600 .6rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; border: 1px solid rgba(255, 255, 255, .35); }
+.st-on { background: var(--sunset); border-color: transparent; }
+.st-due { background: rgba(255, 210, 122, .18); border-color: rgba(255, 210, 122, .6); color: #ffd27a; }
+.st-done { background: rgba(143, 224, 168, .14); border-color: rgba(143, 224, 168, .55); color: #8fe0a8; }
+.st-pause { background: rgba(255, 255, 255, .08); }
+.p-empty { margin: 0; font: 400 .88rem/1.5 var(--sans); color: rgba(255, 255, 255, .65); }
+.p-name { text-transform: none; }

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Portal | Nexa Studio</title>
+<meta name="description" content="Nexa Studio client portal: sign in to see your projects and invoices.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2a1810">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="hub-page sub-page">
+<div class="hub-photo fixed" aria-hidden="true"></div>
+<main class="sub" id="main">
+  <div class="hub-frame sub-frame contact-frame">
+    <div class="pi-bar">
+      <a class="hub-home" href="/" aria-label="Nexa Studio home"><span class="lg lg6 pi-logo" aria-hidden="true"><span class="lg-word">nexa</span><span class="lg-sub">studio</span></span></a>
+      <span class="hub-bar-mid">Client portal</span>
+      <a class="pi-cta" href="/start/">&larr; Get started</a>
+    </div>
+
+    <div class="sub-body">
+      <!-- signed out -->
+      <section class="pv pv-out" hidden>
+        <header class="sub-head">
+          <h1 class="hub-h">Client portal</h1>
+          <p class="pi-sub">Your projects and invoices, in one place.</p>
+          <p class="pi-desc">Enter the email you work with me under and I'll send you a one-time sign-in link. No password needed.</p>
+        </header>
+        <form class="cform portal-form">
+          <label class="cf-field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+          <button class="plan-btn inquire-btn cf-send" type="submit">Email me a sign-in link <span aria-hidden="true">&rarr;</span></button>
+          <p class="portal-msg" role="status" aria-live="polite"></p>
+        </form>
+        <p class="portal-help">New here? <a class="inline-link" href="/contact/">Send me an inquiry</a> to get started.</p>
+      </section>
+
+      <!-- signed in -->
+      <section class="pv pv-in" hidden>
+        <header class="sub-head portal-head">
+          <div>
+            <h1 class="hub-h">Hi, <span class="p-name">there</span></h1>
+            <p class="pi-sub">Your client portal.</p>
+          </div>
+          <button class="plan-btn p-signout" type="button">Sign out</button>
+        </header>
+
+        <p class="portal-note p-unlinked" hidden>Your sign-in worked, but your account isn't linked to a project yet. <a class="inline-link" href="/contact/">Contact me</a> and I'll get it set up.</p>
+
+        <div class="p-block">
+          <div class="price-sec-head"><h2>Your projects</h2></div>
+          <div class="p-projects"></div>
+        </div>
+
+        <div class="p-block">
+          <div class="price-sec-head"><h2>Invoices</h2></div>
+          <div class="p-invoices"></div>
+        </div>
+
+        <div class="sub-cta">
+          <p>Questions about your project?</p>
+          <a class="plan-btn inquire-btn" href="/contact/">Contact me <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </section>
+
+      <p class="pv-loading">Loading&hellip;</p>
+    </div>
+
+    <footer class="sub-foot">
+      <span>&copy; 2026 Nexa Studio, a NexaOne LLC company</span>
+      <span>Founded by technical marketer Ava Magee</span>
+    </footer>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+  (function () {
+    /* Public project URL + publishable key: safe in the browser. Data access is
+       limited by the database itself (see NexaBackend/supabase/portal.sql). */
+    var sb = window.supabase.createClient('https://gmjwlvcpowiirmufatjs.supabase.co', 'sb_publishable_WT0bouWuc5u-cHPifsF5sA__lG9xIX5');
+    var $ = function (s) { return document.querySelector(s); };
+    var esc = function (s) { var d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; };
+    var money = function (c) { return '$' + (c / 100).toLocaleString('en-US', { minimumFractionDigits: c % 100 ? 2 : 0, maximumFractionDigits: 2 }); };
+    var day = function (d) { return d ? new Date(d + (String(d).length === 10 ? 'T12:00:00' : '')).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : ''; };
+    var STATUS = { active: ['In progress', 'st-on'], paused: ['Paused', 'st-pause'], done: ['Complete', 'st-done'] };
+
+    var show = function (which) {
+      $('.pv-loading').hidden = true;
+      $('.pv-out').hidden = which !== 'out';
+      $('.pv-in').hidden = which !== 'in';
+    };
+
+    var load = async function () {
+      show('in');
+      var me = await sb.rpc('portal_me');
+      var name = me.data && me.data[0] && me.data[0].client_name;
+      $('.p-name').textContent = name || 'there';
+      $('.p-unlinked').hidden = !!name;
+
+      var pr = await sb.rpc('portal_projects');
+      var projects = pr.data || [];
+      $('.p-projects').innerHTML = projects.length ? projects.map(function (p) {
+        var s = STATUS[p.status] || [p.status, ''];
+        return '<div class="p-card"><div><b>' + esc(p.name) + '</b><span>Started ' + esc(day(p.created_at)) + '</span></div><span class="st ' + s[1] + '">' + esc(s[0]) + '</span></div>';
+      }).join('') : '<p class="p-empty">No projects to show yet.</p>';
+
+      var iv = await sb.rpc('portal_invoices');
+      var invoices = iv.data || [];
+      $('.p-invoices').innerHTML = invoices.length ? invoices.map(function (i) {
+        var paid = i.status === 'paid';
+        var pay = !paid && i.payment_link_url && /^https:\/\//.test(i.payment_link_url)
+          ? '<a class="plan-btn inquire-btn" href="' + esc(i.payment_link_url) + '" target="_blank" rel="noopener">Pay now <span aria-hidden="true">&rarr;</span></a>' : '';
+        return '<div class="p-card p-inv"><div><b>' + esc(i.description || 'Invoice') + '</b><span>' + (i.due_date ? (paid ? 'Was due ' : 'Due ') + esc(day(i.due_date)) : 'Sent ' + esc(day(i.created_at))) + '</span></div>' +
+          '<div class="p-inv-right"><span class="p-amt">' + esc(money(i.amount_cents)) + '</span><span class="st ' + (paid ? 'st-done' : 'st-due') + '">' + (paid ? 'Paid' : 'Due') + '</span>' + pay + '</div></div>';
+      }).join('') : '<p class="p-empty">No invoices right now.</p>';
+
+      if (me.error || pr.error || iv.error) $('.p-unlinked').hidden = false;
+    };
+
+    /* sign-in link (only works for emails you've invited; no public sign-ups) */
+    $('.portal-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var btn = this.querySelector('button'), msg = $('.portal-msg');
+      var email = this.email.value.trim();
+      btn.disabled = true; msg.textContent = 'Sending...';
+      var res = await sb.auth.signInWithOtp({ email: email, options: { shouldCreateUser: false, emailRedirectTo: location.origin + '/portal/' } });
+      btn.disabled = false;
+      if (res.error) {
+        msg.textContent = /signups? not allowed|not found|otp/i.test(res.error.message)
+          ? "That email isn't set up for the portal yet. Contact me and I'll add you."
+          : 'Something went wrong sending the link. Please try again in a minute.';
+      } else {
+        msg.textContent = 'Check your email for a sign-in link. You can close this tab.';
+        this.email.value = '';
+      }
+    });
+
+    $('.p-signout').addEventListener('click', async function () { await sb.auth.signOut(); show('out'); });
+
+    sb.auth.onAuthStateChange(function (event, session) {
+      if (event === 'SIGNED_IN' && session) { history.replaceState(null, '', '/portal/'); load(); }
+    });
+    sb.auth.getSession().then(function (r) { if (r.data && r.data.session) load(); else show('out'); });
+  })();
+</script>
+</body>
+</html>
