@@ -2071,3 +2071,4 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .info-list dd { margin: 0; font: 400 .84rem/1.6 var(--sans); color: rgba(255, 255, 255, .78); }
 .inline-link { color: #ffd27a; text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 760px) { .info-list { grid-template-columns: 1fr; } .info-sec { padding: 22px 18px 6px; } }
+.svc-tagline { padding: 5px 9px; border-radius: 99px; font: 600 .58rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--sunset); }
