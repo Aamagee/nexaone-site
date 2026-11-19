@@ -2164,3 +2164,4 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .st-pause { background: rgba(255, 255, 255, .08); }
 .p-empty { margin: 0; font: 400 .88rem/1.5 var(--sans); color: rgba(255, 255, 255, .65); }
 .p-name { text-transform: none; }
+.price-sec-head .p-billing { margin: 0; } .p-billing-note { margin: -6px 0 14px; font: 400 .8rem/1.5 var(--sans); color: rgba(255,255,255,.65); }
