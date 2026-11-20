@@ -2203,3 +2203,29 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
   .adm-phone { display: block; }
   .p-billing-note, .portal-help, .pi-desc { text-shadow: 0 1px 8px rgba(20, 10, 5, .55); }
 }
+
+/* ---------- Sitewide dark glass (matches the pricing page) ---------- */
+:root { --glass: rgba(42, 24, 16, .45); --glass-hover: rgba(42, 24, 16, .62); --glass-line: rgba(255, 255, 255, .26);
+  --glass-blur: blur(20px) saturate(1.25); --glass-shadow: 0 20px 40px -24px rgba(10, 5, 2, .7), inset 0 1px 0 rgba(255, 255, 255, .12); }
+/* buttons: landing Pricing / Client portal, slide arrows, outlined buttons on inner pages */
+.pi-btn, .photo-tour .next-arrow, .plan-btn:not(.inquire-btn), .more-info, .hub-go, .has-glow .choose .choice-go {
+  background: var(--glass); border: 1px solid var(--glass-line); color: #fff;
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shadow); }
+.pi-btn:hover, .photo-tour .next-arrow:hover, .plan-btn:not(.inquire-btn):hover, .more-info:hover, .hub-card:hover .hub-go, .has-glow .choose .choice-go:hover {
+  background: var(--glass-hover); border-color: rgba(255, 255, 255, .45); }
+.pi-btn { padding: 12px 16px; font-weight: 600; }
+.svc-summary .plan-btn { background: var(--sunset); border-color: transparent; box-shadow: none; }
+/* cards and panels: one shade everywhere */
+.hub-card, .has-glow .choose .choice, .has-glow .choose .choice.choice-alt,
+#services.photo-tour .tour-visual .browser, #services.photo-tour .tour-visual .ad-card, #services.photo-tour .tour-visual .graph,
+#services.photo-tour .tour-visual .chat, #services.photo-tour .tour-visual .tiles div, #services.photo-tour .tour-visual .ed-pane { background: var(--glass); }
+.sub-cta { background: var(--glass); border-color: rgba(255, 255, 255, .22);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shadow); }
+/* phones/tablets: single column (a later desktop rule was leaving a 280px column, which shoved the title screen and slides off-center) */
+@media (max-width: 1000px) { .tour-grid, .tour-stage { grid-template-columns: 1fr; gap: 0; } }
+@media (max-width: 1000px) { .has-glow #services.photo-tour { padding-top: 0; padding-bottom: 0; } }
+@media (max-width: 1000px) {
+  .tour-intro.photo-intro { justify-content: flex-start; padding-top: 18px; }
+  .photo-intro .pi-frame { height: calc(100svh - 96px); }
+  .photo-intro .intro-hint { bottom: 10px; }
+}
