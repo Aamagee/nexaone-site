@@ -2477,3 +2477,17 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .hub-card:hover .hub-go, .hub-card:focus-visible .hub-go { background: rgba(255, 255, 255, .14); border-color: rgba(255, 255, 255, .5); }
 #services.bare .vb-tile.vb-word b, .vb-tile.vb-word b { font-size: 2rem; white-space: nowrap; }
 @media (max-width: 1000px) { .vb-tile.vb-word b { font-size: 1.3rem; } }
+
+/* Websites slide: site score rings */
+.sc-k { margin: 0 0 12px; font: 600 1.1rem/1.1 var(--display); letter-spacing: -.02em; color: #fff; }
+.sc-rings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.sc-ring { position: relative; display: grid; justify-items: center; gap: 6px; }
+.sc-ring svg { width: 100%; max-width: 86px; aspect-ratio: 1; display: block; rotate: -90deg; overflow: visible; }
+.sc-ring circle { fill: none; stroke-width: 5; }
+.sc-bg { stroke: rgba(255, 255, 255, .12); }
+.sc-val { stroke: #ff8a1e; stroke-linecap: round; filter: drop-shadow(0 0 6px rgba(255, 116, 3, .6)); transition: stroke-dasharray 1.4s cubic-bezier(.2, .7, .2, 1) .6s; }
+.sc-ring b { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 1; max-width: 86px; margin: 0 auto; display: grid; place-items: center; font: 600 1.3rem/1 var(--display); color: #ffd27a; }
+.sc-ring span { font: 500 .72rem/1 var(--sans); color: rgba(255, 255, 255, .78); }
+.tour-step:not(.seen) .sc-val { stroke-dasharray: 0 100; }
+@media (min-width: 1001px) { .sc-k { font-size: 1.5rem; } .sc-ring b { font-size: 1.5rem; } .sc-ring span { font-size: .82rem; } }
+@media (max-width: 600px) { .sc-ring b { font-size: 1rem; } .sc-rings { gap: 6px; } }
