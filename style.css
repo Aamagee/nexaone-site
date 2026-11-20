@@ -2311,3 +2311,24 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
   .code-dash .ed-files { display: none; }
   .code-dash .ed-files[style] { display: none; }
 }
+
+/* ---------- Slides "bare" mode: no window, the pieces sit right on the photo ---------- */
+#services.bare .tour-visual .browser { background: none !important; border: 0 !important; box-shadow: none !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; overflow: visible; }
+#services.bare .tour-visual .browser-bar { display: none; }
+#services.bare .tour-visual { overflow: visible; }
+#services.bare .ads-dash, #services.bare .sys-dash, #services.bare .code-dash { padding: 0; gap: 18px; overflow: visible; }
+#services.bare .ads-ad, #services.bare .sys-tile, #services.bare .code-dash .ed-files, #services.bare .code-dash .ed-term, #services.bare .code-dash .ed-code, #services.bare .ms-cards div {
+  background: var(--glass); border: 1px solid rgba(255, 255, 255, .2); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shadow); }
+#services.bare .ads-k, #services.bare .ads-n, #services.bare .sys-who, #services.bare .ms-copy { text-shadow: 0 2px 14px rgba(20, 10, 5, .7); }
+/* (no filter here: it would block the glass blur on the tags/bubbles inside) */
+#services.bare .code-sun { display: none; }
+/* bare mode tweaks: Websites keeps its browser window (it IS the website icon); readable bubbles/tags on busy photos */
+#services.bare .v-web .browser { background: var(--glass) !important; border: 1px solid rgba(255, 255, 255, .2) !important; box-shadow: var(--glass-shadow) !important; -webkit-backdrop-filter: var(--glass-blur) !important; backdrop-filter: var(--glass-blur) !important; overflow: hidden; }
+#services.bare .v-web .browser-bar { display: flex; }
+#services.bare .v-web .ms-cards div { -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .12); }
+#services.bare .msg.them { background: var(--glass); border: 1px solid rgba(255, 255, 255, .22); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+#services.bare .sys-who { width: max-content; padding: 6px 10px 6px 7px; border-radius: 99px; background: var(--glass); border: 1px solid rgba(255, 255, 255, .2); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); text-shadow: none; }
+#services.bare .ads-chips span { background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+#services.bare .ads-n small { color: rgba(255, 255, 255, .85); }
+#services.bare .ads-stats .graph-line { stroke-width: 3.5; filter: drop-shadow(0 0 6px rgba(255, 116, 3, .7)); }
+#services.bare .ads-stats .graph-fill { fill: rgba(255, 116, 3, .22); }
