@@ -117,16 +117,21 @@
 
         <article class="tour-step" id="tour-sys">
           <div class="tour-visual v-sys" aria-hidden="true">
-            <div class="chat float">
-              <div class="chat-head"><i></i>Your business assistant<span>online</span></div>
-              <p class="msg them">Are you open this Sunday?</p>
-              <p class="msg us">Yes! 10am to 4pm. Want me to book you a spot?</p>
-              <p class="msg them">Yes please, 2pm</p>
-              <p class="msg us">You're booked for 2:00. See you Sunday!</p>
-            </div>
-            <div class="tiles">
-              <div class="float"><span>Bookings</span><b>24</b></div>
-              <div class="float"><span>New leads</span><b>9</b></div>
+            <div class="browser float sys-win">
+              <div class="browser-bar"><i></i><i></i><i></i><span>Your business assistant</span><em class="ads-live">Online</em></div>
+              <div class="sys-dash">
+                <div class="sys-chat">
+                  <div class="sys-who"><i></i><b>Assistant</b></div>
+                  <p class="msg them">Are you open this Sunday?</p>
+                  <p class="msg us">Yes! 10am to 4pm. Want me to book you a spot?</p>
+                  <p class="msg them">Yes please, 2pm</p>
+                  <p class="msg us">You're booked for 2:00. See you Sunday!</p>
+                </div>
+                <div class="sys-side">
+                  <div class="sys-tile"><span>Bookings</span><b>24</b></div>
+                  <div class="sys-tile"><span>New leads</span><b>9</b></div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="step-copy">
@@ -139,34 +144,38 @@
 
         <article class="tour-step" id="tour-code">
           <div class="tour-visual v-code" aria-hidden="true">
-            <div class="editor">
-              <div class="ed-pane ed-term float">
-                <div class="ed-title">your_business</div>
-                <div class="ed-body">
-                  <p class="ln"><span class="c-o">$</span> nexa new your-business</p>
-                  <p class="ln c-ok">&#10003; created index.html</p>
-                  <p class="ln c-ok">&#10003; created booking.js</p>
-                  <p class="ln c-ok">&#10003; created style.css</p>
-                  <p class="ln c-dim">0 templates used. 100% yours.</p>
+            <div class="browser float code-win">
+              <div class="browser-bar"><i></i><i></i><i></i><span>your-business</span><em class="ads-live">Built</em></div>
+              <div class="code-dash">
+                <div class="ed-files">
+                  <div class="ed-title">files</div>
+                  <div class="ed-body">
+                    <p class="ln">index.html <span class="added">+</span></p>
+                    <p class="ln">booking.js <span class="added">+</span></p>
+                    <p class="ln">style.css <span class="added">+</span></p>
+                  </div>
                 </div>
-              </div>
-              <div class="ed-pane ed-code float">
-                <div class="ed-title">index.html</div>
-                <div class="ed-body">
-                  <p class="ln"><span class="c-t">&lt;header</span> <span class="c-a">class</span>=<span class="c-s">"hero"</span><span class="c-t">&gt;</span></p>
-                  <p class="ln in1"><span class="c-t">&lt;h1&gt;</span>Fresh cuts, every day.<span class="c-t">&lt;/h1&gt;</span></p>
-                  <p class="ln in1"><span class="c-t">&lt;a</span> <span class="c-a">href</span>=<span class="c-s">"#book"</span><span class="c-t">&gt;</span>Book now<span class="c-t">&lt;/a&gt;</span></p>
-                  <p class="ln"><span class="c-t">&lt;/header&gt;</span></p>
-                  <p class="ln c-dim">// built for you, line by line</p>
+                <div class="code-main">
+                  <div class="ed-term">
+                    <div class="ed-title">terminal</div>
+                    <div class="ed-body">
+                      <p class="ln"><span class="c-o">$</span> nexa new your-business</p>
+                      <p class="ln c-ok">&#10003; created index.html</p>
+                      <p class="ln c-ok">&#10003; created booking.js</p>
+                      <p class="ln c-dim">0 templates used. 100% yours.</p>
+                    </div>
+                  </div>
+                  <div class="ed-code">
+                    <div class="ed-title">index.html</div>
+                    <div class="ed-body">
+                      <p class="ln"><span class="c-t">&lt;header</span> <span class="c-a">class</span>=<span class="c-s">"hero"</span><span class="c-t">&gt;</span></p>
+                      <p class="ln in1"><span class="c-t">&lt;h1&gt;</span>Fresh cuts, every day.<span class="c-t">&lt;/h1&gt;</span></p>
+                      <p class="ln in1"><span class="c-t">&lt;a</span> <span class="c-a">href</span>=<span class="c-s">"#book"</span><span class="c-t">&gt;</span>Book now<span class="c-t">&lt;/a&gt;</span></p>
+                      <p class="ln"><span class="c-t">&lt;/header&gt;</span></p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="ed-pane ed-files float">
-                <div class="ed-title">files</div>
-                <div class="ed-body">
-                  <p class="ln">index.html <span class="added">+ Added</span></p>
-                  <p class="ln">booking.js <span class="added">+ Added</span></p>
-                  <p class="ln">style.css <span class="added">+ Added</span></p>
-                </div>
+                <div class="code-sun"></div>
               </div>
             </div>
           </div>
