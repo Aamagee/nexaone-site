@@ -2475,3 +2475,5 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
   box-shadow: 0 34px 60px -28px rgba(10, 5, 2, .75), inset 0 1px 0 rgba(255, 255, 255, .2); }
 .hub-card:hover .hub-ico, .hub-card:focus-visible .hub-ico { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .45); }
 .hub-card:hover .hub-go, .hub-card:focus-visible .hub-go { background: rgba(255, 255, 255, .14); border-color: rgba(255, 255, 255, .5); }
+#services.bare .vb-tile.vb-word b, .vb-tile.vb-word b { font-size: 2rem; white-space: nowrap; }
+@media (max-width: 1000px) { .vb-tile.vb-word b { font-size: 1.3rem; } }
