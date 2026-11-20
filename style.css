@@ -2230,16 +2230,6 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
   .photo-intro .intro-hint { bottom: 10px; }
 }
 
-/* ---------- Card icons: gold line art + little sunset sun, in a warm glass tile ---------- */
-.hub-ico { width: 50px; height: 50px; border-radius: 14px;
-  background: linear-gradient(145deg, rgba(255, 164, 2, .2), rgba(42, 24, 16, .55) 70%); border: 1px solid rgba(255, 210, 122, .42);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 0 26px -8px rgba(255, 128, 30, .55); transition: box-shadow .4s ease, border-color .4s ease; }
-.hub-ico svg { width: 27px; height: 27px; stroke: #ffd27a; stroke-width: 1.35; transition: stroke .4s ease; }
-.hub-ico svg .sun { fill: url(#sunG); stroke: none; transition: fill .4s ease; }
-.hub-card:hover .hub-ico, .hub-card:focus-visible .hub-ico { border-color: rgba(255, 255, 255, .6); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), 0 0 30px -6px rgba(255, 230, 180, .7); }
-.hub-card:hover .hub-ico svg, .hub-card:focus-visible .hub-ico svg { stroke: #fff; }
-.hub-card:hover .hub-ico svg .sun, .hub-card:focus-visible .hub-ico svg .sun { fill: #fff; }
-
 /* ---------- Marketing slide: one glass "ad results" window, same style as the Websites one ---------- */
 .tour-visual.v-mkt { grid-template-columns: 1fr; padding: 0; gap: 0; }
 .v-mkt > .ads-win { width: 76%; }
@@ -2477,3 +2467,11 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .serp-hit { transition-delay: .7s; }
 @media (min-width: 1001px) { .vb-card.web-card { width: 58%; bottom: 4%; } .serp-title { font-size: 1rem; } .serp-bar { font-size: .88rem; } }
 @media (max-width: 600px) { .serp-top { display: none; } .serp-title { font-size: .8rem; } }
+
+/* ---------- Get-started cards: classy hover (no sunset fill) ---------- */
+.hub-card::after { display: none; }
+.hub-card { transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease, background .4s ease; }
+.hub-card:hover, .hub-card:focus-visible { transform: translateY(-3px); background: rgba(42, 24, 16, .58); border-color: rgba(255, 255, 255, .45);
+  box-shadow: 0 34px 60px -28px rgba(10, 5, 2, .75), inset 0 1px 0 rgba(255, 255, 255, .2); }
+.hub-card:hover .hub-ico, .hub-card:focus-visible .hub-ico { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .45); }
+.hub-card:hover .hub-go, .hub-card:focus-visible .hub-go { background: rgba(255, 255, 255, .14); border-color: rgba(255, 255, 255, .5); }
