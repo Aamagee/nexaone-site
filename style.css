@@ -2332,3 +2332,54 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 #services.bare .ads-n small { color: rgba(255, 255, 255, .85); }
 #services.bare .ads-stats .graph-line { stroke-width: 3.5; filter: drop-shadow(0 0 6px rgba(255, 116, 3, .7)); }
 #services.bare .ads-stats .graph-fill { fill: rgba(255, 116, 3, .22); }
+
+/* ---------- Bare slides, desktop: bigger, layered compositions that fill the right side ---------- */
+@media (min-width: 1001px) {
+  #services.bare #tour-mkt .tour-visual, #services.bare #tour-sys .tour-visual, #services.bare #tour-code .tour-visual { align-self: stretch; aspect-ratio: auto; height: auto; max-height: none; display: block; }
+  #services.bare .v-web > .browser { width: 88%; }
+  #services.bare .ads-win, #services.bare .sys-win, #services.bare .code-win { position: absolute; inset: 0; width: 100% !important; height: 100%; }
+  #services.bare .ads-dash, #services.bare .sys-dash, #services.bare .code-dash { position: relative; display: block; width: 100%; height: 100%; padding: 0; }
+
+  /* marketing: ad tilted top-left, results big bottom-right */
+  #services.bare .ads-ad { position: absolute; left: 6%; top: 4%; width: 40%; padding: 12px; rotate: -4deg; }
+  #services.bare .ads-ad .ad-top span { font-size: .72rem; }
+  #services.bare .ads-ad .ad-cta em { font-size: .74rem; padding: 7px 13px; }
+  #services.bare .ads-stats { position: absolute; right: 0; bottom: 6%; width: 52%; padding: 0; }
+  #services.bare .ads-k { font-size: .9rem; }
+  #services.bare .ads-n { font-size: 3.4rem; margin: 6px 0 12px; }
+  #services.bare .ads-n small { font-size: .85rem; }
+  #services.bare .ads-stats svg { height: 130px; flex: none; }
+  #services.bare .ads-chips span { font-size: .72rem; padding: 7px 12px; }
+
+  /* systems: chat big on the left, stat tiles staggered on the right */
+  #services.bare .sys-chat { position: absolute; left: 0; top: 6%; width: 64%; gap: 10px; }
+  #services.bare .sys-chat .msg { font-size: .9rem; padding: 10px 14px; border-radius: 16px; }
+  #services.bare .sys-who { font-size: .82rem; }
+  #services.bare .sys-side { position: absolute; right: 0; top: 14%; width: 30%; gap: 16px; }
+  #services.bare .sys-tile { padding: 16px 18px; }
+  #services.bare .sys-tile + .sys-tile { margin-left: -28%; margin-right: 28%; }
+  #services.bare .sys-tile span { font-size: .8rem; }
+  #services.bare .sys-tile b { font-size: 2.8rem; margin-top: 6px; }
+
+  /* code: three panels cascading */
+  #services.bare .code-dash { font-size: .82rem; }
+  #services.bare .code-main { display: contents; }
+  #services.bare .code-dash .ed-files { position: absolute; left: 0; top: 18%; width: 30%; z-index: 1; }
+  #services.bare .code-dash .ed-term { position: absolute; left: 22%; top: 0; width: 66%; z-index: 2; }
+  #services.bare .code-dash .ed-code { position: absolute; right: 0; bottom: 4%; width: 68%; z-index: 3; }
+  #services.bare .code-dash .ed-title { padding: 8px 12px; }
+  #services.bare .code-dash .ed-body { padding: 10px 12px; }
+}
+@media (min-width: 1001px) {
+  #services.bare .ads-stats { width: 50%; padding: 18px 20px 16px; border-radius: 14px; background: var(--glass); border: 1px solid rgba(255, 255, 255, .2);
+    -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shadow); }
+  #services.bare .ads-ad { z-index: 2; }
+  #services.bare .ads-chips span { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(255, 255, 255, .1); }
+  #services.bare .sys-chat { width: 58%; }
+  #services.bare .sys-side { top: 10%; width: 28%; }
+  #services.bare .sys-tile + .sys-tile { margin-left: -14%; margin-right: 14%; }
+}
+@media (min-width: 1001px) {
+  #services.bare .code-dash .ed-files { width: 27%; }
+  #services.bare .code-dash .ed-term { left: 30%; width: 62%; }
+}
