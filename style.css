@@ -2239,3 +2239,33 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .hub-card:hover .hub-ico, .hub-card:focus-visible .hub-ico { border-color: rgba(255, 255, 255, .6); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), 0 0 30px -6px rgba(255, 230, 180, .7); }
 .hub-card:hover .hub-ico svg, .hub-card:focus-visible .hub-ico svg { stroke: #fff; }
 .hub-card:hover .hub-ico svg .sun, .hub-card:focus-visible .hub-ico svg .sun { fill: #fff; }
+
+/* ---------- Marketing slide: one glass "ad results" window, same style as the Websites one ---------- */
+.tour-visual.v-mkt { grid-template-columns: 1fr; padding: 0; gap: 0; }
+.v-mkt > .ads-win { width: 76%; }
+#services.photo-tour .tour-visual .ads-win { background: var(--glass); }
+.ads-live { margin-left: auto; font: 600 .58rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; font-style: normal; color: #ffd27a; display: inline-flex; align-items: center; gap: 6px; }
+.ads-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #ffa402; box-shadow: 0 0 8px #ff7403; }
+.ads-dash { display: grid; grid-template-columns: .9fr 1.25fr; gap: 16px; padding: 16px; align-items: stretch; }
+.ads-ad { padding: 10px; border-radius: 10px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); }
+.ads-img { position: relative; aspect-ratio: 1 / .82; border-radius: 8px; overflow: hidden; display: grid; place-items: center;
+  background: radial-gradient(90% 80% at 50% 70%, rgba(255, 116, 3, .28), transparent 70%), rgba(255, 255, 255, .04); }
+.ads-sun { width: 62%; aspect-ratio: 1; border-radius: 50%; background: var(--sun); }
+.ads-stats { display: flex; flex-direction: column; padding: 4px 2px 0; color: #fff; }
+.ads-k { margin: 0; font: 500 .72rem/1.2 var(--sans); color: rgba(255, 255, 255, .7); }
+.ads-n { margin: 6px 0 10px; font: 600 2rem/1 var(--display); letter-spacing: -.02em; color: #fff; }
+.ads-n small { font: 400 .68rem/1 var(--sans); letter-spacing: 0; color: rgba(255, 255, 255, .6); margin-left: 4px; }
+.ads-stats svg { width: 100%; flex: 1; min-height: 70px; display: block; overflow: visible; }
+.ads-stats .graph-line { stroke: #ff8a1e; stroke-width: 3; }
+.ads-chips { display: flex; gap: 6px; margin-top: 12px; }
+.ads-chips span { padding: 5px 10px; border-radius: 99px; font: 600 .62rem/1 var(--sans); color: #ffd27a; background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .16); }
+/* build-in, matching the Websites window */
+.tour-step:not(.seen) .ads-ad, .tour-step:not(.seen) .ads-stats > :not(svg) { opacity: 0; transform: translateY(10px); }
+.tour-step:not(.seen) .ads-sun { opacity: 0; transform: translateY(24px) scale(.8); }
+.tour-step:not(.seen) .ads-stats .graph-line { stroke-dashoffset: 1; }
+.tour-step:not(.seen) .ads-stats .graph-fill { opacity: 0; }
+.ads-ad { transition-delay: .3s; } .ads-k { transition-delay: .45s; } .ads-n { transition-delay: .55s; } .ads-chips { transition-delay: .9s; }
+.tour-visual .ads-sun { transition: opacity 1.1s ease .5s, transform 1.1s cubic-bezier(.2, .7, .2, 1) .5s, scale .5s ease, filter .5s ease; }
+.v-mkt:hover .ads-sun { scale: 1.08; filter: drop-shadow(0 0 18px rgba(255, 116, 3, .55)); }
+@media (max-width: 1000px) { .v-mkt > .ads-win { width: 88%; } .ads-dash { gap: 10px; padding: 12px; } .ads-n { font-size: 1.5rem; } }
+@media (max-width: 600px) { .v-mkt > .ads-win { width: 100%; } .ads-n small { display: none; } }
