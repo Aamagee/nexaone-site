@@ -2383,3 +2383,67 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
   #services.bare .code-dash .ed-files { width: 27%; }
   #services.bare .code-dash .ed-term { left: 30%; width: 62%; }
 }
+
+/* ---------- Websites + Coded for You: tilted art card + glass info card + number tile ---------- */
+.tour-visual.v-bare { grid-template-columns: 1fr; padding: 0; gap: 0; background: none !important; box-shadow: none !important; overflow: visible; }
+.vb { position: relative; width: 100%; display: grid; grid-template-columns: .8fr 1.2fr; gap: 12px; align-items: start; }
+.vb-art { grid-row: 1 / 3; }
+.vb-card, .vb-art, .vb-tile { color: #fff; border-radius: 14px; background: var(--glass); border: 1px solid rgba(255, 255, 255, .2);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shadow); }
+.vb-card { padding: 14px 16px; }
+.vb-url { display: flex; align-items: center; gap: 7px; margin: 0 0 12px; padding: 6px 10px; border-radius: 99px; background: rgba(255, 255, 255, .08); font: 500 .72rem/1 var(--sans); color: rgba(255, 255, 255, .85); }
+.vb-url svg { width: 13px; height: 13px; fill: none; stroke: #ffd27a; stroke-width: 1.8; stroke-linecap: round; }
+.vb-url .ads-live { margin-left: auto; }
+.vb-h { margin: 0 0 4px; font: 600 1.15rem/1.15 var(--display); letter-spacing: -.02em; }
+.vb-sub { margin: 0 0 10px; font: 400 .74rem/1.45 var(--sans); color: rgba(255, 255, 255, .75); }
+.vb .ads-chips { flex-wrap: wrap; margin-top: 8px; }
+/* the phone */
+.web-phone { aspect-ratio: 9 / 16; padding: 14px 12px; display: flex; flex-direction: column; gap: 10px; border-radius: 22px; border-color: rgba(255, 255, 255, .3); }
+.wp-nav { display: flex; align-items: center; gap: 5px; }
+.wp-nav b { width: 34%; height: 7px; border-radius: 3px; background: rgba(255, 255, 255, .9); margin-right: auto; }
+.wp-nav span { width: 14%; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, .35); }
+.wp-sun { width: 74%; aspect-ratio: 1; margin: 6px auto 2px; border-radius: 50%; background: var(--sun); }
+.wp-copy { display: grid; gap: 6px; }
+.wp-copy b { height: 9px; border-radius: 3px; background: rgba(255, 255, 255, .9); width: 88%; }
+.wp-copy b + b { width: 60%; }
+.wp-copy span { height: 5px; width: 76%; border-radius: 3px; background: rgba(255, 255, 255, .3); margin-top: 3px; }
+.web-phone em { margin-top: auto; align-self: flex-start; padding: 7px 12px; border-radius: 99px; background: var(--grad); font: 700 .66rem/1 var(--sans); font-style: normal; color: #fff; }
+/* the code glyph */
+.code-glyph { aspect-ratio: 4 / 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 16px; position: relative; overflow: hidden; }
+.code-glyph::before { content: ""; position: absolute; width: 90%; aspect-ratio: 1; border-radius: 50%; background: var(--sun); opacity: .28; filter: blur(18px); }
+.code-glyph span { position: relative; font: 700 clamp(2.6rem, 6vw, 4.6rem)/1 ui-monospace, Consolas, monospace; letter-spacing: -.06em; background: linear-gradient(135deg, #ffd27a, #ff7403 55%, #cb3c18); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 18px rgba(255, 116, 3, .45)); }
+.cg-line { position: relative; margin: 0; padding: 6px 10px; border-radius: 8px; background: rgba(20, 10, 5, .45); border: 1px solid rgba(255, 255, 255, .12); font: 500 .66rem/1.2 ui-monospace, Consolas, monospace; color: #fff; white-space: nowrap; }
+.cg-line b { font-weight: 500; color: #ff9a3c; }
+.vb-checks { list-style: none; margin: 10px 0 4px; padding: 0; display: grid; gap: 9px; }
+.vb-checks li { display: flex; align-items: center; gap: 10px; font: 500 .82rem/1.2 var(--sans); }
+.vb-checks i { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: var(--grad); box-shadow: 0 0 12px rgba(255, 116, 3, .45); }
+.vb-checks svg { width: 13px; height: 13px; fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.vb-tile b { color: #ffd27a; }
+/* build-in */
+.tour-step:not(.seen) .vb > * { opacity: 0; transform: translateY(18px); }
+.vb > :nth-child(1) { transition-delay: .2s; } .vb > :nth-child(2) { transition-delay: .4s; } .vb > :nth-child(3) { transition-delay: .6s; }
+.tour-step:not(.seen) .vb-checks li { opacity: 0; transform: translateX(-8px); }
+.vb-checks li:nth-child(1) { transition-delay: .7s; } .vb-checks li:nth-child(2) { transition-delay: .9s; } .vb-checks li:nth-child(3) { transition-delay: 1.1s; }
+.vb-art.float { --depth: 30; --dur: 6.4s; --amp: 8px; } .vb-card.float { --depth: 14; --dur: 7.2s; --delay: -2s; --amp: 6px; } .vb-tile.float { --depth: 40; --dur: 5.6s; --delay: -3s; --amp: 9px; }
+.v-bare:hover .wp-sun { scale: 1.06; filter: drop-shadow(0 0 16px rgba(255, 116, 3, .55)); transition: scale .5s ease, filter .5s ease; }
+
+@media (min-width: 1001px) {
+  #services.bare #tour-web .tour-visual, #services.bare #tour-code .tour-visual { align-self: stretch; aspect-ratio: auto; height: auto; max-height: none; display: block; }
+  .vb { display: block; height: 100%; }
+  .vb > * { position: absolute; }
+  .vb-art { left: 6%; top: 2%; width: 31%; rotate: -5deg; z-index: 2; }
+  .vb-card { right: 0; bottom: 6%; width: 56%; padding: 20px 22px; }
+  .vb-tile { right: 8%; top: 6%; width: 26%; }
+  .vb-h { font-size: 1.7rem; }
+  .vb-sub { font-size: .88rem; }
+  .vb-url { font-size: .8rem; padding: 8px 12px; }
+  .vb-checks li { font-size: .98rem; }
+  .vb .ads-chips span { font-size: .72rem; padding: 7px 12px; }
+  #tour-code .vb-art { width: 34%; top: 4%; }
+  .cg-line { font-size: .74rem; }
+}
+@media (max-width: 1000px) {
+  #services.bare .tour-step .tour-visual.v-bare { aspect-ratio: auto; height: auto; }
+  .vb-tile { padding: 12px 14px; }
+}
+@media (max-width: 1000px) { .cg-line { font-size: .5rem; padding: 5px 7px; } .code-glyph { gap: 10px; padding: 12px 8px; } }
