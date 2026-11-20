@@ -2447,3 +2447,10 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
   .vb-tile { padding: 12px 14px; }
 }
 @media (max-width: 1000px) { .cg-line { font-size: .5rem; padding: 5px 7px; } .code-glyph { gap: 10px; padding: 12px 8px; } }
+/* New Systems: profit-up tile */
+.sys-profit b { display: flex; align-items: center; gap: 8px; color: #8fe0a8 !important; }
+.sys-profit svg { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 8px rgba(143, 224, 168, .5)); }
+.sys-tile.sys-profit { transition-delay: .9s; }
+.tour-step:not(.seen) .sys-tile.sys-profit { opacity: 0; transform: translateY(10px); }
+@media (min-width: 1001px) { #services.bare .sys-tile.sys-profit { margin-left: 0; margin-right: 0; } #services.bare .sys-side { top: 4%; gap: 12px; } }
+@media (max-width: 600px) { .sys-side .sys-profit { grid-column: 1 / -1; } }
