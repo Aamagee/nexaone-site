@@ -173,7 +173,7 @@
         var is = invoices.filter(function (i) { return i.client_id === cl.id; });
         var due = is.filter(function (i) { return i.status === 'sent'; }).reduce(function (a, i) { return a + i.amount_cents; }, 0);
         return '<div class="adm-client"><div class="adm-c-top"><div><b>' + esc(cl.name) + '</b><span>' +
-          esc(cl.contact_email || 'No email yet (needed to sign in to the portal)') + (cl.contact_phone ? ' &middot; ' + esc(cl.contact_phone) : '') + '</span></div>' +
+          esc(cl.contact_email || 'No email yet (needed to sign in to the portal)') + (cl.contact_phone ? '<i class="adm-dot"> &middot; </i><span class="adm-phone">' + esc(cl.contact_phone) + '</span>' : '') + '</span></div>' +
           (due ? '<span class="st st-due">' + esc(money(due)) + ' due</span>' : '<span class="st st-done">Paid up</span>') + '</div>' +
           '<div class="adm-c-rows">' + (ps.length ? ps.map(function (p) { var s = STATUS[p.status] || [p.status, '']; return '<span class="st ' + s[1] + '">' + esc(p.name) + ': ' + esc(s[0]) + '</span>'; }).join('') : '<span class="p-empty">No projects</span>') + '</div></div>';
       }).join('') : '<p class="p-empty">No clients yet. Add them in your Workspace, with their email so they can sign in.</p>';

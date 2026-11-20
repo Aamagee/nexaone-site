@@ -2177,3 +2177,29 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .adm-c-top span:not(.st) { font: 400 .8rem/1.4 var(--sans); color: rgba(255, 255, 255, .65); }
 .adm-c-rows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .adm-c-rows .st { text-transform: none; letter-spacing: .02em; font-size: .72rem; }
+.adm-dot { font-style: normal; }
+
+/* portal + contact on phones */
+@media (max-width: 760px) {
+  .cf-field input, .cf-field textarea { font-size: 16px; } /* 16px+ stops iPhone zooming in on tap */
+}
+@media (max-width: 600px) {
+  .portal-msg:empty { display: none; }
+  .portal-form .cf-send { justify-self: stretch; justify-content: center; text-align: center; }
+  .portal-head { flex-wrap: nowrap; align-items: flex-start; }
+  .portal-head > div { min-width: 0; }
+  .portal-head .p-signout { flex: none; margin-top: 6px; padding: 9px 12px; font-size: .58rem; }
+  .p-card { flex-wrap: nowrap; padding: 16px; gap: 12px; }
+  .p-card > div:first-child { min-width: 0; flex: 1; }
+  .p-card .st, .adm-copy { flex: none; }
+  .p-card.p-inv { flex-wrap: wrap; }
+  .p-inv > div:first-child { flex-basis: 100%; }
+  .p-inv-right { width: 100%; gap: 10px; }
+  .p-inv-right .plan-btn { margin-left: auto; }
+  .adm-links { flex-direction: column; }
+  .adm-links .plan-btn { display: flex; justify-content: space-between; text-align: left; width: 100%; align-self: stretch; box-sizing: border-box; }
+  .adm-client { padding: 16px; }
+  .adm-dot { display: none; }
+  .adm-phone { display: block; }
+  .p-billing-note, .portal-help, .pi-desc { text-shadow: 0 1px 8px rgba(20, 10, 5, .55); }
+}
