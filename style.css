@@ -2491,3 +2491,25 @@ h1, h2, h3, .brand-name, .statement-text, .card-title, .pi-h { font-family: var(
 .tour-step:not(.seen) .sc-val { stroke-dasharray: 0 100; }
 @media (min-width: 1001px) { .sc-k { font-size: 1.5rem; } .sc-ring b { font-size: 1.5rem; } .sc-ring span { font-size: .82rem; } }
 @media (max-width: 600px) { .sc-ring b { font-size: 1rem; } .sc-rings { gap: 6px; } }
+
+/* ---------- Landing buttons: cream pill + dark glass pill ---------- */
+.pi-btns { gap: 12px; align-items: center; }
+.pi-btn.pb { display: inline-flex; align-items: center; gap: 12px; padding: 7px 7px 7px 22px; border-radius: 999px;
+  font: 600 .72rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  transition: transform .35s cubic-bezier(.2, .7, .2, 1), background .35s ease, border-color .35s ease, box-shadow .35s ease; }
+.pb-arrow { width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: 50%; transition: transform .35s cubic-bezier(.2, .7, .2, 1), background .35s ease; }
+.pb-arrow svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pb-ico { width: 15px; height: 15px; flex: none; margin-right: -4px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; opacity: .85; }
+/* main: soft cream */
+.pi-btn.pb-main { background: #fdf1e6; color: #2a1810; border: 1px solid rgba(255, 255, 255, .7);
+  box-shadow: 0 14px 30px -14px rgba(10, 5, 2, .65), inset 0 1px 0 #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.pi-btn.pb-main .pb-arrow { background: #2a1810; color: #fdf1e6; }
+.pi-btn.pb-main:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 20px 36px -16px rgba(10, 5, 2, .7), inset 0 1px 0 #fff; }
+/* secondary: dark glass */
+.pi-btn.pb-glass { padding-left: 18px; background: var(--glass); color: #fff; border: 1px solid rgba(255, 255, 255, .35);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shadow); }
+.pi-btn.pb-glass .pb-arrow { background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .25); }
+.pi-btn.pb-glass:hover { background: var(--glass-hover); border-color: rgba(255, 255, 255, .55); transform: translateY(-2px); }
+.pi-btn.pb:hover .pb-arrow { transform: translateX(3px); }
+.pi-btn.pb:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+@media (max-width: 600px) { .pi-btn.pb { font-size: .66rem; letter-spacing: .1em; gap: 10px; padding-left: 18px; } .pi-btn.pb-glass { padding-left: 14px; } .pb-arrow { width: 28px; height: 28px; } }
